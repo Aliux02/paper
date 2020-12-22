@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paper extends Model
+class Info extends Model
 {
     use HasFactory;
 
-  
-        public function info()
+
+
+    public function papers()
     {
-        return $this -> hasMany('App\Models\Info','paper_id', 'id');
+        return $this -> belongsTo('App\Models\Paper','paper_id', 'id');
     }
 
 

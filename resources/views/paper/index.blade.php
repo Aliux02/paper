@@ -96,6 +96,7 @@
             <th>Kiekis</th>
             <th>Paskutinis redagavimas</th>
             <th>Keisti</th>
+            <th>Info</th>
             <th>Istrinti</th>
         </tr>
       
@@ -113,6 +114,9 @@
                <button type="submit">Save</button> 
             </td>
           </form>
+          <td>
+            <a href="{{route('paper.info', $paper )}}"><button>Info</button></a>
+          </td>
             <td>
               <a href="{{route('paper.destroy', $paper)}} "><button>Delete</button></a>
             </td>

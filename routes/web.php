@@ -2,6 +2,7 @@
 use App\Models\Paper;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaperController;
+use App\Http\Controllers\InfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Route::post('/store', [PaperController::class, 'store'])->name('paper.store');
 Route::get('/destroy/{paper}', [PaperController::class, 'destroy'])->name('paper.destroy');
 
 Route::get('/update/{paper}', [PaperController::class, 'update'])->name('paper.update');
+
+Route::get('/info/{paper}', [InfoController::class, 'index'])->name('paper.info');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

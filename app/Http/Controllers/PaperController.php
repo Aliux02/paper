@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Info;
 use App\Models\Paper;
 use Illuminate\Http\Request;
 
@@ -69,6 +70,12 @@ class PaperController extends Controller
         $paper->klijai = $request->klijai;
         $paper->kiekis = $request->kiekis;
         $paper->save();
+
+        $info = new Info();
+        $info->kiekis = $paper->kiekis;
+        $info->modifikuota = $paper->updated_at;
+        $info->paper_id = $paper->id;
+        $info->save();
         return redirect()->route('paper.index');
     }
 
@@ -110,6 +117,12 @@ class PaperController extends Controller
         $paper->klijai = $request->klijai;
         $paper->kiekis = $request->kiekis;
         $paper->update();
+
+        $info = new Info();
+        $info->kiekis = $paper->kiekis;
+        $info->modifikuota = $paper->updated_at;
+        $info->paper_id = $paper->id;
+        $info->save();
         return redirect()->back();
     }
 
