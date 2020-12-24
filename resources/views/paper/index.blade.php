@@ -86,43 +86,44 @@
           <input type="submit" value="Submit"><br><br>
       @csrf
     </form>
-    
-    <table>
-        <tr>
-            <th>Plotis</th>
-            <th>Ilgis</th>
-            <th>Medziaga</th>
-            <th>Klijai</th>
-            <th>Kiekis</th>
-            <th>Paskutinis redagavimas</th>
-            <th>Keisti</th>
-            <th>Info</th>
-            <th>Istrinti</th>
-        </tr>
-      
-        @foreach ($papers as $paper)
-        <tr>
-          <form action="{{route('paper.update',$paper)}}" method="get">
-          <td><input type="text" id="plotis" size="2" name="plotis" value="{{$paper->plotis}}"></td>
-          <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$paper->ilgis}}"></td>
-          <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
-          <td><input type="text" id="klijai" size="2" name="klijai" value="{{$paper->klijai}}"></td>
-          <td><input type="text" id="kiekis" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
-          <td><input type="text" id="updated_at" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
+    <div style="overflow-x:auto;">
+      <table>
+          <tr>
+              <th>Plotis</th>
+              <th>Ilgis</th>
+              <th>Medziaga</th>
+              <th>Klijai</th>
+              <th>Kiekis</th>
+              <th>Paskutinis redagavimas</th>
+              <th>Keisti</th>
+              <th>Info</th>
+              <th>Istrinti</th>
+          </tr>
+        
+          @foreach ($papers as $paper)
+          <tr>
+            <form action="{{route('paper.update',$paper)}}" method="get">
+            <td><input type="text" id="plotis" size="2" name="plotis" value="{{$paper->plotis}}"></td>
+            <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$paper->ilgis}}"></td>
+            <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
+            <td><input type="text" id="klijai" size="2" name="klijai" value="{{$paper->klijai}}"></td>
+            <td><input type="text" id="kiekis" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
+            <td><input type="text" id="updated_at" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
 
+              <td>
+                <button type="submit">Save</button> 
+              </td>
+            </form>
             <td>
-               <button type="submit">Save</button> 
+              <a href="{{route('paper.info', $paper )}}"><button>Info</button></a>
             </td>
-          </form>
-          <td>
-            <a href="{{route('paper.info', $paper )}}"><button>Info</button></a>
-          </td>
-            <td>
-              <a href="{{route('paper.destroy', $paper)}} "><button>Delete</button></a>
-            </td>
-        </tr>
-        @endforeach
-      
-    </table>
+              <td>
+                <a href="{{route('paper.destroy', $paper)}} "><button>Delete</button></a>
+              </td>
+          </tr>
+          @endforeach
+        
+      </table>
+    </div>
 </body>
 </html>
