@@ -20,12 +20,11 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    
     Route::group(['prefix'=>'paper'],function(){
 
         Route::get('/', [PaperController::class, 'index'])->name('paper.index');
 
-        Route::get('/sort', [PaperController::class, 'sort'])->name('paper.sort');
+        Route::post('/sort', [PaperController::class, 'sort'])->name('paper.sort');
 
         Route::post('/store', [PaperController::class, 'store'])->name('paper.store');
 

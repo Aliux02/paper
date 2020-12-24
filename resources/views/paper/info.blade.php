@@ -29,12 +29,14 @@
         <tr>
             <th>Kiekis</th>
             <th>Nurasyta</th>
+            <th>Nurase</th>
         </tr>
       
         @foreach ($infos as $info)
         <tr>
             <td>{{$info->kiekis}}</td>
             <td>{{$info->modifikuota}}</td>
+            <td>{{$info->user_name}}</td>
         </tr>
         @endforeach
     </table>

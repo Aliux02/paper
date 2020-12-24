@@ -15,7 +15,6 @@ class InfoController extends Controller
      */
     public function index($id)
     {
-
         $infos = Info::where('paper_id','=',$id)->get();
         return view('paper.info', ['infos' => $infos]);
     }

@@ -15,12 +15,11 @@ class CreatePapersTable extends Migration
     {
         Schema::create('papers', function (Blueprint $table) {
             $table->id();
-            $table->decimal('ilgis');
-            $table->decimal('plotis');
+            $table->integer('ilgis');
+            $table->integer('plotis');
             $table->string('medziaga');
             $table->string('klijai');
             $table->string('kiekis');
-            $table->string('status')->nullable();
             $table->string('user_id')->nullable();
             $table->timestamps();
         });

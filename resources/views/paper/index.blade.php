@@ -74,18 +74,27 @@
 
     <h2>Paper Table</h2>
 
-    <form class="filtras" action="{{route('paper.sort')}}" method="get">
+    <form class="filtras" action="{{route('paper.sort')}}" method="post">
 
-      <label for="medziaga">Filter paper by medziaga:</label>
+      <label for="medziaga">Filtruoti medziaga:</label>
       <select name="medziaga" id="medziaga">
         <option value="0">All</option>
           @foreach ($medz_arrs as $medz_arr)
           <option value="{{$medz_arr}}">{{$medz_arr}}</option>
         @endforeach
       </select>
+
+      <label for="klijai">Filtruoti klijai:</label>
+      <select name="klijai" id="klijai">
+        <option value="0">All</option>
+          @foreach ($klijai_arrs as $klijai_arr)
+          <option value="{{$klijai_arr}}">{{$klijai_arr}}</option>
+        @endforeach
+      </select>
           <input type="submit" value="Submit"><br><br>
       @csrf
     </form>
+
     <div style="overflow-x:auto;">
       <table>
           <tr>

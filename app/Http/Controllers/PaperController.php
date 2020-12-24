@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Info;
 use App\Models\Paper;
 use Illuminate\Http\Request;
@@ -16,33 +17,45 @@ class PaperController extends Controller
     public function index()
     {        
         $papers = Paper::all()->sortBy('medziaga')->sortBy('medziaga');
-
+        $klijai_arrs = [];
         $medz_arrs = [];
         foreach ($papers as $paper) {
             array_push($medz_arrs, $paper->medziaga);
             $medz_arrs = array_unique($medz_arrs);
+            array_push($klijai_arrs, $paper->klijai);
+            $klijai_arrs = array_unique($klijai_arrs);
         }
-       //dd($medz_arrs);
-        return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs]);
+        return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs, 'klijai_arrs'=>$klijai_arrs]);
     }
 
     public function sort()
     {
         $papers = Paper::all()->sortBy('plotis');
         $medz_arrs = [];
+        $klijai_arrs = [];
         foreach ($papers as $paper) {
             array_push($medz_arrs, $paper->medziaga);
             $medz_arrs = array_unique($medz_arrs);
+            array_push($klijai_arrs, $paper->klijai);
+            $klijai_arrs = array_unique($klijai_arrs);
         }
+                
+        $papers = Paper::where('medziaga','=',$_POST['medziaga'])->where('klijai','=',$_POST['klijai'])->get()->sortBy('plotis');
 
-        $papers = Paper::where('medziaga','=',$_GET['medziaga'])->get()->sortBy('plotis');
-
-        if ($_GET['medziaga'] == '0') {
+        if ($_POST['medziaga'] == '0' && $_POST['klijai'] == '0') {
             return redirect()->route('paper.index');
         }
-        
-        return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs]);
-        //return redirect()->route('paper.index');
+        if (isset($_POST['medziaga']) && $_POST['klijai'] == '0') {
+            $papers = Paper::where('medziaga','=',$_POST['medziaga'])->get()->sortBy('plotis');
+            return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs,'klijai_arrs'=>$klijai_arrs]);
+        }
+        if (isset($_POST['klijai']) && $_POST['medziaga'] == '0') {
+            $papers = Paper::where('klijai','=',$_POST['klijai'])->get()->sortBy('plotis');
+            return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs,'klijai_arrs'=>$klijai_arrs]);
+        }
+
+        return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs,'klijai_arrs'=>$klijai_arrs]);
+        //return redirect()->route('paper.index')->with(['papers'=> $papers,'medz_arrs'=> $medz_arrs]);
     }
 
     /**
@@ -71,11 +84,8 @@ class PaperController extends Controller
         $paper->kiekis = $request->kiekis;
         $paper->save();
 
-        $info = new Info();
-        $info->kiekis = $paper->kiekis;
-        $info->modifikuota = $paper->updated_at;
-        $info->paper_id = $paper->id;
-        $info->save();
+        create_info();
+
         return redirect()->route('paper.index');
     }
 
@@ -122,6 +132,7 @@ class PaperController extends Controller
         $info->kiekis = $paper->kiekis;
         $info->modifikuota = $paper->updated_at;
         $info->paper_id = $paper->id;
+        $info->user_name = auth()->user()->name;
         $info->save();
         return redirect()->back();
     }

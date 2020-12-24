@@ -17,6 +17,7 @@ class CreateInfosTable extends Migration
             $table->id();
             $table->string('kiekis');
             $table->string('modifikuota');
+            $table->string('user_name')->nullable();
             $table->foreignId('paper_id')->references('id')->on('papers');
             $table->timestamps();
         });
