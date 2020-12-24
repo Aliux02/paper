@@ -19,18 +19,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/paper', [PaperController::class, 'index'])->name('paper.index');
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::group(['prefix'=>'paper'],function(){
 
-Route::get('/sort', [PaperController::class, 'sort'])->name('paper.sort');
+        Route::get('/', [PaperController::class, 'index'])->name('paper.index');
 
-Route::post('/store', [PaperController::class, 'store'])->name('paper.store');
+        Route::get('/sort', [PaperController::class, 'sort'])->name('paper.sort');
 
-Route::get('/destroy/{paper}', [PaperController::class, 'destroy'])->name('paper.destroy');
+        Route::post('/store', [PaperController::class, 'store'])->name('paper.store');
 
-Route::get('/update/{paper}', [PaperController::class, 'update'])->name('paper.update');
+        Route::get('/destroy/{paper}', [PaperController::class, 'destroy'])->name('paper.destroy');
 
-Route::get('/info/{paper}', [InfoController::class, 'index'])->name('paper.info');
+        Route::get('/update/{paper}', [PaperController::class, 'update'])->name('paper.update');
+
+        Route::get('/info/{paper}', [InfoController::class, 'index'])->name('paper.info');
+
+    });
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+

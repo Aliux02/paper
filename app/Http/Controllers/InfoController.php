@@ -15,11 +15,8 @@ class InfoController extends Controller
      */
     public function index($id)
     {
-        //dd($id);
-        ///padaryti, kad atvaizduotu pasirinkta popieriu
-        // $paper = Paper::all();
+
         $infos = Info::where('paper_id','=',$id)->get();
-        //$infos = Info::all();
         return view('paper.info', ['infos' => $infos]);
     }
 
