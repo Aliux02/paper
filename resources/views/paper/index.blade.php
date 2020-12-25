@@ -34,9 +34,9 @@
         }
         .store{
           grid-area: store;
-          /* display: flex;
+          display: flex;
           justify-content: center;
-          align-items: center; */
+          align-items: center;
           width: 100%;
         }
         .lentele{
@@ -49,11 +49,16 @@
         }
         .ivestis{
           /* width: 200px; */
-          padding: 20px;
+          padding: 0px 20px;
           float: left;
         }
         .btn_ivastis{
+          float: left;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           margin-top: 20px;
+          padding: 0px 20px;
         }
         .filtras{
           grid-area: filtras;
@@ -66,28 +71,29 @@
     <div class="store">
       <form action="{{route('paper.store')}}" method="post">
         <div class="ivestis">
-          <label for="plotis">Plotis:</label>
+          <label for="plotis">Plotis:</label><br>
           <input type="text" id="plotis" size="8" name="plotis" value="">
         </div>
         <div class="ivestis">
-          <label for="ilgis">Ilgis:</label>
+          <label for="ilgis">Ilgis:</label><br>
           <input type="text" id="ilgis" size="8" name="ilgis" value=""><br><br>
         </div>
         <div class="ivestis">
-          <label for="medziaga">Medziaga:</label>
+          <label for="medziaga">Medziaga:</label><br>
           <input type="text" id="medziaga" size="8" name="medziaga" value=""><br><br>
         </div>
         <div class="ivestis">
-          <label for="klijai">Klijai:</label>
+          <label for="klijai">Klijai:</label><br>
           <input type="text" id="klijai" size="8" name="klijai" value=""><br><br>
         </div>
         <div class="ivestis">
-          <label for="kiekis">Kiekis:</label>
+          <label for="kiekis">Kiekis:</label><br>
           <input type="text" id="kiekis" size="8" name="kiekis" value=""><br><br>
         </div>
-
-        <input class="btn_ivastis" type="submit" value="Submit">
-        @csrf
+        <div class="btn_ivastis">
+          <input  type="submit" value="Submit">
+          @csrf
+        </div>
       </form>
     </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\InfoController;
 use App\Models\User;
 use App\Models\Info;
 use App\Models\Paper;
@@ -84,7 +85,12 @@ class PaperController extends Controller
         $paper->kiekis = $request->kiekis;
         $paper->save();
 
-        create_info();
+        $info = new Info();
+        $info->kiekis = $paper->kiekis;
+        $info->modifikuota = $paper->updated_at;
+        $info->paper_id = $paper->id;
+        $info->user_name = auth()->user()->name;
+        $info->save();
 
         return redirect()->route('paper.index');
     }
