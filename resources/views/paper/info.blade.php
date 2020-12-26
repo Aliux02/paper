@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Popieriaus info</title>
     <style>
+        .container{
+          display: grid;
+          grid-template-columns: 20px 1fr 5fr 1fr 20px;
+          grid-template-rows: auto;
+          grid-template-areas:     
+          ". . store .  ."
+          ". h2 h2 h2 ."
+          ". filtras filtras filtras ."
+          ". . lentele . .";
+        }
+        .lentele{
+          grid-area: lentele;
+          overflow-x:auto;
+        }
         table {
           font-family: arial, sans-serif;
           border-collapse: collapse;
@@ -24,7 +38,8 @@
     </style>
 </head>
 <body>
-
+  <div class="container">
+  <div class="lentele">
     <table>
         <tr>
             <th>Kiekis</th>
@@ -40,5 +55,7 @@
         </tr>
         @endforeach
     </table>
+  </div>
+</div>
 </body>
 </html>

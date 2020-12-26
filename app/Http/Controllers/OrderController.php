@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Machine;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $machines = Machine::all();
         $orders = Order::all();
-        return view('order.index',['orders'=>$orders]);
+        return view('order.index',['orders'=>$orders,'machines'=>$machines]);
     }
 
     /**
@@ -93,9 +95,10 @@ class OrderController extends Controller
         $order->klijai = $request->klijai;
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
+        $order->machine_id = $request->machine_id;
         $order->kiekis = $request->kiekis;
         $order->update();
-        return redirect()->back();
+        return redirect()->back()->withInput();
     }
 
     /**

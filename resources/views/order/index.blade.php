@@ -13,7 +13,7 @@
           ". . store .  ."
           ". h2 h2 h2 ."
           ". filtras filtras filtras ."
-          ". . lentele . .";
+          ". lentele lentele lentele .";
         }
           table {
             font-family: arial, sans-serif;
@@ -134,6 +134,8 @@
                 <th>Eiles</th>
                 <th>Spalvos</th>
                 <th>Kiekis</th>
+                <th>Masina</th>
+                <th>Priskirti masina</th>
                 <th>Keisti</th>
                 <th>Info</th>
                 <th>Istrinti</th>
@@ -143,7 +145,7 @@
             <tr>
               <form action="{{route('order.update',$order)}}" method="get">
                 <td><input type="text" id="uzsakovas" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-                <td><input type="text" id="pavadinimas" size="12" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
+                <td><input type="text" id="pavadinimas" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
                 <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
                 <td><input type="text" id="plotis" size="2" name="plotis" value="{{$order->plotis}}"></td>
                 <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$order->medziaga}}"></td>
@@ -151,8 +153,23 @@
                 <td><input type="text" id="eiles" size="2" name="eiles" value="{{$order->eiles}}"></td>
                 <td><input type="text" id="spalva" size="2" name="spalva" value="{{$order->spalva}}"></td>
                 <td><input type="text" id="kiekis" size="5" name="kiekis" value="{{$order->kiekis}}"></td>
-              {{-- <td><input type="text" id="updated_at" size="16" name="updated_at" value="{{$order->updated_at}}" readonly></td> --}}
-  
+                <td>
+                  @foreach ($machines as $machine)
+                  @if ($order->machine_id == $machine->id)
+                    {{$machine->pavadinimas}}
+                  @endif
+                  @endforeach
+                </td>
+                <td>    
+                  
+                  <select name="machine_id" id="machine_id">
+                    <option value="0">All</option>
+                      @foreach ($machines as $machine)
+                      <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
+                    @endforeach
+                  </select>
+
+                </td>
                 <td>
                   <button type="submit">Save</button> 
                 </td>
