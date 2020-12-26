@@ -9,13 +9,13 @@
     <style>
       .container{
         display: grid;
-        grid-template-columns: 20px 1fr 1fr 1fr 20px;
+        grid-template-columns: 20px 1fr 5fr 1fr 20px;
         grid-template-rows: auto;
         grid-template-areas:     
-        ". store store store  ."
+        ". . store .  ."
         ". h2 h2 h2 ."
         ". filtras filtras filtras ."
-        ". lentele lentele lentele .";
+        ". . lentele . .";
       }
         table {
           font-family: arial, sans-serif;
@@ -33,6 +33,7 @@
           background-color: #dddddd;
         }
         .store{
+          padding: 20px;
           grid-area: store;
           display: flex;
           justify-content: center;
@@ -64,9 +65,16 @@
           grid-area: filtras;
           text-align: center;
         }
+        header{
+          height: 40px;
+          background-color: aliceblue;
+        }
     </style>
 </head>
 <body>
+  <header>
+    <a href="{{route('welcome')}}"><button>Atgal</button></a>
+  </header>
   <div class="container">
     <div class="store">
       <form action="{{route('paper.store')}}" method="post">
@@ -97,30 +105,30 @@
       </form>
     </div>
 
-    <h2>Paper Table</h2>
+    <h2>Popieriaus sarasas</h2>
 
     <form class="filtras" action="{{route('paper.sort')}}" method="post">
 
-      <label for="medziaga">Filtruoti medziaga:</label>
+      <label for="medziaga" >Filtruoti medziaga:</label>
       <select name="medziaga" id="medziaga">
         <option value="0">All</option>
           @foreach ($medz_arrs as $medz_arr)
           <option value="{{$medz_arr}}">{{$medz_arr}}</option>
         @endforeach
       </select>
-      <br><br>
-      <label for="klijai">Filtruoti klijai:</label>
+      
+      <label for="klijai" style="padding-left:20px">Filtruoti klijai:</label>
       <select name="klijai" id="klijai">
         <option value="0">All</option>
           @foreach ($klijai_arrs as $klijai_arr)
           <option value="{{$klijai_arr}}">{{$klijai_arr}}</option>
         @endforeach
       </select>
-      <br><br>
+      
           <input type="submit" value="Submit"><br><br>
       @csrf
     </form>
-
+    <br><br>
     <div class="lentele" >
       <table>
           <tr>
