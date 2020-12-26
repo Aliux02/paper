@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Machine extends Model
 {
     use HasFactory;
 
-    public function machine()
+    public function orders()
     {
-        return $this->belongsTo('App\Models\Machine','machine_id', 'id');
+        return $this -> hasMany('App\Models\Order','machine_id', 'id');
     }
 }

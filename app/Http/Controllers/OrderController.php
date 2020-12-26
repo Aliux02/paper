@@ -45,6 +45,7 @@ class OrderController extends Controller
         $order->klijai = $request->klijai;
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
+        $order->machine_id = null;
         $order->kiekis = $request->kiekis;
         $order->save();
 

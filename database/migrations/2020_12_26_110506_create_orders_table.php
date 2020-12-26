@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->integer('eiles');
             $table->integer('spalva');
             $table->integer('kiekis');
+            $table->foreignId('machine_id')->nullable()->references('id')->on('machines');
             $table->timestamps();
         });
     }

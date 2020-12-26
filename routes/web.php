@@ -3,6 +3,7 @@
 // use App\Models\Order;
 // use App\Models\Paper;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MachineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\InfoController;
@@ -54,6 +55,24 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/update/{order}', [OrderController::class, 'update'])->name('order.update');
 
         //Route::get('/info/{order}', [InfoController::class, 'index'])->name('order.info');
+
+    });
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix'=>'machine'],function(){
+
+        Route::get('/', [MachineController::class, 'index'])->name('machine.index');
+
+        //Route::post('/sort', [MachineController::class, 'sort'])->name('machine.sort');
+
+        Route::post('/store', [MachineController::class, 'store'])->name('machine.store');
+
+        Route::get('/destroy/{machine}', [MachineController::class, 'destroy'])->name('machine.destroy');
+
+        Route::get('/update/{machine}', [MachineController::class, 'update'])->name('machine.update');
+
+        //Route::get('/info/{order}', [InfoController::class, 'index'])->name('machine.info');
 
     });
 });

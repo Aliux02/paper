@@ -10,7 +10,7 @@ class Paper extends Model
     use HasFactory;
 
   
-        public function info()
+    public function info()
     {
         return $this -> hasMany('App\Models\Info','paper_id', 'id');
     }
