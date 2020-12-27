@@ -148,7 +148,7 @@
                 <td><input type="text" id="pavadinimas" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
                 <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
                 <td><input type="text" id="plotis" size="2" name="plotis" value="{{$order->plotis}}"></td>
-                <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$order->medziaga}}"></td>
+                <td><input type="text" id="medziaga" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
                 <td><input type="text" id="klijai" size="2" name="klijai" value="{{$order->klijai}}"></td>
                 <td><input type="text" id="eiles" size="1" name="eiles" value="{{$order->eiles}}"></td>
                 <td><input type="text" id="spalva" size="1" name="spalva" value="{{$order->spalva}}"></td>
@@ -162,7 +162,7 @@
                 </td>
                 <td>    
                   
-                  <select name="machine_id" id="machine_id">
+                  <select name="machine_id" >
                     <option value="0">All</option>
                       @foreach ($machines as $machine)
                       <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>

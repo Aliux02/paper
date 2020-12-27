@@ -110,7 +110,7 @@
     <form class="filtras" action="{{route('paper.sort')}}" method="post">
 
       <label for="medziaga" >Filtruoti medziaga:</label>
-      <select name="medziaga" id="medziaga">
+      <select name="medziaga" >
         <option value="0">All</option>
           @foreach ($medz_arrs as $medz_arr)
           <option value="{{$medz_arr}}">{{$medz_arr}}</option>

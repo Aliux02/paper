@@ -123,10 +123,16 @@
                 <td>{{$order->eiles}} </td>
                 <td>{{$order->spalva}} </td>
                 <td>{{$order->kiekis}} </td>
-                <td>
-                    <button type="submit">Save</button> 
-                </td>
               </form>
+                <td>
+                  <form action="{{ route('order.done') }}" method="post">
+                    <input type="hidden" name="id" value="{{$order->id}}">
+                    
+                    <button type="submit">Pagaminta</button>
+                    @csrf
+                  </form>
+                </td>
+              
                 <td>
                   <a href="{{route('machine.index')}}"><button>Info</button></a>
                 </td>

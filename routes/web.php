@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/update/{order}', [OrderController::class, 'update'])->name('order.update');
 
+        Route::post('/done', [OrderController::class, 'done'])->name('order.done');
+
         //Route::get('/info/{order}', [InfoController::class, 'index'])->name('order.info');
 
     });

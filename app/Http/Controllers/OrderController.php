@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function done(Request $request)
+    {
+        $order = Order::find($request->id);
+        $order->status=1;
+        $order->machine_id=null;
+        $order->update();
+        return back();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +56,9 @@ class OrderController extends Controller
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
         $order->machine_id = null;
+        $order->status = 0;
         $order->kiekis = $request->kiekis;
+        
         $order->save();
 
 
@@ -97,6 +107,7 @@ class OrderController extends Controller
         $order->spalva = $request->spalva;
         $order->machine_id = $request->machine_id;
         $order->kiekis = $request->kiekis;
+        //status
         $order->update();
         return redirect()->back()->withInput();
     }
