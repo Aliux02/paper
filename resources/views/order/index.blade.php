@@ -150,9 +150,9 @@
                 <td><input type="text" id="plotis" size="2" name="plotis" value="{{$order->plotis}}"></td>
                 <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$order->medziaga}}"></td>
                 <td><input type="text" id="klijai" size="2" name="klijai" value="{{$order->klijai}}"></td>
-                <td><input type="text" id="eiles" size="2" name="eiles" value="{{$order->eiles}}"></td>
-                <td><input type="text" id="spalva" size="2" name="spalva" value="{{$order->spalva}}"></td>
-                <td><input type="text" id="kiekis" size="5" name="kiekis" value="{{$order->kiekis}}"></td>
+                <td><input type="text" id="eiles" size="1" name="eiles" value="{{$order->eiles}}"></td>
+                <td><input type="text" id="spalva" size="1" name="spalva" value="{{$order->spalva}}"></td>
+                <td><input type="text" id="kiekis" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
                 <td>
                   @foreach ($machines as $machine)
                   @if ($order->machine_id == $machine->id)
