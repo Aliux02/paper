@@ -17,7 +17,7 @@ class PaperController extends Controller
      */
     public function index()
     {        
-        $papers = Paper::all()->sortBy('medziaga')->sortBy('medziaga');
+        $papers = Paper::all()->sortBy('medziaga');
         $klijai_arrs = [];
         $medz_arrs = [];
         foreach ($papers as $paper) {
@@ -26,6 +26,10 @@ class PaperController extends Controller
             array_push($klijai_arrs, $paper->klijai);
             $klijai_arrs = array_unique($klijai_arrs);
         }
+
+            
+
+
         return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs, 'klijai_arrs'=>$klijai_arrs]);
     }
 
@@ -140,7 +144,7 @@ class PaperController extends Controller
         $info->paper_id = $paper->id;
         $info->user_name = auth()->user()->name;
         $info->save();
-        return redirect()->back();
+        return redirect()->route('paper.index');
     }
 
     /**

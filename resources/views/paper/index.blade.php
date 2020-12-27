@@ -145,14 +145,14 @@
         
           @foreach ($papers as $paper)
           <tr>
-            <form action="{{route('paper.update',$paper)}}" method="get">
+            <form action="{{route('paper.update',$paper)}}" method="post">
             <td><input type="text" id="plotis" size="2" name="plotis" value="{{$paper->plotis}}"></td>
             <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$paper->ilgis}}"></td>
             <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
             <td><input type="text" id="klijai" size="2" name="klijai" value="{{$paper->klijai}}"></td>
             <td><input type="text" id="kiekis" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
             <td><input type="text" id="updated_at" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
-
+            @csrf
               <td>
                 <button type="submit">Save</button> 
               </td>

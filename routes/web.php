@@ -27,14 +27,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix'=>'paper'],function(){
 
         Route::get('/', [PaperController::class, 'index'])->name('paper.index');
-//is sorto negaliu savint, sutvarkyt!!!
+
         Route::post('/sort', [PaperController::class, 'sort'])->name('paper.sort');
 
         Route::post('/store', [PaperController::class, 'store'])->name('paper.store');
 
         Route::get('/destroy/{paper}', [PaperController::class, 'destroy'])->name('paper.destroy');
 
-        Route::get('/update/{paper}', [PaperController::class, 'update'])->name('paper.update');
+        Route::post('/update/{paper}', [PaperController::class, 'update'])->name('paper.update');
 
         Route::get('/info/{paper}', [InfoController::class, 'index'])->name('paper.info');
 
