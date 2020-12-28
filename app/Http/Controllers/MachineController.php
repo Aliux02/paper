@@ -46,6 +46,7 @@ class MachineController extends Controller
     {
         $machine= new Machine();
         $machine->pavadinimas = $request->pavadinimas;
+        $machine->tipas = $request->tipas;
         $machine->save();
         return redirect()->back();
     }
