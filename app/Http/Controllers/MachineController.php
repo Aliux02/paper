@@ -17,7 +17,13 @@ class MachineController extends Controller
     {
         $machines = Machine::all();
         $orders = Order::all();
-        return view('machine.index',['machines'=>$machines,'orders'=>$orders]);
+
+        
+        $doneOrders = Order::all()->where('status','=',1);
+            
+        
+
+        return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders]);
     }
 
     /**

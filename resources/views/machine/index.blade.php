@@ -11,6 +11,7 @@
     grid-template-rows: auto;
     grid-template-areas:     
     ". . store .  ."
+    ". . lentele1 . ."
     ". h2 h2 h2 ."
     ". filtras filtras filtras ."
     ". . lentele . .";
@@ -40,6 +41,10 @@
   }
   .lentele{
     grid-area: lentele;
+    overflow-x:auto;
+  }
+  .lentele1{
+    grid-area: lentele1;
     overflow-x:auto;
   }
   h2{
@@ -89,8 +94,62 @@
         </form>
     </div>
     
+
+    <div class="lentele1" style="background-color: aquamarine">
+    <table>
+    <tr>
+      <th>Uzs. nr.</th>
+      <th>uzsakovas</th>
+      <th>pavadinimas</th>
+      <th>ilgis</th>
+      <th>plotis</th>
+      <th>medziaga</th>
+      <th>klijai</th>
+      <th>eiles</th>
+      <th>spalva</th>
+      <th>kiekis</th>
+      <th>Keisti</th>
+      <th>parinkti</th>
+    </tr>
+
+    <h2>Atspausdinti uzsakymai</h2>
+
+    @foreach ($doneOrders as $doneOrder)
+    <tr>
+      <form action="{{route('order.rewind',$doneOrder)}}" method="post"> 
+          <td>{{$doneOrder->id}} </td>
+          <td>{{$doneOrder->uzsakovas}} </td>
+          <td>{{$doneOrder->pavadinimas}} </td>
+          <td>{{$doneOrder->ilgis}} </td>
+          <td>{{$doneOrder->plotis}} </td>
+          <td>{{$doneOrder->medziaga}} </td>
+          <td>{{$doneOrder->klijai}} </td>
+          <td>{{$doneOrder->eiles}} </td>
+          <td>{{$doneOrder->spalva}} </td>
+          <td>{{$doneOrder->kiekis}} </td>
+               
+          <td>    
+               
+            <select name="machine_id" >
+              <option value="0">All</option>
+                @foreach ($machines as $machine)
+                <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
+              @endforeach
+            </select>
+
+          </td>
+          <td>
+            <button type="submit">Save</button> 
+          </td>
+          @csrf
+        </form>
+    </tr>
+    @endforeach
+  </table>
+</div>
+
     <h2>Masinu sarasas</h2>
-    <div class="lentele">
+    <div class="lentele" style="background-color: rgb(221, 255, 127)">
       @foreach ($machines as $machine)
         <table>
           <h2>{{$machine->pavadinimas}}</h2>
@@ -106,8 +165,7 @@
             <th>spalva</th>
             <th>kiekis</th>
             <th>Keisti</th>
-            <th>Info</th>
-            <th>Istrinti</th>
+
           </tr>
           @foreach ($orders as $order)
           @if ($machine->id == $order->machine_id)
@@ -132,13 +190,7 @@
                     @csrf
                   </form>
                 </td>
-              
-                <td>
-                  <a href="{{route('machine.index')}}"><button>Info</button></a>
-                </td>
-                <td>
-                  <a href="{{route('machine.destroy',$machine)}} "><button>Delete</button></a>
-                </td>
+
           </tr>
           @endif
           @endforeach

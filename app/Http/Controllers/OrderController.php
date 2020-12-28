@@ -16,6 +16,15 @@ class OrderController extends Controller
         $order->update();
         return back();
     }
+    public function rewind(Request $request, $doneOrder)
+    {
+        $order = Order::find($doneOrder);
+        $order->status=2;
+        $order->machine_id=$request->machine_id;
+        $order->update();
+        return back();
+    }
+
     /**
      * Display a listing of the resource.
      *
