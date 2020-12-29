@@ -89,39 +89,39 @@
       <form action="{{route('order.store')}}" method="post">
         <div class="ivestis">
             <label for="uzsakovas">Uzsakovas:</label><br>
-            <input type="text" id="uzsakovas" size="8" name="uzsakovas" value="">
+            <input type="text"  size="8" name="uzsakovas" value="">
         </div>
         <div class="ivestis">
             <label for="pavadinimas">Pavadinimas:</label><br>
-            <input type="text" id="pavadinimas" size="8" name="pavadinimas" value="">
+            <input type="text"  size="8" name="pavadinimas" value="">
         </div>
         <div class="ivestis">
           <label for="ilgis">Ilgis:</label><br>
-          <input type="text" id="ilgis" size="8" name="ilgis" value=""><br><br>
+          <input type="text"  size="8" name="ilgis" value=""><br><br>
         </div>
         <div class="ivestis">
           <label for="plotis">Plotis:</label><br>
-          <input type="text" id="plotis" size="8" name="plotis" value="">
+          <input type="text"  size="8" name="plotis" value="">
         </div>
         <div class="ivestis">
           <label for="medziaga">Medziaga:</label><br>
-          <input type="text" id="medziaga" size="8" name="medziaga" value=""><br><br>
+          <input type="text"  size="8" name="medziaga" value=""><br><br>
         </div>
         <div class="ivestis">
           <label for="klijai">Klijai:</label><br>
-          <input type="text" id="klijai" size="8" name="klijai" value=""><br><br>
+          <input type="text"  size="8" name="klijai" value=""><br><br>
         </div>
         <div class="ivestis">
             <label for="eiles">eiles:</label><br>
-            <input type="text" id="eiles" size="8" name="eiles" value=""><br><br>
+            <input type="text"  size="8" name="eiles" value=""><br><br>
         </div>
         <div class="ivestis">
             <label for="spalva">Spalva:</label><br>
-            <input type="text" id="spalva" size="8" name="spalva" value=""><br><br>
+            <input type="text"  size="8" name="spalva" value=""><br><br>
         </div>
         <div class="ivestis">
           <label for="kiekis">Kiekis:</label><br>
-          <input type="text" id="kiekis" size="8" name="kiekis" value=""><br><br>
+          <input type="text"  size="8" name="kiekis" value=""><br><br>
         </div>
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
@@ -158,15 +158,15 @@
             
         <tr>
           <form action="{{route('order.update',$order)}}" method="get">
-            <td><input type="text" id="uzsakovas" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-            <td><input type="text" id="pavadinimas" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
-            <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
-            <td><input type="text" id="plotis" size="2" name="plotis" value="{{$order->plotis}}"></td>
-            <td><input type="text" id="medziaga" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
-            <td><input type="text" id="klijai" size="2" name="klijai" value="{{$order->klijai}}"></td>
-            <td><input type="text" id="eiles" size="1" name="eiles" value="{{$order->eiles}}"></td>
-            <td><input type="text" id="spalva" size="1" name="spalva" value="{{$order->spalva}}"></td>
-            <td><input type="text" id="kiekis" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
+            <td><input type="text"  size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
+            <td><input type="text"  size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
+            <td><input type="text"  size="2" name="ilgis" value="{{$order->ilgis}}"></td>
+            <td><input type="text"  size="2" name="plotis" value="{{$order->plotis}}"></td>
+            <td><input type="text"  size="4" name="medziaga" value="{{$order->medziaga}}"></td>
+            <td><input type="text"  size="2" name="klijai" value="{{$order->klijai}}"></td>
+            <td><input type="text"  size="1" name="eiles" value="{{$order->eiles}}"></td>
+            <td><input type="text"  size="1" name="spalva" value="{{$order->spalva}}"></td>
+            <td><input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}"></td>
             <td>
               @foreach ($machines as $machine)
               @if ($order->machine_id == $machine->id)
@@ -225,15 +225,15 @@
 
         <tr>
           <form action="{{route('order.update',$ordersDonePacking)}}" method="get">
-            <td><input type="text" id="uzsakovas" size="10" name="uzsakovas" value="{{$ordersDonePacking->uzsakovas}}"></td>
-            <td><input type="text" id="pavadinimas" size="10" name="pavadinimas" value="{{$ordersDonePacking->pavadinimas}}"></td>
-            <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$ordersDonePacking->ilgis}}"></td>
-            <td><input type="text" id="plotis" size="2" name="plotis" value="{{$ordersDonePacking->plotis}}"></td>
-            <td><input type="text" id="medziaga" size="4" name="medziaga" value="{{$ordersDonePacking->medziaga}}"></td>
-            <td><input type="text" id="klijai" size="2" name="klijai" value="{{$ordersDonePacking->klijai}}"></td>
-            <td><input type="text" id="eiles" size="1" name="eiles" value="{{$ordersDonePacking->eiles}}"></td>
-            <td><input type="text" id="spalva" size="1" name="spalva" value="{{$ordersDonePacking->spalva}}"></td>
-            <td><input type="text" id="kiekis" size="4" name="kiekis" value="{{$ordersDonePacking->kiekis}}"></td>
+            <td><input type="text" size="10" name="uzsakovas" value="{{$ordersDonePacking->uzsakovas}}"></td>
+            <td><input type="text" size="10" name="pavadinimas" value="{{$ordersDonePacking->pavadinimas}}"></td>
+            <td><input type="text" size="2" name="ilgis" value="{{$ordersDonePacking->ilgis}}"></td>
+            <td><input type="text" size="2" name="plotis" value="{{$ordersDonePacking->plotis}}"></td>
+            <td><input type="text" size="4" name="medziaga" value="{{$ordersDonePacking->medziaga}}"></td>
+            <td><input type="text" size="2" name="klijai" value="{{$ordersDonePacking->klijai}}"></td>
+            <td><input type="text" size="1" name="eiles" value="{{$ordersDonePacking->eiles}}"></td>
+            <td><input type="text" size="1" name="spalva" value="{{$ordersDonePacking->spalva}}"></td>
+            <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->kiekis}}"></td>
 
             <td>
               <button type="submit">Save</button> 

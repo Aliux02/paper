@@ -99,15 +99,15 @@
             @foreach ($orders as $order)
             <tr>
               <form action="{{route('order.donePacking',$order)}}" method="post">
-                <td><input type="text" id="uzsakovas" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-                <td><input type="text" id="pavadinimas" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
-                <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
-                <td><input type="text" id="plotis" size="2" name="plotis" value="{{$order->plotis}}"></td>
-                <td><input type="text" id="medziaga" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
-                <td><input type="text" id="klijai" size="2" name="klijai" value="{{$order->klijai}}"></td>
-                <td><input type="text" id="eiles" size="1" name="eiles" value="{{$order->eiles}}"></td>
-                <td><input type="text" id="spalva" size="1" name="spalva" value="{{$order->spalva}}"></td>
-                <td><input type="text" id="kiekis" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
+                <td><input type="text" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
+                <td><input type="text" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
+                <td><input type="text" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
+                <td><input type="text" size="2" name="plotis" value="{{$order->plotis}}"></td>
+                <td><input type="text" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
+                <td><input type="text" size="2" name="klijai" value="{{$order->klijai}}"></td>
+                <td><input type="text" size="1" name="eiles" value="{{$order->eiles}}"></td>
+                <td><input type="text" size="1" name="spalva" value="{{$order->spalva}}"></td>
+                <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
                 <td>
                   <button type="submit">Save</button> 
                 </td>

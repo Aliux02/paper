@@ -80,23 +80,23 @@
       <form action="{{route('paper.store')}}" method="post">
         <div class="ivestis">
           <label for="plotis">Plotis:</label><br>
-          <input type="text" id="plotis" size="8" name="plotis" value="">
+          <input type="text" size="8" name="plotis" value="">
         </div>
         <div class="ivestis">
           <label for="ilgis">Ilgis:</label><br>
-          <input type="text" id="ilgis" size="8" name="ilgis" value=""><br><br>
+          <input type="text" size="8" name="ilgis" value=""><br><br>
         </div>
         <div class="ivestis">
           <label for="medziaga">Medziaga:</label><br>
-          <input type="text" id="medziaga" size="8" name="medziaga" value=""><br><br>
+          <input type="text" size="8" name="medziaga" value=""><br><br>
         </div>
         <div class="ivestis">
           <label for="klijai">Klijai:</label><br>
-          <input type="text" id="klijai" size="8" name="klijai" value=""><br><br>
+          <input type="text" size="8" name="klijai" value=""><br><br>
         </div>
         <div class="ivestis">
           <label for="kiekis">Kiekis:</label><br>
-          <input type="text" id="kiekis" size="8" name="kiekis" value=""><br><br>
+          <input type="text" size="8" name="kiekis" value=""><br><br>
         </div>
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
@@ -146,12 +146,12 @@
           @foreach ($papers as $paper)
           <tr>
             <form action="{{route('paper.update',$paper)}}" method="post">
-            <td><input type="text" id="plotis" size="2" name="plotis" value="{{$paper->plotis}}"></td>
-            <td><input type="text" id="ilgis" size="2" name="ilgis" value="{{$paper->ilgis}}"></td>
-            <td><input type="text" id="medziaga" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
-            <td><input type="text" id="klijai" size="2" name="klijai" value="{{$paper->klijai}}"></td>
-            <td><input type="text" id="kiekis" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
-            <td><input type="text" id="updated_at" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
+            <td><input type="text" size="2" name="plotis" value="{{$paper->plotis}}"></td>
+            <td><input type="text" size="2" name="ilgis" value="{{$paper->ilgis}}"></td>
+            <td><input type="text" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
+            <td><input type="text" size="2" name="klijai" value="{{$paper->klijai}}"></td>
+            <td><input type="text" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
+            <td><input type="text" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
             @csrf
               <td>
                 <button type="submit">Save</button> 
