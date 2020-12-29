@@ -83,7 +83,7 @@
     background-color: aliceblue;
   }
   </style>
-  <title>Document</title>
+  <title>Masinos</title>
 </head>
 <body>
   <header>
@@ -226,7 +226,7 @@
 
     <h2 class="lia">Vyniokles</h2>
 
-    <div class="lentele2" style="background-color: rgb(185, 225, 127)">
+    <div class="lentele2" style="background-color: rgb(148, 235, 19)">
       @foreach ($machines as $machine)
       @if ($machine->tipas == 'vyniokle')
         <table>
@@ -247,7 +247,7 @@
           @foreach ($orders as $order)
           @if ($machine->id == $order->machine_id)
           <tr>
-            <form action="" method="get">
+            <form action="" method="post">
               <td>{{$order->id}} </td>
               <td>{{$order->uzsakovas}} </td>
               <td>{{$order->pavadinimas}} </td>
@@ -260,7 +260,7 @@
               <td>{{$order->kiekis}} </td>
             </form>
               <td>
-                <form action="{{ route('order.done') }}" method="post">
+                <form action="{{route('order.doneRewind')}}" method="post">
                   <input type="hidden" name="id" value="{{$order->id}}">
                   
                   <button type="submit">Pagaminta</button>

@@ -7,6 +7,7 @@ use App\Http\Controllers\MachineController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\PackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,11 +55,15 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/update/{order}', [OrderController::class, 'update'])->name('order.update');
 
-        Route::post('/done', [OrderController::class, 'done'])->name('order.done');
+        Route::post('/done', [OrderController::class, 'donePrint'])->name('order.done');
 
         Route::post('/rewind/{doneOrder}', [OrderController::class, 'rewind'])->name('order.rewind');
 
-        //Route::get('/info/{order}', [InfoController::class, 'index'])->name('order.info');
+        Route::post('/doneRewind', [OrderController::class, 'doneRewind'])->name('order.doneRewind');
+
+        Route::post('/donePacking/{order}', [OrderController::class, 'donePacking'])->name('order.donePacking');
+
+        //Route::get('/info/{order}', [InfoController::class, 'index'])->name('order.info');donePacking
 
     });
 });
@@ -80,6 +85,25 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 });
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix'=>'pack'],function(){
+
+        Route::get('/', [PackController::class, 'index'])->name('pack.index');
+
+        //Route::post('/sort', [PackController::class, 'sort'])->name('pack.sort');
+
+        Route::post('/store', [PackController::class, 'store'])->name('pack.store');
+
+        Route::get('/destroy/{order}', [PackController::class, 'destroy'])->name('pack.destroy');
+
+        Route::get('/update/{order}', [PackController::class, 'update'])->name('pack.update');
+
+        //Route::get('/info/{order}', [PackController::class, 'index'])->name('machine.info');
+
+    });
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

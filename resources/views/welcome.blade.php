@@ -89,12 +89,12 @@
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('welcome')}}" class="underline text-gray-900 dark:text-white">kazkas ateity galetu buti</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('pack.index')}}" class="underline text-gray-900 dark:text-white">Pakavimas</a></div>
                             </div>
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries.
+                                    Pakavimui paruosti uzsakymai.
                                 </div>
                             </div>
                         </div>

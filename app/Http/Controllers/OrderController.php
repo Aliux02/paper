@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function done(Request $request)
+    public function donePrint(Request $request)
     {
         $order = Order::find($request->id);
         $order->status=1;
-        $order->machine_id=null;
+        $order->machine_id=$request->machine_id;
         $order->update();
         return back();
     }
@@ -24,7 +24,22 @@ class OrderController extends Controller
         $order->update();
         return back();
     }
-
+    public function doneRewind(Request $request)
+    {
+        $order = Order::find($request->id);
+        $order->status=3;
+        $order->machine_id=null;
+        $order->update();
+        return back();
+    }
+    public function donePacking(Request $request,$order)
+    {
+        $order = Order::find($order);
+        $order->status=4;
+        $order->machine_id=null;
+        $order->update();
+        return back();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +49,8 @@ class OrderController extends Controller
     {
         $machines = Machine::all();
         $orders = Order::all();
-        return view('order.index',['orders'=>$orders,'machines'=>$machines]);
+        $ordersDonePacking = Order::all()->where('status','=',4);
+        return view('order.index',['orders'=>$orders,'machines'=>$machines,'ordersDonePacking'=>$ordersDonePacking]);
     }
 
     /**
