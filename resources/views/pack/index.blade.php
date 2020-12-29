@@ -72,14 +72,14 @@
 </head>
 <body>
     <header>
-        <a href="{{route('welcome')}}"><button>Atgal</button></a>
-      </header>
-      <div class="container">
+      <a href="{{route('welcome')}}"><button>Atgal</button></a>
+    </header>
+    <div class="container">
         
     
-        <h2>Suvynioti uzsakymai</h2>
+      <h2>Suvynioti uzsakymai</h2>
     
-    <div class="lentele" >
+      <div class="lentele" >
         <table>
             <tr>
                 <th>Uzsakovas</th>
