@@ -26,7 +26,12 @@ class InfoController extends Controller
      */
     public function create()
     {
-        //
+        $info = new Info();
+        $info->kiekis = $paper->kiekis;
+        $info->modifikuota = $paper->updated_at;
+        $info->paper_id = $paper->id;
+        $info->user_name = auth()->user()->name;
+        $info->save();
     }
 
     /**

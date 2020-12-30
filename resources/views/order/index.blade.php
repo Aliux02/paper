@@ -240,7 +240,8 @@
             </td>
           </form>
           <td>
-            <a href="{{route('order.index', $order )}}"><button>Info</button></a>
+            {{-- apgalvoti pagamintu, supakuotu, isveztu uzsakymu talpinima ir atsekamuma --}}
+            <a href="{{route('order.index', $ordersDonePacking )}}"><button>Info</button></a>
           </td>
  
         </tr>
