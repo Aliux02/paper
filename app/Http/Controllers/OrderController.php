@@ -82,6 +82,8 @@ class OrderController extends Controller
         $order->spalva = $request->spalva;
         $order->machine_id = null;
         $order->status = 0;
+        $order->velenas = $request->velenas;
+        $order->pabaigimas = $request->pabaigimas;
         $order->kiekis = $request->kiekis;
         
         $order->save();
@@ -132,6 +134,8 @@ class OrderController extends Controller
         $order->spalva = $request->spalva;
         $order->machine_id = $request->machine_id;
         $order->kiekis = $request->kiekis;
+        $order->velenas = $request->velenas;
+        $order->pabaigimas = $request->pabaigimas;
         //status
         $order->update();
         return redirect()->back()->withInput();

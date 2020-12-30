@@ -17,66 +17,69 @@
           "lia lia lia lia lia"
           ". lentele1 lentele1 lentele1 .";
         }
-          table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-          }
-          
-          td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-          }
-          
-          tr:nth-child(even) {
-            background-color: #dddddd;
-          }
-          .store{
-            padding: 20px;
-            grid-area: store;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-          }
-          .lentele{
-            grid-area: lentele;
-            overflow-x:auto;
-          }
-          .lentele1{
-            grid-area: lentele1;
-            overflow-x:auto;
-          }
-          h2{
-            grid-area: h2;
-            text-align: center;
-          }
-          .lia{
-            grid-area: lia;
-            text-align: center;
-          }
-          .ivestis{
-            /* width: 200px; */
-            padding: 0px 20px;
-            float: left;
-          }
-          .btn_ivastis{
-            float: left;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            padding: 0px 20px;
-          }
-          .filtras{
-            grid-area: filtras;
-            text-align: center;
-          }
-          header{
-            height: 40px;
-            background-color: aliceblue;
-          }
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        .store{
+          padding: 20px;
+          grid-area: store;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
+        .lentele{
+          grid-area: lentele;
+          overflow-x:auto;
+        }
+        .lentele1{
+          grid-area: lentele1;
+          overflow-x:auto;
+        }
+        h2{
+          grid-area: h2;
+          text-align: center;
+        }
+        .lia{
+          grid-area: lia;
+          text-align: center;
+        }
+        .ivestis{
+          /* width: 200px; */
+          padding: 0px 20px;
+          float: left;
+        }
+        .btn_ivastis{
+          float: left;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px;
+          padding: 0px 20px;
+        }
+        .filtras{
+          grid-area: filtras;
+          text-align: center;
+        }
+        header{
+          height: 40px;
+          background-color: aliceblue;
+        }
+        input::-webkit-datetime-edit{ color: transparent; }
+        input:focus::-webkit-datetime-edit{ color: #000; }
+
       </style>
     <title>Uzsakymai</title>
 </head>
@@ -123,6 +126,15 @@
           <label for="kiekis">Kiekis:</label><br>
           <input type="text"  size="8" name="kiekis" value=""><br><br>
         </div>
+        <div class="ivestis">
+          <label for="velenas">Velenas:</label><br>
+          <input type="text"  size="8" name="velenas" value=""><br><br>
+        </div>
+        <div class="ivestis">
+          <label for="pabaigimas">pagaminimo data:</label><br>
+          <input type="date"  size="8" name="pabaigimas" value=""><br><br>
+        </div>
+
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
           @csrf
@@ -144,6 +156,8 @@
           <th>Eiles</th>
           <th>Spalvos</th>
           <th>Kiekis</th>
+          <th>Velenas</th>
+          <th>Pagaminimo data</th>
           <th>Masina</th>
           <th>Priskirti masina</th>
           <th>Keisti</th>
@@ -167,6 +181,8 @@
             <td><input type="text"  size="1" name="eiles" value="{{$order->eiles}}"></td>
             <td><input type="text"  size="1" name="spalva" value="{{$order->spalva}}"></td>
             <td><input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}"></td>
+            <td><input type="text"  size="1" name="velenas" value="{{$order->velenas}}"></td>
+            <td><input type="text"  size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
             <td>
               @foreach ($machines as $machine)
               @if ($order->machine_id == $machine->id)
