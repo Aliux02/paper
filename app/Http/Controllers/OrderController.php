@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         $order = Order::find($request->id);
         $order->status=1;
-        $order->machine_id=$request->machine_id;
+        $order->machine_id=null;
         $order->update();
         return back();
     }
