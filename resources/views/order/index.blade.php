@@ -79,6 +79,10 @@
         }
         input::-webkit-datetime-edit{ color: transparent; }
         input:focus::-webkit-datetime-edit{ color: #000; }
+        input::-webkit-calendar-picker-indicator {
+            display: none;
+            -webkit-appearance: none;
+          }
 
       </style>
     <title>Uzsakymai</title>
@@ -131,7 +135,7 @@
           <input type="text"  size="8" name="velenas" value=""><br><br>
         </div>
         <div class="ivestis">
-          <label for="pabaigimas">pagaminimo data:</label><br>
+          <label for="pabaigimas">Pagaminimo data:</label><br>
           <input type="date"  size="8" name="pabaigimas" value=""><br><br>
         </div>
 

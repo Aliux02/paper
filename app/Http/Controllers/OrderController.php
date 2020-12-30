@@ -137,6 +137,7 @@ class OrderController extends Controller
         $order->velenas = $request->velenas;
         $order->pabaigimas = $request->pabaigimas;
         //status
+        if($request->machine_id==0){$order->machine_id=null;}
         $order->update();
         return redirect()->back()->withInput();
     }
