@@ -154,7 +154,6 @@
             <td>    
                 
               <select name="machine_id" >
-                <option value="0">All</option>
                   @foreach ($machines as $machine)
                   @if ($machine->tipas == 'vyniokle')
                   <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
