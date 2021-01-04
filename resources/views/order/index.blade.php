@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
+      body,
+      body * {
+          margin: 0;
+          padding: 0;
+          vertical-align: top;
+          box-sizing: border-box;
+          font-family:'Times New Roman', Times, serif;
+          
+      }
         .container{
           display: grid;
           grid-template-columns: 20px 1fr 5fr 1fr 20px;
@@ -58,6 +67,7 @@
         }
         .ivestis{
           /* width: 200px; */
+          height: 38px;
           padding: 0px 20px;
           float: left;
         }
@@ -79,10 +89,10 @@
         }
         input::-webkit-datetime-edit{ color: transparent; }
         input:focus::-webkit-datetime-edit{ color: #000; }
-        input::-webkit-calendar-picker-indicator {
+        /* input::-webkit-calendar-picker-indicator {
             display: none;
             -webkit-appearance: none;
-          }
+          } */
 
       </style>
     <title>Uzsakymai</title>
@@ -174,7 +184,7 @@
             
         
             
-        <tr>
+        <tr {{$order->color()}}>
           <form action="{{route('order.update',$order)}}" method="get">
             <td><input type="text"  size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
             <td><input type="text"  size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
@@ -244,7 +254,7 @@
         @foreach ($ordersDonePacking as $ordersDonePacking)
 
         <tr>
-          <form action="{{route('order.update',$ordersDonePacking)}}" method="get">
+          <form action="{{route('order.toArchive',$ordersDonePacking)}}" method="post">
             <td><input type="text" size="10" name="uzsakovas" value="{{$ordersDonePacking->uzsakovas}}"></td>
             <td><input type="text" size="10" name="pavadinimas" value="{{$ordersDonePacking->pavadinimas}}"></td>
             <td><input type="text" size="2" name="ilgis" value="{{$ordersDonePacking->ilgis}}"></td>
@@ -254,7 +264,7 @@
             <td><input type="text" size="1" name="eiles" value="{{$ordersDonePacking->eiles}}"></td>
             <td><input type="text" size="1" name="spalva" value="{{$ordersDonePacking->spalva}}"></td>
             <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->kiekis}}"></td>
-
+            @csrf
             <td>
               <button type="submit">Save</button> 
             </td>

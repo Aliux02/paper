@@ -13,4 +13,16 @@ class Order extends Model
     {
         return $this->belongsTo('App\Models\Machine','machine_id', 'id');
     }
+
+    public function orderInfo()
+    {
+        return $this->hasMany('App\Models\Orderinfo','order_id', 'id');
+    }
+
+    public function color()
+    {
+        if ($this->status == 3) {
+            echo 'style="background-color:red"';
+        }
+    }
 }

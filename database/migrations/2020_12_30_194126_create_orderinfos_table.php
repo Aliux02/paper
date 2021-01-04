@@ -16,9 +16,14 @@ class CreateOrderinfosTable extends Migration
         Schema::create('orderinfos', function (Blueprint $table) {
             $table->id();
             $table->string('uzpilde');
+            $table->string('uzpildyta');
             $table->string('atspausdino');
+            $table->string('atspausdinta');
             $table->string('suvyniojo');
+            $table->string('suvyniota');
             $table->string('supakavo');
+            $table->string('supakuota');
+            $table->foreignId('order_id')->nullable()->references('id')->on('orders');
             $table->timestamps();
         });
     }

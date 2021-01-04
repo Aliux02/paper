@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Machine;
 use App\Models\Order;
+use App\Models\Orderinfo;
 use Illuminate\Http\Request;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -14,6 +16,13 @@ class OrderController extends Controller
         $order->status=1;
         $order->machine_id=null;
         $order->update();
+        
+        $orderInfo = Orderinfo::where('order_id','=', $request->id)->first();
+        
+        $orderInfo->atspausdino=Auth::user()->name;
+        $orderInfo->atspausdinta=$order->updated_at;
+        $orderInfo->update();
+
         return back();
     }
     public function rewind(Request $request, $doneOrder)
@@ -22,6 +31,9 @@ class OrderController extends Controller
         $order->status=2;
         $order->machine_id=$request->machine_id;
         $order->update();
+
+
+
         return back();
     }
     public function doneRewind(Request $request)
@@ -30,16 +42,48 @@ class OrderController extends Controller
         $order->status=3;
         $order->machine_id=null;
         $order->update();
+
+        $orderInfo = Orderinfo::where('order_id','=', $request->id)->first();
+        
+        $orderInfo->suvyniojo=Auth::user()->name;
+        $orderInfo->suvyniota=$order->updated_at;
+        $orderInfo->update();
+
         return back();
     }
-    public function donePacking(Request $request,$order)
+    public function donePacking(Request $request,$orderId)
+    {
+        $order = Order::find($orderId);
+        $order->status=4;
+        $order->machine_id=null;
+        $order->update();
+
+        $orderInfo = Orderinfo::where('order_id','=', $orderId)->first();
+        
+        $orderInfo->supakavo=Auth::user()->name;
+        $orderInfo->supakuota=$order->updated_at;
+        $orderInfo->update();
+
+        return back();
+    }
+    public function toArchive(Request $request,$order)
     {
         $order = Order::find($order);
-        $order->status=4;
+        $order->status=5;
+        $order->pabaigimas=$order->pabaigimas;
+        $order->velenas=$order->velenas;
         $order->machine_id=null;
         $order->update();
         return back();
     }
+
+    public function archive()
+    {
+        
+        $orders = Order::all()->where('status','=',5);
+        return view('order.archive',['orders'=>$orders]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +92,7 @@ class OrderController extends Controller
     public function index()
     {
         $machines = Machine::all();
-        $orders = Order::all();
+        $orders = Order::all()->where('status','!=',5);
         $ordersDonePacking = Order::all()->where('status','=',4);
         return view('order.index',['orders'=>$orders,'machines'=>$machines,'ordersDonePacking'=>$ordersDonePacking]);
     }
@@ -87,6 +131,18 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         
         $order->save();
+
+        $orderInfo = new Orderinfo();
+        $orderInfo->uzpilde = Auth::user()->name;
+        $orderInfo->uzpildyta = $order->created_at;
+        $orderInfo->atspausdino = 0;
+        $orderInfo->atspausdinta = 0;
+        $orderInfo->suvyniojo = 0;
+        $orderInfo->suvyniota = 0;
+        $orderInfo->supakavo = 0;
+        $orderInfo->supakuota = 0;
+        $orderInfo->order_id = $order->id;
+        $orderInfo->save();
 
 
         return redirect()->route('order.index');

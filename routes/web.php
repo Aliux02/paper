@@ -55,13 +55,17 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/update/{order}', [OrderController::class, 'update'])->name('order.update');
 
-        Route::post('/done', [OrderController::class, 'donePrint'])->name('order.done');
+        Route::post('/done', [OrderController::class, 'donePrint'])->name('order.donePrint');
 
         Route::post('/rewind/{doneOrder}', [OrderController::class, 'rewind'])->name('order.rewind');
 
         Route::post('/doneRewind', [OrderController::class, 'doneRewind'])->name('order.doneRewind');
 
-        Route::post('/donePacking/{order}', [OrderController::class, 'donePacking'])->name('order.donePacking');
+        Route::post('/donePacking/{orderdId}', [OrderController::class, 'donePacking'])->name('order.donePacking');
+
+        Route::post('/toArchive/{order}', [OrderController::class, 'toArchive'])->name('order.toArchive');
+
+        Route::get('/archive', [OrderController::class, 'archive'])->name('order.archive');
 
         //Route::get('/info/{order}', [InfoController::class, 'index'])->name('order.info');donePacking
 

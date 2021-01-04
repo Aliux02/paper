@@ -11,11 +11,12 @@
     grid-template-rows: auto;
     grid-template-areas:     
     ". . store .  ."
+    ". ats_uzs ats_uzs ats_uzs ."
     ". . lentele1 . ."
     ". h2 h2 h2 ."
     ". filtras filtras filtras ."
     ". . lentele . ."
-    ". lia lia lia ."
+    ". vyniokles vyniokles vyniokles ."
     ". . lentele2 . .";
   }
   table {
@@ -57,8 +58,12 @@
     grid-area: h2;
     text-align: center;
   }
-  .lia{
-    grid-area: lia;
+  .vyniokles{
+    grid-area: vyniokles;
+    text-align: center;
+  }
+  .ats_uzs{
+    grid-area: ats_uzs;
     text-align: center;
   }
   .ivestis{
@@ -117,6 +122,7 @@
         </form>
     </div>
     
+    <h2 class="ats_uzs">Atspausdinti uzsakymai</h2>
 
     <div class="lentele1" style="background-color: aquamarine">
       <table>
@@ -135,8 +141,7 @@
           <th>parinkti</th>
         </tr>
 
-        <h2>Atspausdinti uzsakymai</h2>
-
+        
         @foreach ($doneOrders as $doneOrder)
           <tr>
           <form action="{{route('order.rewind',$doneOrder)}}" method="post"> 
@@ -177,8 +182,8 @@
       
       @foreach ($machines as $machine)
       @if ($machine->tipas == 'spausdinimo')
+      <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
         <table>
-          <h2>{{$machine->pavadinimas}}</h2>
           <tr>
             <th>Uzs. nr.</th>
             <th>uzsakovas</th>
@@ -208,7 +213,7 @@
               <td>{{$order->kiekis}} </td>
             </form>
               <td>
-                <form action="{{ route('order.done') }}" method="post">
+                <form action="{{ route('order.donePrint') }}" method="post">
                   <input type="hidden" name="id" value="{{$order->id}}">
                   
                   <button type="submit">Pagaminta</button>
@@ -223,13 +228,13 @@
       @endforeach
     </div>
 
-    <h2 class="lia">Vyniokles</h2>
+    <h2 class="vyniokles">Vyniokles</h2>
 
     <div class="lentele2" style="background-color: rgb(148, 235, 19)">
       @foreach ($machines as $machine)
       @if ($machine->tipas == 'vyniokle')
+      <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
         <table>
-          <h2>{{$machine->pavadinimas}}</h2>
           <tr>
             <th>Uzs. nr.</th>
             <th>uzsakovas</th>
