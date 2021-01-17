@@ -13,4 +13,6 @@ class Machine extends Model
     {
         return $this -> hasMany('App\Models\Order','machine_id', 'id');
     }
+
+    
 }

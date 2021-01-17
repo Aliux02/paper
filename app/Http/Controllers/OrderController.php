@@ -116,6 +116,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $order = new Order();
+        $order->eil_nr = null;
         $order->uzsakovas = $request->uzsakovas;
         $order->pavadinimas = $request->pavadinimas;
         $order->ilgis = $request->ilgis;
@@ -179,6 +180,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $order->eil_nr = null;
         $order->id = $order->id;
         $order->uzsakovas = $request->uzsakovas;
         $order->pavadinimas = $request->pavadinimas;

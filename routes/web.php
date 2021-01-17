@@ -2,6 +2,7 @@
 
 // use App\Models\Order;
 // use App\Models\Paper;
+// use App\Models\Machine;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\OrderController;
@@ -84,6 +85,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/destroy/{machine}', [MachineController::class, 'destroy'])->name('machine.destroy');
 
         Route::get('/update/{machine}', [MachineController::class, 'update'])->name('machine.update');
+
+        Route::get('/moveElement', [MachineController::class, 'moveElement'])->name('machine.moveElement');
 
         //Route::get('/info/{order}', [InfoController::class, 'index'])->name('machine.info');
 
