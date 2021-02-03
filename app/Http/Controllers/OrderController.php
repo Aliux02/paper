@@ -33,8 +33,8 @@ class OrderController extends Controller
         $order->update();
 
 
-
-        return back();
+        //return back();
+        return redirect()->route('machine.moveElement');
     }
     public function doneRewind(Request $request)
     {

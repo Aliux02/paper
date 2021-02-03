@@ -161,6 +161,7 @@
     <div class="lentele" >
       <table>
         <tr>
+          <th>eil. nr</th>
           <th>Uzsakovas</th>
           <th>Pavadinimas</th>
           <th>Ilgis</th>
@@ -186,6 +187,7 @@
             
         <tr {{$order->color()}}>
           <form action="{{route('order.update',$order)}}" method="get">
+            <td><input type="text"  size="10" name="eil_nr" value="{{$order->eil_nr}}"></td>
             <td><input type="text"  size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
             <td><input type="text"  size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
             <td><input type="text"  size="2" name="ilgis" value="{{$order->ilgis}}"></td>

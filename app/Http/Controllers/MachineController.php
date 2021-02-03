@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \stdClass;
 use App\Models\Order;
 use App\Models\Machine;
 use Illuminate\Http\Request;
@@ -12,31 +13,56 @@ class MachineController extends Controller
     public function moveElement() {
 
 
-        // $machines = Machine::all();
+        $machines = Machine::all();
         // $orders = Order::all();
 
-        
-        // $doneOrders = Order::all()->where('status','=',1);
-            
-        
-        // $b = [];
-        // $arr= Order::all()->where('status','=',0);
-        // $arr[]=$order;
-        // foreach ($arr as $ar) {
-        //     array_push($b, $ar);
-        // }
-        // if (isset($_GET['xxx']) && isset($_GET['eiles_nr'])) {
-            
-        //     $temp = $b[$_GET['xxx']];
-        //     $b[$_GET['xxx']] = $b[$_GET['eiles_nr']];
-        //     $b[$_GET['eiles_nr']] = $temp;
-        // }
-        //dd($b);
 
-        //
-        //return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'b'=>$b]);
-        //return '<h1>machine</h1>';
-    }
+        $orders= Order::all()->sortBy('eil_nr');
+        //dd($orders);
+        for ($a = 0; $a < count($machines); $a++){
+    
+            $arr[$a]=array();
+            
+            for ($i = 0; $i < count($orders); $i++){
+
+              if ($machines[$a]->id == $orders[$i]->machine_id){
+                //dd($orders[$i]);
+                array_push($arr[$a],$orders[$i]);
+
+                }
+            }
+            usort($arr[$a], function($a, $b) {return strcmp($a->eil_nr, $b->eil_nr);});
+             //dd($arr);
+        }
+        //dd($arr);
+
+
+        if (isset($_GET['xxx']) && isset($_GET['eiles_nr'])) {
+
+            //appending $new in our array 
+            array_unshift($arr[$_GET['yyy']], $arr[$_GET['yyy']][$_GET['xxx']-1]);
+            //now make it unique.
+            //dd($arr);
+            $temp = array_unique($arr[$_GET['yyy']]);
+            $arr[$_GET['yyy']]=$temp;
+            $arr[$_GET['yyy']]=array_values($arr[$_GET['yyy']]);
+
+        } 
+            
+            for ($k = 0; $k< count($arr); $k++){
+                
+                for ($l = 0; $l < count($arr[$k]); $l++){
+                    
+                    $arr[$k][$l]->eil_nr=$l+1;
+                    $arr[$k][$l]->save();
+                }
+                
+            }
+                  
+    
+    return redirect()->route('machine.index');
+    //return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'arr'=>$arr]);
+}
 
 
     /**
@@ -54,53 +80,49 @@ class MachineController extends Controller
         $doneOrders = Order::all()->where('status','=',1);
 
         //$b = [];
-        $orders= Order::all();
-
-        //dd($orders);
-        //priristi prie masinos id
-        // for ($i=1; $i < count($orders); $i++) { 
-        //     $orders[$i]->eil_nr=$i;
-        //     $orders[$i]->save();
-        //     //dd($zorders);
-        // }
-            // foreach ($machines as $machine) {
-                // foreach ($orders as $order) {
-                //     // if ($machine->id == $order->machine_id) {
-                        
-                //         $order->eil_nr=1;
-                //         //dd($order->eil_nr);
-                //         $order->save();
-                //     }
+        $orders= Order::all()->sortBy('eil_nr');
 
 
-            //     }
+
+
+
+    for ($a = 0; $a < count($machines); $a++){
+    
+        $arr[$a]=array();
+        for ($i = 0; $i < count($orders); $i++){
+            // if ($orders[$i]->eil_nr>=0) {
+            //     # code...
             // }
+          if ($machines[$a]->id == $orders[$i]->machine_id){
+          
+            array_push($arr[$a],$orders[$i]);
+            }
+         
+        }
+        //dd($arr);
 
+        for ($k = 0; $k< count($arr); $k++){
+                
+            for ($l = 0; $l < count($arr[$k]); $l++){
 
+                if ($arr[$k][$l]->eil_nr>0) { 
+                    $arr[$k][$l]->eil_nr=$arr[$k][$l]->eil_nr;
+                }else{ ///&& status==2
+                    $arr[$k][$l]->eil_nr=$l+1;
+                    $arr[$k][$l]->save();
+                }
 
-        // $arr[]=$order;
-        // foreach ($orders as $order) {
-        //     //array_push($b, $ar);
-
-        //     /// su foru prasieit ir ikist i kaip eil_nr
-        //     $order->eil_nr=$order->eil_nr;   
-        //     $order->save();
-        // }
-        // if (isset($_GET['xxx']) && isset($_GET['eiles_nr'])) {
+            }
             
-        //     $temp = $b[$_GET['xxx']];
-        //     $b[$_GET['xxx']] = $b[$_GET['eiles_nr']];
-        //     $b[$_GET['eiles_nr']] = $temp;
-        // }
+        }
 
+        usort($arr[$a], function($a, $b) {return strcmp($a->eil_nr, $b->eil_nr);});
+        //dd($arr);  
+    }
 
-
-
-
-            
-        
-
-        return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders]);
+    //dd($arr);
+        //$arr[$_GET['yyy']][$_GET['xxx']]->save();
+        return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'arr'=>$arr]);
     }
 
     /**
