@@ -105,13 +105,11 @@ class MachineController extends Controller
                 
             for ($l = 0; $l < count($arr[$k]); $l++){
 
-                if ($arr[$k][$l]->eil_nr==0 || $arr[$k][$l]->status==2) { 
-                    
+                if ($arr[$k][$l]->eil_nr>0) { 
+                    $arr[$k][$l]->eil_nr=$arr[$k][$l]->eil_nr;
+                }else{ 
                     $arr[$k][$l]->eil_nr=$l+1;
                     $arr[$k][$l]->save();
-
-                }else{ 
-                    $arr[$k][$l]->eil_nr=$arr[$k][$l]->eil_nr;
                 }
 
             }

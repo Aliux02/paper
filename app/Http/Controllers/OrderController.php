@@ -23,7 +23,8 @@ class OrderController extends Controller
         $orderInfo->atspausdinta=$order->updated_at;
         $orderInfo->update();
 
-        return back();
+        //return back();
+        return redirect()->route('machine.moveElement');
     }
     public function rewind(Request $request, $doneOrder)
     {
@@ -33,8 +34,8 @@ class OrderController extends Controller
         $order->update();
 
 
-        return back();
-        //return redirect()->route('machine.moveElement');
+        //return back();
+        return redirect()->route('machine.moveElement');
     }
     public function doneRewind(Request $request)
     {
@@ -49,7 +50,8 @@ class OrderController extends Controller
         $orderInfo->suvyniota=$order->updated_at;
         $orderInfo->update();
 
-        return back();
+        //return back();
+        return redirect()->route('machine.moveElement');
     }
     public function donePacking(Request $request,$orderId)
     {

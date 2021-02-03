@@ -114,7 +114,7 @@
           
           <div style="float: left">
             <label for="tipas">Tipas:</label><br>
-            <select name="tipas" >
+            <select id="tipas" name="tipas" >
               <option value="vyniokle">Vyniokle</option>
               <option value="spausdinimo">Spausdinimo</option>
             </select>
