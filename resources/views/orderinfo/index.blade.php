@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Archyvas</title>
+    <title>Uzsakymo istorija</title>
     <style>
         body,
         body * {
@@ -98,56 +98,47 @@
         </style>
 </head>
 <body>
-    <header>
-        <a href="{{route('welcome')}}"><button>Atgal</button></a>
-    </header>
-    <h2 class="lia">Archyvas</h2>
-
+  <header>
+      <a href="{{route('welcome')}}"><button>Atgal</button></a>
+  </header>
+  <h2 class="lia">Uzsakymo istorija</h2>
+  <div class="container">
     <div class="lentele1" >
       <table>
         <tr>
-          <th>Uzsakovas</th>
-          <th>Pavadinimas</th>
-          <th>Ilgis</th>
-          <th>Plotis</th>
-          <th>Medziaga</th>
-          <th>Klijai</th>
-          <th>Eiles</th>
-          <th>Spalvos</th>
-          <th>Kiekis</th>
-
-          <th>Keisti</th>
-          <th>Info</th>
+          <th>Uzpilde</th>
+          <th>Uzpildyta</th>
+          <th>Atspausdino</th>
+          <th>Atspausdinta</th>
+          <th>Suvyniojo</th>
+          <th>Suvyniota</th>
+          <th>Supakavo</th>
+          <th>Supakuota</th>
+          
           
         </tr>
-        
-        @foreach ($orders as $order)
+          
+        @foreach ($orderinfos as $orderinfo)
 
         <tr>
           <form action="" method="post">
-            <td><input type="text" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-            <td><input type="text" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
-            <td><input type="text" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
-            <td><input type="text" size="2" name="plotis" value="{{$order->plotis}}"></td>
-            <td><input type="text" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
-            <td><input type="text" size="2" name="klijai" value="{{$order->klijai}}"></td>
-            <td><input type="text" size="1" name="eiles" value="{{$order->eiles}}"></td>
-            <td><input type="text" size="1" name="spalva" value="{{$order->spalva}}"></td>
-            <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
+            <td><input type="text" size="8" name="uzpilde" value="{{$orderinfo->uzpilde}}"></td>
+            <td><input type="text" size="14" name="uzpildyta" value="{{$orderinfo->uzpildyta}}"></td>
+            <td><input type="text" size="8" name="atspausdino" value="{{$orderinfo->atspausdino}}"></td>
+            <td><input type="text" size="14" name="atspausdinta" value="{{$orderinfo->atspausdinta}}"></td>
+            <td><input type="text" size="8" name="suvyniojo" value="{{$orderinfo->suvyniojo}}"></td>
+            <td><input type="text" size="14" name="suvyniota" value="{{$orderinfo->suvyniota}}"></td>
+            <td><input type="text" size="8" name="supakavo" value="{{$orderinfo->supakavo}}"></td>
+            <td><input type="text" size="14" name="supakuota" value="{{$orderinfo->supakuota}}"></td>
+            
 
-            <td>
-              <button type="submit">Save</button> 
-            </td>
-          </form>
-          <td>
-            {{-- apgalvoti pagamintu, supakuotu, isveztu uzsakymu talpinima ir atsekamuma --}}
-            <a href="{{route('orderinfo.index', $order )}}"><button>Info</button></a>
-          </td>
- 
+
+
         </tr>
         @endforeach
-        
+          
       </table>
     </div>
+  </div>
 </body>
 </html>

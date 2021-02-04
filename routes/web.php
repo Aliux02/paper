@@ -1,6 +1,6 @@
 <?php
 
-// use App\Models\Order;
+// use App\Models\Order;OrderinfoController
 // use App\Models\Paper;
 // use App\Models\Machine;
 use Illuminate\Support\Facades\Route;
@@ -9,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaperController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PackController;
+use App\Http\Controllers\OrderinfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/archive', [OrderController::class, 'archive'])->name('order.archive');
 
-        //Route::get('/info/{order}', [InfoController::class, 'index'])->name('order.info');donePacking
+        Route::get('/orderinfo/{order}', [OrderinfoController::class, 'index'])->name('orderinfo.index');
 
     });
 });

@@ -12,9 +12,15 @@ class OrderinfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($order)
     {
-        //
+        // dd($order);
+        // $infos = Info::where('paper_id','=',$id)->get();
+        // return view('paper.info', ['infos' => $infos]);
+
+        $orderinfos=Orderinfo::where('order_id','=',$order)->get();
+        //dd($orderinfos);
+        return view('orderinfo.index',['orderinfos'=>$orderinfos]);
     }
 
     /**
