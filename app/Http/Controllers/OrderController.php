@@ -58,6 +58,7 @@ class OrderController extends Controller
         $order = Order::find($orderId);
         $order->status=4;
         $order->machine_id=null;
+        $order->dezes = $request->dezes;
         $order->update();
 
         $orderInfo = Orderinfo::where('order_id','=', $orderId)->first();
@@ -94,7 +95,7 @@ class OrderController extends Controller
     public function index()
     {
         $machines = Machine::all();
-        $orders = Order::all()->where('status','!=',5);
+        $orders = Order::all()->where('status','!=',5)->sortBy('pabaigimas');
         $ordersDonePacking = Order::all()->where('status','=',4);
         return view('order.index',['orders'=>$orders,'machines'=>$machines,'ordersDonePacking'=>$ordersDonePacking]);
     }
@@ -129,6 +130,7 @@ class OrderController extends Controller
         $order->spalva = $request->spalva;
         $order->machine_id = null;
         $order->status = 0;
+        $order->dezes = 0;
         $order->velenas = $request->velenas;
         $order->pabaigimas = $request->pabaigimas;
         $order->kiekis = $request->kiekis;
@@ -136,6 +138,7 @@ class OrderController extends Controller
         $order->save();
 
         $orderInfo = new Orderinfo();
+        
         $orderInfo->uzpilde = Auth::user()->name;
         $orderInfo->uzpildyta = $order->created_at;
         $orderInfo->atspausdino = 0;
@@ -195,8 +198,10 @@ class OrderController extends Controller
         $order->machine_id = $request->machine_id;
         $order->kiekis = $request->kiekis;
         $order->velenas = $request->velenas;
+        
         $order->pabaigimas = $request->pabaigimas;
         //status
+        if($request->dezes==null){$order->dezes=0;}
         if($request->machine_id==0){$order->machine_id=null;}
         $order->update();
         return redirect()->back()->withInput();

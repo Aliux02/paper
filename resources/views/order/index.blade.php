@@ -245,7 +245,7 @@
           <th>Eiles</th>
           <th>Spalvos</th>
           <th>Kiekis</th>
-
+          <th>Dezes</th>
           <th>Keisti</th>
           <th>Info</th>
           
@@ -264,6 +264,7 @@
             <td><input type="text" size="1" name="eiles" value="{{$ordersDonePacking->eiles}}"></td>
             <td><input type="text" size="1" name="spalva" value="{{$ordersDonePacking->spalva}}"></td>
             <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->kiekis}}"></td>
+            <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->dezes}}"></td>
             @csrf
             <td>
               <button type="submit">Save</button> 

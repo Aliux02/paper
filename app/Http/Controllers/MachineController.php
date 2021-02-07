@@ -31,8 +31,9 @@ class MachineController extends Controller
 
                 }
             }
-            usort($arr[$a], function($a, $b) {return strcmp($a->eil_nr, $b->eil_nr);});
-             //dd($arr);
+            //dd($arr);
+            usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
+            //dd($arr);
         }
         //dd($arr);
 
@@ -45,8 +46,9 @@ class MachineController extends Controller
             //dd($arr);
             $temp = array_unique($arr[$_GET['yyy']]);
             $arr[$_GET['yyy']]=$temp;
+            //dd($arr);
             $arr[$_GET['yyy']]=array_values($arr[$_GET['yyy']]);
-
+//dd($arr);
         } 
             
             for ($k = 0; $k< count($arr); $k++){
@@ -59,7 +61,7 @@ class MachineController extends Controller
                 
             }
                   
-    
+    //dd($arr);
     return redirect()->route('machine.index');
     //return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'arr'=>$arr]);
 }
@@ -82,7 +84,7 @@ class MachineController extends Controller
         //$b = [];
         $orders= Order::all()->sortBy('eil_nr');
 
-
+    //$arr=[];
 
 
 
@@ -116,7 +118,7 @@ class MachineController extends Controller
             
         }
 
-        usort($arr[$a], function($a, $b) {return strcmp($a->eil_nr, $b->eil_nr);});
+        usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
         //dd($arr);  
     }
 

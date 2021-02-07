@@ -90,6 +90,7 @@
                 <th>Klijai</th>
                 <th>Eiles</th>
                 <th>Spalvos</th>
+                <th>Dezes</th>
                 <th>Kiekis</th>
                 <th>Supakuota</th>
                 
@@ -107,6 +108,7 @@
                 <td><input type="text" size="2" name="klijai" value="{{$order->klijai}}"></td>
                 <td><input type="text" size="1" name="eiles" value="{{$order->eiles}}"></td>
                 <td><input type="text" size="1" name="spalva" value="{{$order->spalva}}"></td>
+                <td><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
                 <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
                 <td>
                   <button type="submit">Save</button> 

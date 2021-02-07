@@ -138,6 +138,7 @@
           <th>ilgis</th>
           <th>plotis</th>
           <th>medziaga</th>
+          <th>velenas</th>
           <th>klijai</th>
           <th>eiles</th>
           <th>spalva</th>
@@ -156,6 +157,7 @@
             <td>{{$doneOrder->ilgis}} </td>
             <td>{{$doneOrder->plotis}} </td>
             <td>{{$doneOrder->medziaga}} </td>
+            <td>{{$doneOrder->velenas}} </td>
             <td>{{$doneOrder->klijai}} </td>
             <td>{{$doneOrder->eiles}} </td>
             <td>{{$doneOrder->spalva}} </td>
@@ -197,6 +199,7 @@
             <th>ilgis</th>
             <th>plotis</th>
             <th>medziaga</th>
+            <th>velenas</th>
             <th>klijai</th>
             <th>eiles</th>
             <th>spalva</th>
@@ -212,7 +215,7 @@
                 <input type="hidden" name="yyy" value="{{$machine->id-1}}">
                 <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
                 <input type="hidden" name="eiles_nr"  id="" value="">
-                <button type="submit">pakeisti</button>
+                <button type="submit">Up</button>
 
               </td>
               <td>{{$order->id}} </td>
@@ -221,6 +224,7 @@
               <td>{{$order->ilgis}} </td>
               <td>{{$order->plotis}} </td>
               <td>{{$order->medziaga}} </td>
+              <td>{{$order->velenas}} </td>
               <td>{{$order->klijai}} </td>
               <td>{{$order->eiles}} </td>
               <td>{{$order->spalva}} </td>
@@ -257,6 +261,7 @@
             <th>ilgis</th>
             <th>plotis</th>
             <th>medziaga</th>
+            <th>velenas</th>
             <th>klijai</th>
             <th>eiles</th>
             <th>spalva</th>
@@ -271,7 +276,7 @@
                 <input type="hidden" name="yyy" value="{{$machine->id-1}}">
                 <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
                 <input type="hidden" name="eiles_nr"  id="" value="">
-                <button type="submit">pakeisti</button>
+                <button type="submit">Up</button>
 
               </td>
               <td>{{$order->id}} </td>
@@ -280,6 +285,7 @@
               <td>{{$order->ilgis}} </td>
               <td>{{$order->plotis}} </td>
               <td>{{$order->medziaga}} </td>
+              <td>{{$order->velenas}} </td>
               <td>{{$order->klijai}} </td>
               <td>{{$order->eiles}} </td>
               <td>{{$order->spalva}} </td>

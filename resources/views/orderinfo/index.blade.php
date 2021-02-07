@@ -99,7 +99,8 @@
 </head>
 <body>
   <header>
-      <a href="{{route('welcome')}}"><button>Atgal</button></a>
+      <a href="{{route('welcome')}}"><button>I pradzia</button></a>
+      <a href="{{route('order.archive')}}"><button>Archyvas</button></a>
   </header>
   <h2 class="lia">Uzsakymo istorija</h2>
   <div class="container">
