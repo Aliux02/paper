@@ -96,6 +96,8 @@
   <title>Masinos</title>
 </head>
 <body>
+  @auth
+  @if (auth()->user()->status!=0 )
   <header>
     <a href="{{route('welcome')}}"><button>Atgal</button></a>
   </header>
@@ -104,7 +106,10 @@
 
 
 
-    
+    @auth
+      @if (auth()->user()->permission_lvl>=2000 )
+      
+
     <div class="store">
         <form action="{{route('machine.store')}}" method="post">
           <div class="ivestis">
@@ -126,7 +131,9 @@
           </div>
         </form>
     </div>
-    
+    @endif  
+    @endauth
+
     <h2 class="ats_uzs">Atspausdinti uzsakymai</h2>
 
     <div class="lentele1" style="background-color: aquamarine">
@@ -184,67 +191,75 @@
       </table>
     </div>
 
-    <h2>Spausdinimo masinos</h2>
-    <div class="lentele" style="background-color: rgb(221, 255, 127)">
-      
-      @foreach ($machines as $machine)
-      @if ($machine->tipas == 'spausdinimo')
-      <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
-        <table>
-          <tr>
-            <th>Eil. nr.</th>
-            <th>Uzs. nr.</th>
-            <th>uzsakovas</th>
-            <th>pavadinimas</th>
-            <th>ilgis</th>
-            <th>plotis</th>
-            <th>medziaga</th>
-            <th>velenas</th>
-            <th>klijai</th>
-            <th>eiles</th>
-            <th>spalva</th>
-            <th>kiekis</th>
-            <th>Keisti</th>
-          </tr>
-          @foreach ($orders as $order)
-          @if ($machine->id == $order->machine_id)
-          
-          <tr>
-            <form action="{{route('machine.moveElement')}}" method="get">
-              <td>{{$order->eil_nr}}
-                <input type="hidden" name="yyy" value="{{$machine->id-1}}">
-                <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                <input type="hidden" name="eiles_nr"  id="" value="">
-                <button type="submit">Up</button>
+    @auth
+        @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<500)
 
-              </td>
-              <td>{{$order->id}} </td>
-              <td>{{$order->uzsakovas}} </td>
-              <td>{{$order->pavadinimas}} </td>
-              <td>{{$order->ilgis}} </td>
-              <td>{{$order->plotis}} </td>
-              <td>{{$order->medziaga}} </td>
-              <td>{{$order->velenas}} </td>
-              <td>{{$order->klijai}} </td>
-              <td>{{$order->eiles}} </td>
-              <td>{{$order->spalva}} </td>
-              <td>{{$order->kiekis}} </td>
-            </form>
-              <td>
-                <form action="{{ route('order.donePrint') }}" method="post">
-                  <input type="hidden" name="id" value="{{$order->id}}">
-                  
-                  <button type="submit">Pagaminta</button>
-                  @csrf
+        @else
+        <h2>Spausdinimo masinos</h2>
+        <div class="lentele" style="background-color: rgb(221, 255, 127)">
+          
+          @foreach ($machines as $machine)
+          @if ($machine->tipas == 'spausdinimo')
+          <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
+            <table>
+              <tr>
+                <th>Eil. nr.</th>
+                <th>Uzs. nr.</th>
+                <th>uzsakovas</th>
+                <th>pavadinimas</th>
+                <th>ilgis</th>
+                <th>plotis</th>
+                <th>medziaga</th>
+                <th>velenas</th>
+                <th>klijai</th>
+                <th>eiles</th>
+                <th>spalva</th>
+                <th>kiekis</th>
+                <th>Keisti</th>
+              </tr>
+              @foreach ($orders as $order)
+              @if ($machine->id == $order->machine_id)
+              
+              <tr>
+                <form action="{{route('machine.moveElement')}}" method="get">
+                  <td>{{$order->eil_nr}}
+                    <input type="hidden" name="yyy" value="{{$machine->id-1}}">
+                    <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
+                    <input type="hidden" name="eiles_nr"  id="" value="">
+                    <button type="submit">Up</button>
+    
+                  </td>
+                  <td>{{$order->id}} </td>
+                  <td>{{$order->uzsakovas}} </td>
+                  <td>{{$order->pavadinimas}} </td>
+                  <td>{{$order->ilgis}} </td>
+                  <td>{{$order->plotis}} </td>
+                  <td>{{$order->medziaga}} </td>
+                  <td>{{$order->velenas}} </td>
+                  <td>{{$order->klijai}} </td>
+                  <td>{{$order->eiles}} </td>
+                  <td>{{$order->spalva}} </td>
+                  <td>{{$order->kiekis}} </td>
                 </form>
-              </td>
-          </tr>
-          @endif
+                  <td>
+                    <form action="{{ route('order.donePrint') }}" method="post">
+                      <input type="hidden" name="id" value="{{$order->id}}">
+                      
+                      <button type="submit">Pagaminta</button>
+                      @csrf
+                    </form>
+                  </td>
+              </tr>
+              @endif
+              @endforeach
+            </table>
+            @endif
           @endforeach
-        </table>
+        </div>
         @endif
-      @endforeach
-    </div>
+    @endauth
+
+    
 
     <h2 class="vyniokles">Vyniokles</h2>
 
@@ -307,57 +322,8 @@
       @endforeach
     </div>
     
-
-
-
-        {{-- <div class="lentele3" style="background-color: rgb(187, 195, 223)">
-          
-          @for ($b = 0; $b < count($arr); $b++)
-          {{$machines[$b]->pavadinimas}}
-          <table>
-            <tr>
-              <th>Eil. nr.</th>
-              <th>db eil nr</th>
-              <th>Uzs. nr.</th>
-              <th>uzsakovas</th>
-              <th>pavadinimas</th>
-              <th>ilgis</th>
-              <th>plotis</th>
-              <th>medziaga</th>
-              <th>klijai</th>
-              <th>eiles</th>
-              <th>spalva</th>
-              <th>kiekis</th>
-              <th>Keisti</th>
-            </tr>
-              
-            @for ($c = 0; $c < count($arr[$b]); $c++)
-              <form action="{{route('machine.moveElement')}}" method="get">
-              <tr>
-                <td>
-                  <input type="hidden" name="yyy" value="{{$b}}">
-                  <input type="hidden" name="xxx" value="{{$arr[$b][$c]->eil_nr}}">
-                  <input type="hidden" name="eiles_nr"  id="" value="">
-                  <button type="submit">pakeisti</button>
-                </td>
-                <td>{{$arr[$b][$c]->eil_nr}} </td>
-                <td>{{$arr[$b][$c]->id}} </td>
-                <td>{{$arr[$b][$c]->uzsakovas}} </td>
-                <td>{{$arr[$b][$c]->pavadinimas}} </td>
-                <td>{{$arr[$b][$c]->ilgis}} </td>
-                <td>{{$arr[$b][$c]->plotis}} </td>
-                <td>{{$arr[$b][$c]->medziaga}} </td>
-                <td>{{$arr[$b][$c]->klijai}} </td>
-                <td>{{$arr[$b][$c]->eiles}} </td>
-                <td>{{$arr[$b][$c]->spalva}} </td>
-                <td>{{$arr[$b][$c]->kiekis}} </td>
-                <td>{{$arr[$b][$c]->id}}</td>
-              </tr>
-              </form>
-            @endfor
-            </table>
-            @endfor
-          </div> --}}
   </div>
+  @endif
+  @endauth
 </body>
 </html>

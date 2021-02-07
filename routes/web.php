@@ -10,6 +10,8 @@ use App\Http\Controllers\PaperController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\OrderinfoController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +113,26 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 });
+
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::group(['prefix'=>'user'],function(){
+
+        Route::get('/', [UserController::class, 'index'])->name('user.index');
+
+        //Route::post('/sort', [UserController::class, 'sort'])->name('User.sort');
+
+        //Route::post('/store', [UserController::class, 'store'])->name('User.store');
+
+        Route::get('/destroy/{order}', [UserController::class, 'destroy'])->name('user.destroy');
+
+        Route::post('/update/{user}', [UserController::class, 'update'])->name('user.update');
+
+        //Route::get('/info/{order}', [UserController::class, 'index'])->name('machine.info');
+
+    });
+});
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

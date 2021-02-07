@@ -46,107 +46,133 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <h1>SPAUSTUVE</h1>
+                    <h1>SPAUSTUVE</h1><br>
+                    
                 </div>
-
+                @if (isset(auth()->user()->name))
+                <p>Prisijunges: {{auth()->user()->name}}</p> 
+                @endif
+                
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('paper.index')}}" class="underline text-gray-900 dark:text-white">Popieriaus sandelis</a></div>
-                            </div>
+                        
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Cia galesite prideti nauja popieriu i sandeli, ji koreguoti, stebeti nurasymus.
+                        @auth  
+                        @if (auth()->user()->status!=0 )
+                            @if (auth()->user()->permission_lvl>=10  )
+                            <div class="p-6">
+                                <div class="flex items-center">
+                                    <div class="ml-4 text-lg leading-7 font-semibold">
+                                        <a href="{{route('paper.index')}}" class="underline text-gray-900 dark:text-white">Popieriaus sandelis</a>
+                                    </div>
+                                </div>
+    
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Cia galesite prideti nauja popieriu i sandeli, ji koreguoti, stebeti nurasymus.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('order.index')}}" class="underline text-gray-900 dark:text-white">Uzsakymai</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Uzsakymu skiltis. Cia galesite prideti, redaguoti, istrinti uzsakymus
+                            @endif
+                            @if (auth()->user()->permission_lvl>=500   )
+                            <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                                <div class="flex items-center">
+                                    <div class="ml-4 text-lg leading-7 font-semibold">
+                                        <a href="{{route('order.index')}}" class="underline text-gray-900 dark:text-white">Uzsakymai</a>
+                                    </div>
+                                </div>
+    
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Uzsakymu skiltis. Cia galesite prideti, redaguoti, istrinti uzsakymus
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('machine.index')}}" class="underline text-gray-900 dark:text-white">Masinos</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Spausdinimo masinu, vyniokliu darbai.
+                            @endif  
+                            @if (auth()->user()->permission_lvl>=100 )
+                            <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                                <div class="flex items-center">
+                                    <div class="ml-4 text-lg leading-7 font-semibold">
+                                        <a href="{{route('machine.index')}}" class="underline text-gray-900 dark:text-white">Masinos</a>
+                                    </div>
+                                </div>
+    
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Spausdinimo masinu, vyniokliu darbai.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('pack.index')}}" class="underline text-gray-900 dark:text-white">Pakavimas</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Pakavimui paruosti uzsakymai.
+                            @endif  
+                            @if (auth()->user()->permission_lvl>=500 )
+                            <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                                <div class="flex items-center">
+                                    <div class="ml-4 text-lg leading-7 font-semibold">
+                                        <a href="{{route('pack.index')}}" class="underline text-gray-900 dark:text-white">Pakavimas</a>
+                                    </div>
+                                </div>
+    
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Pakavimui paruosti uzsakymai.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('pack.index')}}" class="underline text-gray-900 dark:text-white">Vartotojai</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Vartotojai.
+                            @endif  
+                            @if (auth()->user()->permission_lvl>=2000 )
+                            <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                                <div class="flex items-center">
+                                    <div class="ml-4 text-lg leading-7 font-semibold">
+                                        <a href="{{route('user.index')}}" class="underline text-gray-900 dark:text-white">Vartotojai</a>
+                                    </div>
+                                </div>
+    
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Vartotojai.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('order.archive')}}" class="underline text-gray-900 dark:text-white">Uzsakymu istorija</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Visu, ivykdytu uzsakymu istorija.
+                            @endif
+                            @if (auth()->user()->permission_lvl>=500 )
+                            <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                                <div class="flex items-center">
+                                    <div class="ml-4 text-lg leading-7 font-semibold">
+                                        <a href="{{route('order.archive')}}" class="underline text-gray-900 dark:text-white">Uzsakymu istorija</a>
+                                    </div>
+                                </div>
+    
+                                <div class="ml-12">
+                                    <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                        Visu, ivykdytu uzsakymu istorija.
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            @endif
+                        @else
+
+
+
 
                     </div>
-                </div>
 
-
-
-
-
-                
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        <div class="flex items-center">
-                            <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('order.archive')}}" class="underline text-gray-900 dark:text-white">Uzsakymu istorija</a></div>
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                Visu, ivykdytu uzsakymu istorija.
+                    <div class="grid grid-cols-1 md:grid-cols-1">
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                            <div class="flex items-center">
+                                <div class="ml-4 text-lg leading-7 font-semibold">
+                                    <p style="text-align: center">Sveiki, jusu dar nepatvirtino sistemoje. Susisiekite su vadovais.</p>
+                                </div>
                             </div>
+
                         </div>
-                    </div>
+                        </div>
+                        
+                        @endif
+                      @endauth
+
+
                 </div>
 
-
-
-                
             </div>
         </div>
     </body>

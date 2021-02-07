@@ -98,10 +98,18 @@
     <title>Uzsakymai</title>
 </head>
 <body>
+
+  @auth
+  @if (auth()->user()->status!=0 )
+
   <header>
     <a href="{{route('welcome')}}"><button>Atgal</button></a>
   </header>
   <div class="container">
+    @auth
+        @if (auth()->user()->permission_lvl>=1000)
+            
+
     <div class="store">
       <form action="{{route('order.store')}}" method="post">
         <div class="ivestis">
@@ -155,7 +163,12 @@
         </div>
       </form>
     </div>
-  
+
+
+    @endif
+    @endauth
+
+
     <h2>Einamuju uzsakymu sarasas</h2>
     
     <div class="lentele" >
@@ -284,5 +297,7 @@
 
 
   </div>
+  @endif
+  @endauth
 </body>
 </html>

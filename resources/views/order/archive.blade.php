@@ -98,6 +98,10 @@
         </style>
 </head>
 <body>
+
+  @auth
+  @if (auth()->user()->status!=0 )
+
     <header>
         <a href="{{route('welcome')}}"><button>Atgal</button></a>
     </header>
@@ -149,5 +153,8 @@
         
       </table>
     </div>
+
+    @endif
+    @endauth
 </body>
 </html>
