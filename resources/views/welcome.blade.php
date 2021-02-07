@@ -98,8 +98,38 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                            <div class="flex items-center">
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('pack.index')}}" class="underline text-gray-900 dark:text-white">Vartotojai</a></div>
+                            </div>
+
+                            <div class="ml-12">
+                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    Vartotojai.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                            <div class="flex items-center">
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{route('order.archive')}}" class="underline text-gray-900 dark:text-white">Uzsakymu istorija</a></div>
+                            </div>
+
+                            <div class="ml-12">
+                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    Visu, ivykdytu uzsakymu istorija.
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+
+
+
+
+                
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                         <div class="flex items-center">
@@ -113,6 +143,10 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                
             </div>
         </div>
     </body>
