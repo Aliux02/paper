@@ -35,7 +35,8 @@
 <ul>
   <li>Pagalbiniai nuo 10 iki 100</li>
   <li>Vyniotojai nuo 100 iki 500</li>
-  <li>Spaudejai nuo 500 iki 1000</li>
+  <li>Spaudejai nuo 500 iki 750</li>
+  <li>Spaudejai nuo 750 iki 1000</li>
   <li>Vadovai, vadyba nuo 1000 iki 2000</li>
 </ul>  
 
@@ -51,7 +52,7 @@
     <tr>
     <form action="{{route('user.update', $user)}}" method="post">
         <td><input type="text" size="10" name="name" value="{{$user->name}}"></td>
-        <td><input type="text" size="10" name="email" value="{{$user->email}}"></td>
+        <td><input type="text" size="16" name="email" value="{{$user->email}}"></td>
         <td><input type="text" size="10" name="status" value="{{$user->status}}"></td>
         <td><input type="text" size="10" name="permission_lvl" value="{{$user->permission_lvl}}"></td>
         <td><button type="submit">Patvirtinti</button></td>

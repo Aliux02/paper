@@ -101,13 +101,18 @@
 
   @auth
   @if (auth()->user()->status!=0 )
+  
+
+
 
   <header>
     <a href="{{route('welcome')}}"><button>Atgal</button></a>
   </header>
+
+  @if (auth()->user()->permission_lvl>=1000)
   <div class="container">
-    @auth
-        @if (auth()->user()->permission_lvl>=1000)
+    
+        
             
 
     <div class="store">
@@ -164,9 +169,9 @@
       </form>
     </div>
 
-
     @endif
-    @endauth
+    
+    
 
 
     <h2>Einamuju uzsakymu sarasas</h2>
@@ -185,11 +190,17 @@
           <th>Kiekis</th>
           <th>Velenas</th>
           <th>Pagaminimo data</th>
+
+          @if (auth()->user()->permission_lvl>=1000)
+
           <th>Masina</th>
           <th>Priskirti masina</th>
           <th>Keisti</th>
           <th>Info</th>
           <th>Istrinti</th>
+
+          @endif
+
         </tr>
         
         @foreach ($orders as $order)
@@ -210,6 +221,10 @@
             <td><input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}"></td>
             <td><input type="text"  size="1" name="velenas" value="{{$order->velenas}}"></td>
             <td><input type="text"  size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
+
+            @if (auth()->user()->permission_lvl>=1000)
+
+
             <td>
               @foreach ($machines as $machine)
               @if ($order->machine_id == $machine->id)
@@ -237,12 +252,17 @@
           <td>
             <a href="{{route('order.destroy', $order)}} "><button>Delete</button></a>
           </td>
+
+          @endif
+
         </tr>
         @endif
         @endforeach
         
       </table>
     </div>
+
+    @if (auth()->user()->permission_lvl>=1000)
 
     <h2 class="lia">Supakuotu uzsakymu sarasas</h2>
 
@@ -293,10 +313,11 @@
         
       </table>
     </div>
-
+    @endif
 
 
   </div>
+  
   @endif
   @endauth
 </body>

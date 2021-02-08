@@ -98,6 +98,11 @@
         </style>
 </head>
 <body>
+
+  @auth
+  @if (auth()->user()->status!=0 )
+  @if (auth()->user()->permission_lvl>=1000)
+
   <header>
       <a href="{{route('welcome')}}"><button>I pradzia</button></a>
       <a href="{{route('order.archive')}}"><button>Archyvas</button></a>
@@ -141,5 +146,8 @@
       </table>
     </div>
   </div>
+  @endif
+  @endif
+  @endauth
 </body>
 </html>

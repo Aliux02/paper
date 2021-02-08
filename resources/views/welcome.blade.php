@@ -59,7 +59,7 @@
 
                         @auth  
                         @if (auth()->user()->status!=0 )
-                            @if (auth()->user()->permission_lvl>=10  )
+                            @if (auth()->user()->permission_lvl>=10 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=1000)
                             <div class="p-6">
                                 <div class="flex items-center">
                                     <div class="ml-4 text-lg leading-7 font-semibold">
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             @endif
-                            @if (auth()->user()->permission_lvl>=500   )
+                            @if (auth()->user()->permission_lvl>=750   )
                             <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                                 <div class="flex items-center">
                                     <div class="ml-4 text-lg leading-7 font-semibold">
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                             @endif  
-                            @if (auth()->user()->permission_lvl>=500 )
+                            @if (auth()->user()->permission_lvl>=750 )
                             <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                                 <div class="flex items-center">
                                     <div class="ml-4 text-lg leading-7 font-semibold">
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                             @endif
-                            @if (auth()->user()->permission_lvl>=500 )
+                            @if (auth()->user()->permission_lvl>=750 )
                             <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                                 <div class="flex items-center">
                                     <div class="ml-4 text-lg leading-7 font-semibold">

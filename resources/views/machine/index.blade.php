@@ -192,9 +192,72 @@
     </div>
 
     @auth
-        @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<500)
+        @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<500 || auth()->user()->permission_lvl>=750)
 
-        @else
+
+        <h2 class="vyniokles">Vyniokles</h2>
+
+    <div class="lentele2" style="background-color: rgb(148, 235, 19)">
+      @foreach ($machines as $machine)
+      @if ($machine->tipas == 'vyniokle')
+      <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
+        <table>
+          <tr>
+            <th>Eil. nr.</th>
+            <th>Uzs. nr.</th>
+            <th>uzsakovas</th>
+            <th>pavadinimas</th>
+            <th>ilgis</th>
+            <th>plotis</th>
+            <th>medziaga</th>
+            <th>velenas</th>
+            <th>klijai</th>
+            <th>eiles</th>
+            <th>spalva</th>
+            <th>kiekis</th>
+            <th>Keisti</th>
+          </tr>
+          @foreach ($orders as $order)
+          @if ($machine->id == $order->machine_id)
+          <tr>
+            <form action="{{route('machine.moveElement')}}" method="get">
+              <td>{{$order->eil_nr}}
+                <input type="hidden" name="yyy" value="{{$machine->id-1}}">
+                <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
+                <input type="hidden" name="eiles_nr"  id="" value="">
+                <button type="submit">Up</button>
+
+              </td>
+              <td>{{$order->id}} </td>
+              <td>{{$order->uzsakovas}} </td>
+              <td>{{$order->pavadinimas}} </td>
+              <td>{{$order->ilgis}} </td>
+              <td>{{$order->plotis}} </td>
+              <td>{{$order->medziaga}} </td>
+              <td>{{$order->velenas}} </td>
+              <td>{{$order->klijai}} </td>
+              <td>{{$order->eiles}} </td>
+              <td>{{$order->spalva}} </td>
+              <td>{{$order->kiekis}} </td>
+            </form>
+              <td>
+                <form action="{{route('order.doneRewind')}}" method="post">
+                  <input type="hidden" name="id" value="{{$order->id}}">
+                  
+                  <button type="submit">Pagaminta</button>
+                  @csrf
+                </form>
+              </td>
+          </tr>
+          @endif
+          @endforeach
+        </table>
+        @endif
+      @endforeach
+    </div>
+
+@endif
+@if(auth()->user()->permission_lvl>=500 )
         <h2>Spausdinimo masinos</h2>
         <div class="lentele" style="background-color: rgb(221, 255, 127)">
           
@@ -261,66 +324,7 @@
 
     
 
-    <h2 class="vyniokles">Vyniokles</h2>
-
-    <div class="lentele2" style="background-color: rgb(148, 235, 19)">
-      @foreach ($machines as $machine)
-      @if ($machine->tipas == 'vyniokle')
-      <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
-        <table>
-          <tr>
-            <th>Eil. nr.</th>
-            <th>Uzs. nr.</th>
-            <th>uzsakovas</th>
-            <th>pavadinimas</th>
-            <th>ilgis</th>
-            <th>plotis</th>
-            <th>medziaga</th>
-            <th>velenas</th>
-            <th>klijai</th>
-            <th>eiles</th>
-            <th>spalva</th>
-            <th>kiekis</th>
-            <th>Keisti</th>
-          </tr>
-          @foreach ($orders as $order)
-          @if ($machine->id == $order->machine_id)
-          <tr>
-            <form action="{{route('machine.moveElement')}}" method="get">
-              <td>{{$order->eil_nr}}
-                <input type="hidden" name="yyy" value="{{$machine->id-1}}">
-                <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                <input type="hidden" name="eiles_nr"  id="" value="">
-                <button type="submit">Up</button>
-
-              </td>
-              <td>{{$order->id}} </td>
-              <td>{{$order->uzsakovas}} </td>
-              <td>{{$order->pavadinimas}} </td>
-              <td>{{$order->ilgis}} </td>
-              <td>{{$order->plotis}} </td>
-              <td>{{$order->medziaga}} </td>
-              <td>{{$order->velenas}} </td>
-              <td>{{$order->klijai}} </td>
-              <td>{{$order->eiles}} </td>
-              <td>{{$order->spalva}} </td>
-              <td>{{$order->kiekis}} </td>
-            </form>
-              <td>
-                <form action="{{route('order.doneRewind')}}" method="post">
-                  <input type="hidden" name="id" value="{{$order->id}}">
-                  
-                  <button type="submit">Pagaminta</button>
-                  @csrf
-                </form>
-              </td>
-          </tr>
-          @endif
-          @endforeach
-        </table>
-        @endif
-      @endforeach
-    </div>
+    
     
   </div>
   @endif

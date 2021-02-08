@@ -71,6 +71,11 @@
     <title>Pakavimo sale</title>
 </head>
 <body>
+
+  @auth
+  @if (auth()->user()->status!=0 )
+  @if (auth()->user()->permission_lvl>=750)
+
     <header>
       <a href="{{route('welcome')}}"><button>Atgal</button></a>
     </header>
@@ -120,5 +125,9 @@
           
         </table>
       </div>
+
+      @endif
+      @endif
+      @endauth
 </body>
 </html>

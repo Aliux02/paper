@@ -72,10 +72,21 @@
     </style>
 </head>
 <body>
+
+  
+  @auth
+  @if (auth()->user()->status!=0 )
+  @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+
   <header>
     <a href="{{route('welcome')}}"><button>Atgal</button></a>
   </header>
+
+
+
   <div class="container">
+
+
     <div class="store">
       <form action="{{route('paper.store')}}" method="post">
         <div class="ivestis">
@@ -104,6 +115,9 @@
         </div>
       </form>
     </div>
+
+
+    @endif
 
     <h2>Popieriaus sarasas</h2>
 
@@ -138,9 +152,15 @@
               <th>Klijai</th>
               <th>Kiekis</th>
               <th>Paskutinis redagavimas</th>
+
+              @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+
               <th>Keisti</th>
               <th>Info</th>
               <th>Istrinti</th>
+
+              @endif
+
           </tr>
         
           @foreach ($papers as $paper)
@@ -153,6 +173,9 @@
             <td><input type="text" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
             <td><input type="text" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
             @csrf
+
+            @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+
               <td>
                 <button type="submit">Save</button> 
               </td>
@@ -163,11 +186,19 @@
               <td>
                 <a href="{{route('paper.destroy', $paper)}} "><button>Delete</button></a>
               </td>
+
+             @endif 
+
+
           </tr>
           @endforeach
         
       </table>
     </div>
+
+    
+    @endif
+    @endauth
   </div>
 </body>
 </html>

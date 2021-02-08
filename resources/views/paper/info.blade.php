@@ -38,6 +38,11 @@
     </style>
 </head>
 <body>
+
+  @auth
+  @if (auth()->user()->status!=0 )
+  @if (auth()->user()->permission_lvl>=1000)
+
   <div class="container">
   <div class="lentele">
     <table>
@@ -57,5 +62,9 @@
     </table>
   </div>
 </div>
+
+@endif
+@endif
+@endauth
 </body>
 </html>
