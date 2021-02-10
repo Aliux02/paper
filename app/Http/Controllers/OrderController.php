@@ -129,7 +129,7 @@ class OrderController extends Controller
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
         $order->machine_id = null;
-        $order->status = 0;
+        $order->status = 10;
         $order->dezes = 0;
         $order->velenas = $request->velenas;
         $order->pabaigimas = $request->pabaigimas;
@@ -199,10 +199,12 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         $order->velenas = $request->velenas;
         
+        $order->status=0;
+
         $order->pabaigimas = $request->pabaigimas;
         //status
         if($request->dezes==null){$order->dezes=0;}
-        if($request->machine_id==0){$order->machine_id=null;}
+        if($request->machine_id==0){$order->machine_id=null;$order->status=10;}
         $order->update();
         return redirect()->back()->withInput();
     }

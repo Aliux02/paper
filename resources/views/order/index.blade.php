@@ -117,7 +117,7 @@
             
 
     <div class="store">
-      <form action="{{route('order.store')}}" method="post">
+      <form action="{{route('order.store')}}" method="post" enctype="multipart/form-data">
         <div class="ivestis">
             <label for="uzsakovas">Uzsakovas:</label><br>
             <input type="text"  size="8" name="uzsakovas" value="">
@@ -162,6 +162,14 @@
           <label for="pabaigimas">Pagaminimo data:</label><br>
           <input type="date"  size="8" name="pabaigimas" value=""><br><br>
         </div>
+
+
+        {{-- <form action="index.php" method="post" enctype="multipart/form-data" > --}}
+          <h3>Upload File</h3>
+          <input type="file" name="myfile"> <br>
+          {{-- <button type="submit" name="save">upload</button> --}}
+        {{-- </form> --}}
+
 
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
