@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
   <style>
   .container{
     display: grid;
@@ -28,7 +29,7 @@
   
   td, th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
   }
   
@@ -140,18 +141,19 @@
       <table>
         <tr>
           <th>Uzs. nr.</th>
-          <th>uzsakovas</th>
-          <th>pavadinimas</th>
-          <th>ilgis</th>
-          <th>plotis</th>
-          <th>medziaga</th>
-          <th>velenas</th>
-          <th>klijai</th>
-          <th>eiles</th>
-          <th>spalva</th>
-          <th>kiekis</th>
+          <th>Uzsakovas</th>
+          <th>Pavadinimas</th>
+          <th>Ilgis</th>
+          <th>Plotis</th>
+          <th>Medziaga</th>
+          <th>Velenas</th>
+          <th>Klijai</th>
+          <th>Eiles</th>
+          <th>Spalva</th>
+          <th>Pabaigimo data</th>
+          <th>Kiekis</th>
           <th>Keisti</th>
-          <th>parinkti</th>
+          <th>Parinkti</th>
         </tr>
 
         
@@ -168,14 +170,15 @@
             <td>{{$doneOrder->klijai}} </td>
             <td>{{$doneOrder->eiles}} </td>
             <td>{{$doneOrder->spalva}} </td>
+            <td>{{$doneOrder->pabaigimas}}</td>
             <td>{{$doneOrder->kiekis}} </td>
                 
             <td>    
                 
-              <select name="machine_id" >
+              <select style="width: 60px" name="machine_id" >
                   @foreach ($machines as $machine)
                   @if ($machine->tipas == 'vyniokle')
-                  <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
+                  <option  value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
                   @endif
                 @endforeach
               </select>
@@ -205,16 +208,17 @@
           <tr>
             <th>Eil. nr.</th>
             <th>Uzs. nr.</th>
-            <th>uzsakovas</th>
-            <th>pavadinimas</th>
-            <th>ilgis</th>
-            <th>plotis</th>
-            <th>medziaga</th>
-            <th>velenas</th>
-            <th>klijai</th>
-            <th>eiles</th>
-            <th>spalva</th>
-            <th>kiekis</th>
+            <th>Uzsakovas</th>
+            <th>Pavadinimas</th>
+            <th>Ilgis</th>
+            <th>Plotis</th>
+            <th>Medziaga</th>
+            <th>Velenas</th>
+            <th>Klijai</th>
+            <th>Eiles</th>
+            <th>Spalva</th>
+            <th>Pabaigimo data</th>
+            <th>Kiekis</th>
             <th>Keisti</th>
           </tr>
           @foreach ($orders as $order)
@@ -238,6 +242,7 @@
               <td>{{$order->klijai}} </td>
               <td>{{$order->eiles}} </td>
               <td>{{$order->spalva}} </td>
+              <td>{{$order->pabaigimas}} </td>
               <td>{{$order->kiekis}} </td>
             </form>
               <td>
@@ -268,16 +273,17 @@
               <tr>
                 <th>Eil. nr.</th>
                 <th>Uzs. nr.</th>
-                <th>uzsakovas</th>
-                <th>pavadinimas</th>
-                <th>ilgis</th>
-                <th>plotis</th>
-                <th>medziaga</th>
-                <th>velenas</th>
-                <th>klijai</th>
-                <th>eiles</th>
-                <th>spalva</th>
-                <th>kiekis</th>
+                <th>Uzsakovas</th>
+                <th>Pavadinimas</th>
+                <th>Ilgis</th>
+                <th>Plotis</th>
+                <th>Medziaga</th>
+                <th>Velenas</th>
+                <th>Klijai</th>
+                <th>Eiles</th>
+                <th>Spalva</th>
+                <th>Pabaigimo data</th>
+                <th>Kiekis</th>
                 <th>Keisti</th>
               </tr>
               @foreach ($orders as $order)
@@ -302,6 +308,7 @@
                   <td>{{$order->klijai}} </td>
                   <td>{{$order->eiles}} </td>
                   <td>{{$order->spalva}} </td>
+                  <td>{{$order->pabaigimas}} </td>
                   <td>{{$order->kiekis}} </td>
                 </form>
                   <td>

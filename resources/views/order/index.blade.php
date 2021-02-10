@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
       body,
       body * {
@@ -277,6 +278,7 @@
           <th>Klijai</th>
           <th>Eiles</th>
           <th>Spalvos</th>
+          <th>Pabaigimo data</th>
           <th>Kiekis</th>
           <th>Dezes</th>
           <th>Keisti</th>
@@ -296,6 +298,7 @@
             <td><input type="text" size="2" name="klijai" value="{{$ordersDonePacking->klijai}}"></td>
             <td><input type="text" size="1" name="eiles" value="{{$ordersDonePacking->eiles}}"></td>
             <td><input type="text" size="1" name="spalva" value="{{$ordersDonePacking->spalva}}"></td>
+            <td><input type="text" size="8" name="spalva" value="{{$ordersDonePacking->pabaigimas}}"></td>
             <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->kiekis}}"></td>
             <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->dezes}}"></td>
             @csrf
