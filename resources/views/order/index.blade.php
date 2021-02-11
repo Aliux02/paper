@@ -206,6 +206,7 @@
           <th>Kiekis</th>
           <th>Velenas</th>
           <th>Pagaminimo data</th>
+          <th>Pastabos</th>
 
           @if (auth()->user()->permission_lvl>=1000)
 
@@ -237,7 +238,8 @@
             <td><input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}"></td>
             <td><input type="text"  size="1" name="velenas" value="{{$order->velenas}}"></td>
             <td><input type="text"  size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
-
+            <td><textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}</textarea></td>
+            
             @if (auth()->user()->permission_lvl>=1000)
 
 

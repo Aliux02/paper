@@ -96,6 +96,7 @@
                 <th>Klijai</th>
                 <th>Eiles</th>
                 <th>Spalvos</th>
+                <th>Pastabos</th>
                 <th>Dezes</th>
                 <th>Kiekis</th>
                 <th>Supakuota</th>
@@ -106,14 +107,15 @@
             @foreach ($orders as $order)
             <tr>
               <form action="{{route('order.donePacking',$order)}}" method="post">
-                <td><input type="text" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-                <td><input type="text" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
-                <td><input type="text" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
-                <td><input type="text" size="2" name="plotis" value="{{$order->plotis}}"></td>
-                <td><input type="text" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
-                <td><input type="text" size="2" name="klijai" value="{{$order->klijai}}"></td>
-                <td><input type="text" size="1" name="eiles" value="{{$order->eiles}}"></td>
-                <td><input type="text" size="1" name="spalva" value="{{$order->spalva}}"></td>
+                <td>{{$order->uzsakovas}}</td>
+                <td>{{$order->pavadinimas}}</td>
+                <td>{{$order->ilgis}}</td>
+                <td>{{$order->plotis}}</td>
+                <td>{{$order->medziaga}}</td>
+                <td>{{$order->klijai}}</td>
+                <td>{{$order->eiles}}</td>
+                <td>{{$order->spalva}}</td>
+                <td>{{$order->pastabos}}</td>
                 <td><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
                 <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
                 <td>

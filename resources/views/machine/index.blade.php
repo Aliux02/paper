@@ -16,10 +16,10 @@
     ". . lentele1 . ."
     ". h2 h2 h2 ."
     ". filtras filtras filtras ."
-    ". . lentele . ."
+    ". lentele lentele lentele ."
     ". vyniokles vyniokles vyniokles ."
-    ". . lentele2 . ."
-    ". . lentele3 . .";
+    ". lentele2 lentele2 lentele2 ."
+    ". lentele3 lentele3 lentele3 .";
   }
   table {
     font-family: arial, sans-serif;
@@ -219,6 +219,7 @@
             <th>Spalva</th>
             <th>Pabaigimo data</th>
             <th>Kiekis</th>
+            <th>Pastabos</th>
             <th>Keisti</th>
           </tr>
           @foreach ($orders as $order)
@@ -244,6 +245,7 @@
               <td>{{$order->spalva}} </td>
               <td>{{$order->pabaigimas}} </td>
               <td>{{$order->kiekis}} </td>
+              <td>{{$order->pastabos}} </td>
             </form>
               <td>
                 <form action="{{route('order.doneRewind')}}" method="post">
@@ -284,6 +286,7 @@
                 <th>Spalva</th>
                 <th>Pabaigimo data</th>
                 <th>Kiekis</th>
+                <th>Pastabos</th>
                 <th>Keisti</th>
               </tr>
               @foreach ($orders as $order)
@@ -310,6 +313,7 @@
                   <td>{{$order->spalva}} </td>
                   <td>{{$order->pabaigimas}} </td>
                   <td>{{$order->kiekis}} </td>
+                  <td>{{$order->pastabos}} </td>
                 </form>
                   <td>
                     <form action="{{ route('order.donePrint') }}" method="post">
