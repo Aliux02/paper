@@ -134,6 +134,7 @@ class OrderController extends Controller
         $order->velenas = $request->velenas;
         $order->pabaigimas = $request->pabaigimas;
         $order->kiekis = $request->kiekis;
+        $order->pastabos = $request->pastabos;
         
         $order->save();
 
@@ -198,6 +199,7 @@ class OrderController extends Controller
         $order->machine_id = $request->machine_id;
         $order->kiekis = $request->kiekis;
         $order->velenas = $request->velenas;
+        $order->pastabos = $request->pastabos;
         
         $order->status=0;
 

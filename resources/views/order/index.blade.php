@@ -163,19 +163,26 @@
           <input type="date"  size="8" name="pabaigimas" value=""><br><br>
         </div>
 
-
-        {{-- <form action="index.php" method="post" enctype="multipart/form-data" > --}}
-          <h3>Upload File</h3>
-          <input type="file" name="myfile"> <br>
-          {{-- <button type="submit" name="save">upload</button> --}}
-        {{-- </form> --}}
-
+        <div class="ivestis">
+          <label>Pastabos</label><br>
+          <textarea name="pastabos" id="" cols="30" rows="2"></textarea>
+        </div>
 
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
           @csrf
         </div>
       </form>
+
+      <div class="ivestis">
+        <form action="index.php" method="post" enctype="multipart/form-data" >
+          <label>Prideti maketa</label><br>
+          <input type="file" name="myfile">
+          <button type="submit" name="save">upload</button>
+        </form>
+        </div>
+
+
     </div>
 
     @endif

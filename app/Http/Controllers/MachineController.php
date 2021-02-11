@@ -84,7 +84,7 @@ class MachineController extends Controller
         //$b = [];
         $orders= Order::all()->sortBy('eil_nr');
 
-    //$arr=[];
+    $arr=[];
 
 
 

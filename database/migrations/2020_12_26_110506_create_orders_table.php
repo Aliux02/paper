@@ -21,13 +21,14 @@ class CreateOrdersTable extends Migration
             $table->integer('ilgis');
             $table->integer('plotis');
             $table->string('medziaga');
-            $table->string('klijai');
+            $table->string('klijai')->nullable();
             $table->integer('eiles');
             $table->integer('spalva');
             $table->integer('kiekis');
             $table->integer('velenas');
             $table->date('pabaigimas');
             $table->integer('dezes');
+            $table->text('pastabos')->nullable();
             $table->integer('status')->nullable();
             $table->foreignId('machine_id')->nullable()->references('id')->on('machines');
             $table->timestamps();

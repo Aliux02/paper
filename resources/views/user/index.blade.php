@@ -29,7 +29,7 @@
 @if (auth()->user()->status!=0 )
 @if (auth()->user()->permission_lvl>=2000 )
 
-    <h2>Vartotojai</h2>
+    
 
     <h2>Vartotoju leidimo reziai</h2>
 
@@ -37,7 +37,7 @@
   <li>Pagalbiniai nuo 10 iki 100</li>
   <li>Vyniotojai nuo 100 iki 500</li>
   <li>Spaudejai nuo 500 iki 750</li>
-  <li>Spaudejai nuo 750 iki 1000</li>
+  <li>Pakuotojai nuo 750 iki 1000</li>
   <li>Vadovai, vadyba nuo 1000 iki 2000</li>
 </ul>  
 
