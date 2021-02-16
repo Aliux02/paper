@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration
             $table->date('pabaigimas');
             $table->integer('dezes');
             $table->text('pastabos')->nullable();
+            $table->string('maketas')->nullable();
             $table->integer('status')->nullable();
             $table->foreignId('machine_id')->nullable()->references('id')->on('machines');
             $table->timestamps();

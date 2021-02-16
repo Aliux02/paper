@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Machine;
 use App\Models\Order;
 use App\Models\Orderinfo;
@@ -107,7 +108,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('order.create');
     }
 
     /**
@@ -136,6 +138,15 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         $order->pastabos = $request->pastabos;
         
+
+        $request->file('maketas');
+        $file = $request->file('maketas');
+        $fileName = $file->getClientOriginalName();
+        $path = $file->storeAs('public', $fileName);
+
+        $order->maketas = $fileName;
+
+
         $order->save();
 
         $orderInfo = new Orderinfo();
@@ -151,9 +162,18 @@ class OrderController extends Controller
         $orderInfo->order_id = $order->id;
         $orderInfo->save();
 
+        
 
         return redirect()->route('order.index');
     }
+
+    public function printLayout(Order $order)
+    {
+        
+        $path = $order->maketas;
+        return view('order.printLayout',['path'=>$path]);
+    }
+
 
     /**
      * Display the specified resource.

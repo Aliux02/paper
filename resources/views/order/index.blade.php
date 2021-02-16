@@ -113,7 +113,7 @@
   @if (auth()->user()->permission_lvl>=1000)
   <div class="container">
     
-        
+    <a href="{{route('order.create')}}">Ivesti uzsakyma</a>
             
 
     <div class="store">
@@ -170,18 +170,20 @@
 
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
-          @csrf
+          {{-- @csrf --}}
         </div>
-      </form>
+      {{-- </form> --}}
 
       <div class="ivestis">
-        <form action="index.php" method="post" enctype="multipart/form-data" >
+        {{-- <form action="{{route('uploadFile')}}" method="post" enctype="multipart/form-data" > --}}
           <label>Prideti maketa</label><br>
-          <input type="file" name="myfile">
-          <button type="submit" name="save">upload</button>
+          <input type="file" name="maketas">
+          {{-- <button type="submit" name="save">upload</button> --}}
+          @csrf
         </form>
         </div>
-
+        
+ <iframe src="{{asset('storage/Estilita_Technolgoinė_Kortelė_20210209162822901.pdf')}}" frameborder="0"></iframe>
 
     </div>
 
@@ -265,7 +267,7 @@
             </td>
           </form>
           <td>
-            <a href="{{route('order.index', $order )}}"><button>Info</button></a>
+            <a href="{{route('order.printLayout', $order )}}"><button>Info</button></a>
           </td>
           <td>
             <a href="{{route('order.destroy', $order)}} "><button>Delete</button></a>

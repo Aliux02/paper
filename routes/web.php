@@ -11,6 +11,7 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\PackController;
 use App\Http\Controllers\OrderinfoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UploadController;
 
 
 /*
@@ -51,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/', [OrderController::class, 'index'])->name('order.index');
 
-        //Route::post('/sort', [OrderController::class, 'sort'])->name('order.sort');
+        Route::get('/create', [OrderController::class, 'create'])->name('order.create');
 
         Route::post('/store', [OrderController::class, 'store'])->name('order.store');
 
@@ -73,6 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/orderinfo/{order}', [OrderinfoController::class, 'index'])->name('orderinfo.index');
 
+        Route::get('/maketas/{order}', [OrderController::class, 'printLayout'])->name('order.printLayout');
     });
 });
 
