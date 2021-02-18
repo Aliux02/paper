@@ -13,8 +13,10 @@ class OrderController extends Controller
 {
     public function donePrint(Request $request)
     {
+        
         $order = Order::find($request->id);
         $order->status=1;
+        $order->kiekis = $request->kiekis;
         $order->machine_id=null;
         $order->update();
         
@@ -42,6 +44,7 @@ class OrderController extends Controller
     {
         $order = Order::find($request->id);
         $order->status=3;
+        $order->kiekis = $request->kiekis;
         $order->machine_id=null;
         $order->update();
 
@@ -59,6 +62,7 @@ class OrderController extends Controller
         $order = Order::find($orderId);
         $order->status=4;
         $order->machine_id=null;
+        $order->kiekis = $request->kiekis;
         $order->dezes = $request->dezes;
         $order->update();
 
@@ -138,14 +142,18 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         $order->pastabos = $request->pastabos;
         
+        if($request->has('naujoUzsMaketas')){
 
-        $request->file('maketas');
-        $file = $request->file('maketas');
-        $fileName = $file->getClientOriginalName();
-        $path = $file->storeAs('public', $fileName);
+            $order->maketas=$request->naujoUzsMaketas;
+            
+        }else{
+            $request->file('maketas');
+            $file = $request->file('maketas');
+            $fileName = $file->getClientOriginalName();
+            $path = $file->storeAs('public', $fileName);
 
-        $order->maketas = $fileName;
-
+            $order->maketas = $fileName;
+        }
 
         $order->save();
 
@@ -212,7 +220,7 @@ class OrderController extends Controller
         $order->pavadinimas = $request->pavadinimas;
         $order->ilgis = $request->ilgis;
         $order->plotis = $request->plotis;
-        $order->medziaga = strtoupper($request->medziaga);;
+        $order->medziaga = strtoupper($request->medziaga);
         $order->klijai = $request->klijai;
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
@@ -221,6 +229,13 @@ class OrderController extends Controller
         $order->velenas = $request->velenas;
         $order->pastabos = $request->pastabos;
         
+
+        
+        $order->maketas=$request->maketas;
+            
+
+
+
         $order->status=0;
 
         $order->pabaigimas = $request->pabaigimas;

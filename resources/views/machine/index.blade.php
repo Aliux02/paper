@@ -218,8 +218,10 @@
             <th>Eiles</th>
             <th>Spalva</th>
             <th>Pabaigimo data</th>
-            <th>Kiekis</th>
+            
             <th>Pastabos</th>
+            <th>Maketas</th>
+            <th>Kiekis</th>
             <th>Keisti</th>
           </tr>
           @foreach ($orders as $order)
@@ -229,7 +231,6 @@
               <td>{{$order->eil_nr}}
                 <input type="hidden" name="yyy" value="{{$machine->id-1}}">
                 <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                <input type="hidden" name="eiles_nr"  id="" value="">
                 <button type="submit">Up</button>
 
               </td>
@@ -244,17 +245,22 @@
               <td>{{$order->eiles}} </td>
               <td>{{$order->spalva}} </td>
               <td>{{$order->pabaigimas}} </td>
-              <td>{{$order->kiekis}} </td>
+              
               <td>{{$order->pastabos}} </td>
-            </form>
               <td>
-                <form action="{{route('order.doneRewind')}}" method="post">
+                <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" />
+              </td>
+            </form>
+            <form action="{{route('order.doneRewind')}}" method="post">
+              <td>
+                <input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}">
+              </td>
+              <td>
                   <input type="hidden" name="id" value="{{$order->id}}">
-                  
                   <button type="submit">Pagaminta</button>
+                </td>
                   @csrf
                 </form>
-              </td>
           </tr>
           @endif
           @endforeach
@@ -285,8 +291,10 @@
                 <th>Eiles</th>
                 <th>Spalva</th>
                 <th>Pabaigimo data</th>
-                <th>Kiekis</th>
+                
                 <th>Pastabos</th>
+                <th>Maketas</th>
+                <th>Kiekis</th>
                 <th>Keisti</th>
               </tr>
               @foreach ($orders as $order)
@@ -297,7 +305,7 @@
                   <td>{{$order->eil_nr}}
                     <input type="hidden" name="yyy" value="{{$machine->id-1}}">
                     <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                    <input type="hidden" name="eiles_nr"  id="" value="">
+                    
                     <button type="submit">Up</button>
     
                   </td>
@@ -312,17 +320,21 @@
                   <td>{{$order->eiles}} </td>
                   <td>{{$order->spalva}} </td>
                   <td>{{$order->pabaigimas}} </td>
-                  <td>{{$order->kiekis}} </td>
                   <td>{{$order->pastabos}} </td>
-                </form>
                   <td>
-                    <form action="{{ route('order.donePrint') }}" method="post">
-                      <input type="hidden" name="id" value="{{$order->id}}">
-                      
-                      <button type="submit">Pagaminta</button>
-                      @csrf
-                    </form>
+                    <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" />
                   </td>
+                </form>
+                <form action="{{ route('order.donePrint') }}" method="post">
+                  <td>
+                    <input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}">
+                  </td>
+                  <td>
+                      <input type="hidden" name="id" value="{{$order->id}}">
+                      <button type="submit">Pagaminta</button>
+                    </td>
+                    @csrf
+                </form>
               </tr>
               @endif
               @endforeach

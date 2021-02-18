@@ -127,6 +127,7 @@
           <th>Pabaigimas</th>
           <th>Pastabos</th>
           <th>Keisti</th>
+          <th>Maketas</th>
           <th>Info</th>
           
         </tr>
@@ -134,7 +135,7 @@
         @foreach ($orders as $order)
 
         <tr>
-          <form action="{{route('order.store')}}" method="post">
+          <form action="{{route('order.store')}}" method="post" enctype="multipart/form-data">
             <td><input type="text" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
             <td><input type="text" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
             <td><input type="text" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
@@ -146,12 +147,18 @@
             <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
             <td><input type="text" size="4" name="velenas" value="{{$order->velenas}}"></td>
             <td><input type="text" size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
-            <td><textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}</textarea></td>
+            <input type="hidden" size="4" name="naujoUzsMaketas" value="{{$order->maketas}}">
+            <td>
+              <textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}
+              </textarea></td>
             <td>
               <button type="submit">Save</button> 
             </td>
             @csrf
           </form>
+          <td>
+            <a href="{{route('order.printLayout', $order )}}"><button>Maketas</button></a>
+          </td>
           <td>
             
             <a href="{{route('orderinfo.index', $order )}}"><button>Info</button></a>

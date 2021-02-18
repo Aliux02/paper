@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class MachineController extends Controller
 {
 
-    public function moveElement() {
+    public function moveElement(Request $request) {
 
 
         $machines = Machine::all();

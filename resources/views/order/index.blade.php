@@ -175,15 +175,15 @@
       {{-- </form> --}}
 
       <div class="ivestis">
-        {{-- <form action="{{route('uploadFile')}}" method="post" enctype="multipart/form-data" > --}}
+        
           <label>Prideti maketa</label><br>
           <input type="file" name="maketas">
-          {{-- <button type="submit" name="save">upload</button> --}}
+          
           @csrf
         </form>
         </div>
         
- <iframe src="{{asset('storage/Estilita_Technolgoinė_Kortelė_20210209162822901.pdf')}}" frameborder="0"></iframe>
+
 
     </div>
 
@@ -215,7 +215,7 @@
           <th>Masina</th>
           <th>Priskirti masina</th>
           <th>Keisti</th>
-          <th>Info</th>
+          <th>Maketas</th>
           <th>Istrinti</th>
 
           @endif
@@ -228,7 +228,7 @@
         
             
         <tr {{$order->color()}}>
-          <form action="{{route('order.update',$order)}}" method="get">
+          <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data">
             <td><input type="text"  size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
             <td><input type="text"  size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
             <td><input type="text"  size="2" name="ilgis" value="{{$order->ilgis}}"></td>
@@ -240,6 +240,7 @@
             <td><input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}"></td>
             <td><input type="text"  size="1" name="velenas" value="{{$order->velenas}}"></td>
             <td><input type="text"  size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
+            <input type="hidden"  size="6" name="maketas" value="{{$order->maketas}}">
             <td><textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}</textarea></td>
             
             @if (auth()->user()->permission_lvl>=1000)
@@ -267,7 +268,7 @@
             </td>
           </form>
           <td>
-            <a href="{{route('order.printLayout', $order )}}"><button>Info</button></a>
+            <a href="{{route('order.printLayout', $order )}}"><button>Maketas</button></a>
           </td>
           <td>
             <a href="{{route('order.destroy', $order)}} "><button>Delete</button></a>
