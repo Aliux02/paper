@@ -23,7 +23,7 @@ class CreateOrderinfosTable extends Migration
             $table->string('suvyniota');
             $table->string('supakavo');
             $table->string('supakuota');
-            $table->foreignId('order_id')->nullable()->references('id')->on('orders');
+            $table->foreignId('order_id')->nullable()->references('id')->on('orders')->onDelete('cascade');;
             $table->timestamps();
         });
     }

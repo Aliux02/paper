@@ -12,6 +12,7 @@
     grid-template-rows: auto;
     grid-template-areas:     
     ". . store .  ."
+    ". . alert. ."
     ". ats_uzs ats_uzs ats_uzs ."
     ". . lentele1 . ."
     ". h2 h2 h2 ."
@@ -61,6 +62,7 @@
     overflow-x:auto;
   }
   h2{
+    padding: 20px 0px;
     grid-area: h2;
     text-align: center;
   }
@@ -93,6 +95,35 @@
     height: 40px;
     background-color: aliceblue;
   }
+
+  .alert{
+    grid-area: alert;
+    font-size: 15px;
+    color: red;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .alert-info{
+    grid-area: alert;
+    font-size: 15px;
+    color: yellow;
+    
+  }
+  .alert-success{
+    grid-area: alert;
+    font-size: 15px;
+    color: green;
+    
+  }
+
+  .list-group{
+
+  }
+
+
   </style>
   <title>Masinos</title>
 </head>
@@ -105,13 +136,39 @@
   <div class="container">
 
 
+    @if ($errors->any())
+    <div class="alert">
+      <ul class="list-group">
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+      </ul>
+    </div>
+    @endif
 
+    @if (session()->has('success_message'))
+    <ul class="alert alert-success">
+      <li>{{session()->get('success_message')}}</li>
+    </ul>
+    @endif
+
+    @if (session()->has('info_message'))
+    <ul class="alert alert-success">
+      <li>{{session()->get('info_message')}}</li>
+    </ul>
+    @endif
 
     @auth
       @if (auth()->user()->permission_lvl>=2000 )
       
 
-    <div class="store">
+      <div class="store">
+
+
+
+
+
+
         <form action="{{route('machine.store')}}" method="post">
           <div class="ivestis">
             <label for="pavadinimas">Pavadinimas:</label><br>
@@ -131,8 +188,8 @@
             @csrf
           </div>
         </form>
-    </div>
-    @endif  
+      </div>
+      @endif  
     @endauth
 
     <h2 class="ats_uzs">Atspausdinti uzsakymai</h2>
@@ -195,15 +252,15 @@
     </div>
 
     @auth
-        @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<500 || auth()->user()->permission_lvl>=750)
+        @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=750)
 
 
-        <h2 class="vyniokles">Vyniokles</h2>
+        <h1 class="vyniokles">Vyniokles</h1>
 
     <div class="lentele2" style="background-color: rgb(148, 235, 19)">
       @foreach ($machines as $machine)
       @if ($machine->tipas == 'vyniokle')
-      <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
+      <h2 style="background-color: white">{{$machine->pavadinimas}}</h2>
         <table>
           <tr>
             <th>Eil. nr.</th>
@@ -221,18 +278,22 @@
             
             <th>Pastabos</th>
             <th>Maketas</th>
-            <th>Kiekis</th>
+            <th>Kiekis</th>                
+            @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
             <th>Keisti</th>
+            @endif
+            
           </tr>
           @foreach ($orders as $order)
           @if ($machine->id == $order->machine_id)
           <tr>
             <form action="{{route('machine.moveElement')}}" method="get">
               <td>{{$order->eil_nr}}
+                @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
                 <input type="hidden" name="yyy" value="{{$machine->id-1}}">
                 <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
                 <button type="submit">Up</button>
-
+                @endif
               </td>
               <td>{{$order->id}} </td>
               <td>{{$order->uzsakovas}} </td>
@@ -248,17 +309,24 @@
               
               <td>{{$order->pastabos}} </td>
               <td>
-                <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" />
+                <?php if ($order->maketas !== '0') {
+                  echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
+                  //echo '<input type="button" onclick="location.href='.route('order.printLayout', $order ).';" value="Maketas" />';
+                  } 
+                  ?>
+                {{-- <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" /> --}}
               </td>
             </form>
             <form action="{{route('order.doneRewind')}}" method="post">
               <td>
                 <input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}">
               </td>
+              @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
               <td>
                   <input type="hidden" name="id" value="{{$order->id}}">
                   <button type="submit">Pagaminta</button>
                 </td>
+                @endif
                   @csrf
                 </form>
           </tr>
@@ -276,7 +344,7 @@
           
           @foreach ($machines as $machine)
           @if ($machine->tipas == 'spausdinimo')
-          <h2 style="background-color: red">{{$machine->pavadinimas}}</h2>
+          <h2 style="background-color: white">{{$machine->pavadinimas}}</h2>
             <table>
               <tr>
                 <th>Eil. nr.</th>
@@ -295,7 +363,9 @@
                 <th>Pastabos</th>
                 <th>Maketas</th>
                 <th>Kiekis</th>
+                @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
                 <th>Keisti</th>
+                @endif
               </tr>
               @foreach ($orders as $order)
               @if ($machine->id == $order->machine_id)
@@ -303,11 +373,11 @@
               <tr>
                 <form action="{{route('machine.moveElement')}}" method="get">
                   <td>{{$order->eil_nr}}
+                    @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=1000)
                     <input type="hidden" name="yyy" value="{{$machine->id-1}}">
                     <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                    
                     <button type="submit">Up</button>
-    
+                    @endif
                   </td>
                   <td>{{$order->id}} </td>
                   <td>{{$order->uzsakovas}} </td>
@@ -322,17 +392,24 @@
                   <td>{{$order->pabaigimas}} </td>
                   <td>{{$order->pastabos}} </td>
                   <td>
-                    <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" />
+                    <?php if ($order->maketas !== '0') {
+                      echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
+                      //echo '<input type="button" onclick="location.href='.route('order.printLayout', $order ).';" value="Maketas" />';
+                      } 
+                      ?>
+                    {{-- <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" /> --}}
                   </td>
                 </form>
                 <form action="{{ route('order.donePrint') }}" method="post">
                   <td>
                     <input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}">
                   </td>
+                  @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
                   <td>
                       <input type="hidden" name="id" value="{{$order->id}}">
                       <button type="submit">Pagaminta</button>
                     </td>
+                    @endif
                     @csrf
                 </form>
               </tr>

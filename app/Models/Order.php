@@ -31,7 +31,7 @@ class Order extends Model
             echo 'style="background-color:green"';
         }
         if ($this->status == 2) {
-            echo 'style="background-color:blue"';
+            echo 'style="background-color:blue; color:white;"';
         }
         if ($this->status == 3) {
             echo 'style="background-color:red"';

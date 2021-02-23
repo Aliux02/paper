@@ -6,6 +6,7 @@ use \stdClass;
 use App\Models\Order;
 use App\Models\Machine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MachineController extends Controller
 {
@@ -38,7 +39,7 @@ class MachineController extends Controller
         //dd($arr);
 
 
-        if (isset($_GET['xxx']) && isset($_GET['eiles_nr'])) {
+        if (isset($_GET['xxx']) && isset($_GET['yyy'])) {
 
             //appending $new in our array 
             array_unshift($arr[$_GET['yyy']], $arr[$_GET['yyy']][$_GET['xxx']-1]);
@@ -62,7 +63,7 @@ class MachineController extends Controller
             }
                   
     //dd($arr);
-    return redirect()->route('machine.index');
+    return redirect()->route('machine.index')->with('success_message','Uzsakymas padarytas/priskirtas');
     //return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'arr'=>$arr]);
 }
 
@@ -145,11 +146,30 @@ class MachineController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $validator = Validator::make($request->all(),
+        [
+            'pavadinimas' => ['required','unique:machines','min:3','max:64'],
+            'tipas' => ['required','min:1','max:64'],
+            
+        ],
+        [
+            'pavadinimas.required' => 'Masinos pavadinimas privalomas',
+            'pavadinimas.unique' => 'Masinos pavadinimas turi buti unikalus',
+  
+        ]);
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+
+
         $machine= new Machine();
         $machine->pavadinimas = $request->pavadinimas;
         $machine->tipas = $request->tipas;
         $machine->save();
-        return redirect()->back();
+        return redirect()->back()->with('success_message','Masina '.$machine->pavadinimas.' sekmingai prideta');
     }
 
     /**

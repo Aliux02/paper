@@ -7,13 +7,24 @@ use App\Models\Machine;
 use App\Models\Order;
 use App\Models\Orderinfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Auth;
 
 class OrderController extends Controller
 {
     public function donePrint(Request $request)
     {
-        
+        $request->validate(
+            [
+                'kiekis' => ['required','integer','min:1','max:1000000000'],
+            ],
+            [
+                'kiekis.required' => 'Uzsakymo kiekis privalomas',
+                'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+                'kiekis.min' => 'kiekis negali buti mazesnis nei 1 pinigas',
+                'kiekis.max' => 'kiekis per didelis',
+            ]
+        );
         $order = Order::find($request->id);
         $order->status=1;
         $order->kiekis = $request->kiekis;
@@ -27,7 +38,7 @@ class OrderController extends Controller
         $orderInfo->update();
 
         //return back();
-        return redirect()->route('machine.moveElement');
+        return redirect()->route('machine.moveElement')->with('success_message','Uzsakymas'.$order->pavadinimas.' padarytas');
     }
     public function rewind(Request $request, $doneOrder)
     {
@@ -42,6 +53,17 @@ class OrderController extends Controller
     }
     public function doneRewind(Request $request)
     {
+        $request->validate(
+            [
+                'kiekis' => ['required','integer','min:1','max:1000000000'],
+            ],
+            [
+                'kiekis.required' => 'Uzsakymo kiekis privalomas',
+                'kiekis.integer' => 'Kiekis turi buti sveikas skaicius',
+                'kiekis.min' => 'Kiekis negali buti mazesnis nei 1 ',
+                'kiekis.max' => 'Kiekis per didelis',
+            ]
+        );
         $order = Order::find($request->id);
         $order->status=3;
         $order->kiekis = $request->kiekis;
@@ -55,10 +77,27 @@ class OrderController extends Controller
         $orderInfo->update();
 
         //return back();
-        return redirect()->route('machine.moveElement');
+        return redirect()->route('machine.moveElement')->with('success_message','Uzsakymas'.$order->pavadinimas.' padarytas ');
     }
     public function donePacking(Request $request,$orderId)
     {
+        $request->validate(
+            [
+                'kiekis' => ['required','integer','min:1','max:1000000000'],
+                'dezes' => ['required','integer','min:1','max:10000'],
+            ],
+            [
+                'kiekis.required' => 'Uzsakymo kiekis privalomas',
+                'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+                'kiekis.min' => 'kiekis negali buti mazesnis nei 1 ',
+                'kiekis.max' => 'kiekis per didelis',
+
+                'dezes.required' => 'Iveskit deziu kieki',
+                'dezes.integer' => 'Deziu kiekis turi buti sveikas skaicius',
+                'dezes.min' => 'Supakuokit bent viena deze',
+                'dezes.max' => 'deziu kiekis per didelis',
+            ]
+        );
         $order = Order::find($orderId);
         $order->status=4;
         $order->machine_id=null;
@@ -72,7 +111,7 @@ class OrderController extends Controller
         $orderInfo->supakuota=$order->updated_at;
         $orderInfo->update();
 
-        return back();
+        return back()->with('success_message','Uzsakymas '.$order->pavadinimas.' supakuotas');
     }
     public function toArchive(Request $request,$order)
     {
@@ -124,6 +163,81 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'uzsakovas' => ['required','min:2','max:64'],
+            'pavadinimas' => ['required','min:1','max:64'],
+            'ilgis' => ['required','integer','min:1','max:500'],
+            'plotis' => ['required','integer','min:1','max:500'],
+            'medziaga' => ['required','min:1','max:64'],
+            'klijai' => ['required','min:1','max:64'],
+            'eiles' => ['required','integer','min:1','max:20'],
+            'spalva' => ['required','integer','min:0','max:64'],
+            'velenas' => ['required','integer','min:1','max:200'],
+            'pabaigimas' => ['required','date'],
+            'kiekis' => ['required','integer','min:1','max:1000000000'],
+            'pastabos' => ['min:0','max:64'],
+        ],
+        [
+            'uzsakovas.required' => 'Uzsakymo uzsakovas privalomas',
+            'uzsakovas.min' => 'Uzsakymo uzsakovas per trumpas',
+            'uzsakovas.max' => 'Uzsakymo uzsakovas per ilgas',
+
+            'pavadinimas.required' => 'Uzsakymo pavadinimas privalomas',
+            'pavadinimas.min' => 'Uzsakymo pavadinimas per trumpas',
+            'pavadinimas.max' => 'Uzsakymo pavadinimas per ilgas',
+
+            'ilgis.required' => 'Uzsakymo ilgis privalomas',
+            'ilgis.integer' => 'Ilgis turi buti skaicius',
+            'ilgis.min' => 'Ilgis negali buti mazesnis nei 1 pinigas',
+            'ilgis.max' => 'Ilgis per didelis',
+
+            'plotis.required' => 'Uzsakymo plotis privalomas',
+            'plotis.integer' => 'Plotis turi buti skaicius',
+            'plotis.min' => 'Plotis negali buti mazesnis nei 1 pinigas',
+            'plotis.max' => 'Plotis per didelis',
+
+            'medziaga.required' => 'Uzsakymo medziaga privaloma',
+            'medziaga.min' => 'Uzsakymo medziaga per trumpa',
+            'medziaga.max' => 'Uzsakymo medziaga per ilga',
+
+            'klijai.required' => 'Uzsakymo klijai privaloma',
+            'klijai.min' => 'Uzsakymo klijai per trumpa',
+            'klijai.max' => 'Uzsakymo klijai per ilga',
+
+            'eiles.required' => 'Uzsakymo eiles privalomas',
+            'eiles.integer' => 'eiles turi buti skaicius',
+            'eiles.min' => 'eiles negali buti mazesnis nei 1 pinigas',
+            'eiles.max' => 'eiles per didelis',
+
+            'spalva.required' => 'Uzsakymo spalva privalomas',
+            'spalva.integer' => 'spalva turi buti skaicius',
+            'spalva.min' => 'spalva negali buti mazesnis nei 1 pinigas',
+            'spalva.max' => 'spalva per didelis',
+
+            'velenas.required' => 'Uzsakymo velenas privalomas',
+            'velenas.integer' => 'velenas turi buti skaicius',
+            'velenas.min' => 'velenas negali buti mazesnis nei 1 pinigas',
+            'velenas.max' => 'velenas per didelis',
+
+            'pabaigimas.required' => 'Uzsakymo data privaloma',
+            'pabaigimas.date' => 'Datos formatas',
+
+            'kiekis.required' => 'Uzsakymo kiekis privalomas',
+            'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+            'kiekis.min' => 'kiekis negali buti mazesnis nei 1 pinigas',
+            'kiekis.max' => 'kiekis per didelis',
+
+            'pastabos.min' => 'Uzsakymo pastabos per trumpas',
+            'pastabos.max' => 'Uzsakymo pastabos per ilgas',
+
+        ]);
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+
+
         $order = new Order();
         $order->eil_nr = null;
         $order->uzsakovas = $request->uzsakovas;
@@ -142,19 +256,34 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         $order->pastabos = $request->pastabos;
         
-        if($request->has('naujoUzsMaketas')){
 
-            $order->maketas=$request->naujoUzsMaketas;
+
+
+        if($request->maketas==0){
+            $order->maketas = 0;
             
         }else{
-            $request->file('maketas');
-            $file = $request->file('maketas');
-            $fileName = $file->getClientOriginalName();
-            $path = $file->storeAs('public', $fileName);
+            if($request->has('naujoUzsMaketas')){
 
-            $order->maketas = $fileName;
+                $order->maketas=$request->naujoUzsMaketas;
+                
+            }else{
+                $request->validate(
+                    [
+                        'maketas' => 'required|mimes:pdf|max:2048',
+                    ],
+                    [
+                        'maketas.mimes' => 'Failas pturi but .pdf',
+                    ]
+                );
+                $request->file('maketas');
+                $file = $request->file('maketas');
+                $fileName = $file->getClientOriginalName();
+                $path = $file->storeAs('public', $fileName);
+
+                $order->maketas = $fileName;
+            }
         }
-
         $order->save();
 
         $orderInfo = new Orderinfo();
@@ -172,7 +301,7 @@ class OrderController extends Controller
 
         
 
-        return redirect()->route('order.index');
+        return redirect()->route('order.index')->with('success_message','Uzsakymas'.$order->pavadinimas.' sekmingai pridetas');
     }
 
     public function printLayout(Order $order)
@@ -214,6 +343,82 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'uzsakovas' => ['required','min:2','max:64'],
+            'pavadinimas' => ['required','min:1','max:64'],
+            'ilgis' => ['required','integer','min:1','max:500'],
+            'plotis' => ['required','integer','min:1','max:500'],
+            'medziaga' => ['required','min:1','max:64'],
+            'klijai' => ['required','min:1','max:64'],
+            'eiles' => ['required','integer','min:1','max:20'],
+            'spalva' => ['required','integer','min:0','max:64'],
+            'velenas' => ['required','integer','min:1','max:200'],
+            'pabaigimas' => ['required','date'],
+            'kiekis' => ['required','integer','min:1','max:1000000000'],
+            'pastabos' => ['min:0','max:64'],
+        ],
+        [
+            'uzsakovas.required' => 'Uzsakymo uzsakovas privalomas',
+            'uzsakovas.min' => 'Uzsakymo uzsakovas per trumpas',
+            'uzsakovas.max' => 'Uzsakymo uzsakovas per ilgas',
+
+            'pavadinimas.required' => 'Uzsakymo pavadinimas privalomas',
+            'pavadinimas.min' => 'Uzsakymo pavadinimas per trumpas',
+            'pavadinimas.max' => 'Uzsakymo pavadinimas per ilgas',
+
+            'ilgis.required' => 'Uzsakymo ilgis privalomas',
+            'ilgis.integer' => 'Ilgis turi buti skaicius',
+            'ilgis.min' => 'Ilgis negali buti mazesnis nei 1 pinigas',
+            'ilgis.max' => 'Ilgis per didelis',
+
+            'plotis.required' => 'Uzsakymo plotis privalomas',
+            'plotis.integer' => 'Plotis turi buti skaicius',
+            'plotis.min' => 'Plotis negali buti mazesnis nei 1 pinigas',
+            'plotis.max' => 'Plotis per didelis',
+
+            'medziaga.required' => 'Uzsakymo medziaga privaloma',
+            'medziaga.min' => 'Uzsakymo medziaga per trumpa',
+            'medziaga.max' => 'Uzsakymo medziaga per ilga',
+
+            'klijai.required' => 'Uzsakymo klijai privaloma',
+            'klijai.min' => 'Uzsakymo klijai per trumpa',
+            'klijai.max' => 'Uzsakymo klijai per ilga',
+
+            'eiles.required' => 'Uzsakymo eiles privalomas',
+            'eiles.integer' => 'eiles turi buti skaicius',
+            'eiles.min' => 'eiles negali buti mazesnis nei 1 pinigas',
+            'eiles.max' => 'eiles per didelis',
+
+            'spalva.required' => 'Uzsakymo spalva privalomas',
+            'spalva.integer' => 'spalva turi buti skaicius',
+            'spalva.min' => 'spalva negali buti mazesnis nei 1 pinigas',
+            'spalva.max' => 'spalva per didelis',
+
+            'velenas.required' => 'Uzsakymo velenas privalomas',
+            'velenas.integer' => 'velenas turi buti skaicius',
+            'velenas.min' => 'velenas negali buti mazesnis nei 1 pinigas',
+            'velenas.max' => 'velenas per didelis',
+
+            'pabaigimas.required' => 'Uzsakymo data privaloma',
+            'pabaigimas.date' => 'Datos formatas',
+
+            'kiekis.required' => 'Uzsakymo kiekis privalomas',
+            'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+            'kiekis.min' => 'kiekis negali buti mazesnis nei 1 pinigas',
+            'kiekis.max' => 'kiekis per didelis',
+
+            'pastabos.min' => 'Uzsakymo pastabos per trumpas',
+            'pastabos.max' => 'Uzsakymo pastabos per ilgas',
+
+        ]);
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
+
         $order->eil_nr = null;
         $order->id = $order->id;
         $order->uzsakovas = $request->uzsakovas;
@@ -228,22 +433,20 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         $order->velenas = $request->velenas;
         $order->pastabos = $request->pastabos;
-        
-
-        
         $order->maketas=$request->maketas;
-            
-
-
-
         $order->status=0;
-
         $order->pabaigimas = $request->pabaigimas;
-        //status
         if($request->dezes==null){$order->dezes=0;}
         if($request->machine_id==0){$order->machine_id=null;$order->status=10;}
         $order->update();
-        return redirect()->back()->withInput();
+
+        
+        $orderInfo = Orderinfo::where('order_id','=', $order->id)->first();
+        $orderInfo->uzpilde = Auth::user()->name;
+        $orderInfo->uzpildyta = $order->updated_at;
+        $orderInfo->update();
+
+        return redirect()->back()->withInput()->with('success_message','Uzsakymas'.$order->pavadinimas.' sekmingai pakeistas');
     }
 
     /**
@@ -254,6 +457,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->back();
     }
 }

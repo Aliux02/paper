@@ -102,7 +102,7 @@
 
   @auth
   @if (auth()->user()->status!=0 )
-
+  @if (auth()->user()->permission_lvl>=750)
     <header>
         <a href="{{route('welcome')}}"><button>Atgal</button></a>
     </header>
@@ -126,10 +126,11 @@
           <th>Velenas</th>
           <th>Pabaigimas</th>
           <th>Pastabos</th>
+          @if (auth()->user()->permission_lvl>=1000)
           <th>Keisti</th>
           <th>Maketas</th>
           <th>Info</th>
-          
+          @endif
         </tr>
         
         @foreach ($orders as $order)
@@ -150,26 +151,34 @@
             <input type="hidden" size="4" name="naujoUzsMaketas" value="{{$order->maketas}}">
             <td>
               <textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}
-              </textarea></td>
+              </textarea>
+            </td>
+            @if (auth()->user()->permission_lvl>=1000)
             <td>
               <button type="submit">Save</button> 
             </td>
             @csrf
           </form>
           <td>
-            <a href="{{route('order.printLayout', $order )}}"><button>Maketas</button></a>
+            <?php if ($order->maketas !== '0') {
+              echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
+              //echo '<input type="button" onclick="location.href='.route('order.printLayout', $order ).';" value="Maketas" />';
+              } 
+              ?>
+            {{-- <a href="{{route('order.printLayout', $order )}}"><button>Maketas</button></a> --}}
           </td>
           <td>
             
             <a href="{{route('orderinfo.index', $order )}}"><button>Info</button></a>
           </td>
- 
+          @endif
         </tr>
         @endforeach
         
       </table>
     </div>
   </div>
+    @endif
     @endif
     @endauth
 

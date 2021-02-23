@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <style>
       body,
@@ -94,7 +95,28 @@
             display: none;
             -webkit-appearance: none;
           } */
-
+          .alert{
+            grid-area: alert;
+            font-size: 15px;
+            color: red;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .alert-info{
+            grid-area: alert;
+            font-size: 15px;
+            color: yellow;
+            
+          }
+          .alert-success{
+            grid-area: alert;
+            font-size: 15px;
+            color: green;
+            
+          }
       </style>
     <title>Uzsakymai</title>
 </head>
@@ -110,13 +132,35 @@
     <a href="{{route('welcome')}}"><button>Atgal</button></a>
   </header>
 
+  @if ($errors->any())
+  <div class="alert">
+    <ul class="list-group">
+    @foreach ($errors->all() as $error)
+      <li>{{$error}}</li>
+    @endforeach
+    </ul>
+  </div>
+  @endif
+
+  @if (session()->has('success_message'))
+  <ul class="alert alert-success">
+    <li>{{session()->get('success_message')}}</li>
+  </ul>
+  @endif
+
+  @if (session()->has('info_message'))
+  <ul class="alert alert-success">
+    <li>{{session()->get('info_message')}}</li>
+  </ul>
+  @endif
+
   @if (auth()->user()->permission_lvl>=1000)
   <div class="container">
     
     <a href="{{route('order.create')}}">Ivesti uzsakyma</a>
             
 
-    <div class="store">
+    {{-- <div class="store">
       <form action="{{route('order.store')}}" method="post" enctype="multipart/form-data">
         <div class="ivestis">
             <label for="uzsakovas">Uzsakovas:</label><br>
@@ -170,25 +214,19 @@
 
         <div class="btn_ivastis">
           <input  type="submit" value="Submit">
-          {{-- @csrf --}}
         </div>
-      {{-- </form> --}}
 
-      <div class="ivestis">
         
           <label>Prideti maketa</label><br>
           <input type="file" name="maketas">
           
           @csrf
         </form>
-        </div>
-        
-
-
-    </div>
-
+      </div> --}}
     @endif
     
+    @if (auth()->user()->permission_lvl>=750)
+        
     
 
 
@@ -268,7 +306,10 @@
             </td>
           </form>
           <td>
-            <a href="{{route('order.printLayout', $order )}}"><button>Maketas</button></a>
+            <?php if ($order->maketas !== '0') {
+            echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
+            } 
+            ?>
           </td>
           <td>
             <a href="{{route('order.destroy', $order)}} "><button>Delete</button></a>
@@ -282,7 +323,7 @@
         
       </table>
     </div>
-
+    @endif
     @if (auth()->user()->permission_lvl>=1000)
 
     <h2 class="lia">Supakuotu uzsakymu sarasas</h2>
@@ -310,17 +351,17 @@
 
         <tr>
           <form action="{{route('order.toArchive',$ordersDonePacking)}}" method="post">
-            <td><input type="text" size="10" name="uzsakovas" value="{{$ordersDonePacking->uzsakovas}}"></td>
-            <td><input type="text" size="10" name="pavadinimas" value="{{$ordersDonePacking->pavadinimas}}"></td>
-            <td><input type="text" size="2" name="ilgis" value="{{$ordersDonePacking->ilgis}}"></td>
-            <td><input type="text" size="2" name="plotis" value="{{$ordersDonePacking->plotis}}"></td>
-            <td><input type="text" size="4" name="medziaga" value="{{$ordersDonePacking->medziaga}}"></td>
-            <td><input type="text" size="2" name="klijai" value="{{$ordersDonePacking->klijai}}"></td>
-            <td><input type="text" size="1" name="eiles" value="{{$ordersDonePacking->eiles}}"></td>
-            <td><input type="text" size="1" name="spalva" value="{{$ordersDonePacking->spalva}}"></td>
-            <td><input type="text" size="8" name="spalva" value="{{$ordersDonePacking->pabaigimas}}"></td>
-            <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->kiekis}}"></td>
-            <td><input type="text" size="4" name="kiekis" value="{{$ordersDonePacking->dezes}}"></td>
+            <td>{{$ordersDonePacking->uzsakovas}}</td>
+            <td>{{$ordersDonePacking->pavadinimas}}</td>
+            <td>{{$ordersDonePacking->ilgis}}</td>
+            <td>{{$ordersDonePacking->plotis}}</td>
+            <td>{{$ordersDonePacking->medziaga}}</td>
+            <td>{{$ordersDonePacking->klijai}}</td>
+            <td>{{$ordersDonePacking->eiles}}</td>
+            <td>{{$ordersDonePacking->spalva}}</td>
+            <td>{{$ordersDonePacking->pabaigimas}}</td>
+            <td>{{$ordersDonePacking->kiekis}}</td>
+            <td>{{$ordersDonePacking->dezes}}</td>
             @csrf
             <td>
               <button type="submit">Save</button> 

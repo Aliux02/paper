@@ -68,6 +68,24 @@
             height: 40px;
             background-color: aliceblue;
           }
+          .alert{
+            grid-area: alert;
+            font-size: 15px;
+            color: red;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .alert-info{
+            font-size: 20px;
+            color: yellow;
+          }
+          .alert-success{
+            font-size: 20px;
+            color: green;
+          }
       </style>
     <title>Pakavimo sale</title>
 </head>
@@ -80,6 +98,30 @@
     <header>
       <a href="{{route('welcome')}}"><button>Atgal</button></a>
     </header>
+
+    @if ($errors->any())
+    <div class="alert">
+      <ul class="list-group">
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+      </ul>
+    </div>
+    @endif
+
+    @if (session()->has('success_message'))
+    <ul class="alert alert-success">
+      <li>{{session()->get('success_message')}}</li>
+    </ul>
+    @endif
+
+    @if (session()->has('info_message'))
+    <ul class="alert alert-success">
+      <li>{{session()->get('info_message')}}</li>
+    </ul>
+    @endif
+
+
     <div class="container">
         
     
@@ -99,8 +141,9 @@
                 <th>Pastabos</th>
                 <th>Dezes</th>
                 <th>Kiekis</th>
+                @if (auth()->user()->permission_lvl>=750 && auth()->user()->permission_lvl<1000 || auth()->user()->permission_lvl>=2000)
                 <th>Supakuota</th>
-                
+                @endif
                 
             </tr>
           
@@ -118,10 +161,12 @@
                 <td>{{$order->pastabos}}</td>
                 <td><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
                 <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
+                @if (auth()->user()->permission_lvl>=750 && auth()->user()->permission_lvl<1000 || auth()->user()->permission_lvl>=2000)
                 <td>
                   <button type="submit">Save</button> 
                 </td>
                 @csrf
+                @endif
               </form>
             </tr>
             @endforeach
