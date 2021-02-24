@@ -14,7 +14,7 @@
     ". . store .  ."
     ". . alert. ."
     ". ats_uzs ats_uzs ats_uzs ."
-    ". . lentele1 . ."
+    ". lentele1 lentele1 lentele1 ."
     ". h2 h2 h2 ."
     ". filtras filtras filtras ."
     ". lentele lentele lentele ."
@@ -130,302 +130,35 @@
 <body>
   @auth
   @if (auth()->user()->status!=0 )
-  <header>
-    <a href="{{route('welcome')}}"><button>Atgal</button></a>
-  </header>
+  
+  @include('header')
+
   <div class="container">
+    @include('errors')
 
-
-    @if ($errors->any())
-    <div class="alert">
-      <ul class="list-group">
-      @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-      @endforeach
-      </ul>
-    </div>
-    @endif
-
-    @if (session()->has('success_message'))
-    <ul class="alert alert-success">
-      <li>{{session()->get('success_message')}}</li>
-    </ul>
-    @endif
-
-    @if (session()->has('info_message'))
-    <ul class="alert alert-success">
-      <li>{{session()->get('info_message')}}</li>
-    </ul>
-    @endif
-
-    @auth
-      @if (auth()->user()->permission_lvl>=2000 )
-      
-
-      <div class="store">
-
-
-
-
-
-
-        <form action="{{route('machine.store')}}" method="post">
-          <div class="ivestis">
-            <label for="pavadinimas">Pavadinimas:</label><br>
-            <input type="text" id="pavadinimas" size="8" name="pavadinimas" value="">
-          </div>
-          
-          <div style="float: left">
-            <label for="tipas">Tipas:</label><br>
-            <select id="tipas" name="tipas" >
-              <option value="vyniokle">Vyniokle</option>
-              <option value="spausdinimo">Spausdinimo</option>
-            </select>
-          </div>
-
-          <div class="btn_ivastis">
-            <input  type="submit" value="Submit">
-            @csrf
-          </div>
-        </form>
-      </div>
-      @endif  
-    @endauth
-
+    
+    @if (auth()->user()->permission_lvl>=2000 )
+    @include('machine.storeMachine')
+    @endif  
+    
+    @if(auth()->user()->permission_lvl>=100 )
     <h2 class="ats_uzs">Atspausdinti uzsakymai</h2>
-
-    <div class="lentele1" style="background-color: aquamarine">
-      <table>
-        <tr>
-          <th>Uzs. nr.</th>
-          <th>Uzsakovas</th>
-          <th>Pavadinimas</th>
-          <th>Ilgis</th>
-          <th>Plotis</th>
-          <th>Medziaga</th>
-          <th>Velenas</th>
-          <th>Klijai</th>
-          <th>Eiles</th>
-          <th>Spalva</th>
-          <th>Pabaigimo data</th>
-          <th>Kiekis</th>
-          <th>Keisti</th>
-          <th>Parinkti</th>
-        </tr>
-
+    @include('machine.printedOrders')
+    @endif
+    
+    
         
-        @foreach ($doneOrders as $doneOrder)
-          <tr>
-          <form action="{{route('order.rewind',$doneOrder)}}" method="post"> 
-            <td>{{$doneOrder->id}} </td>
-            <td>{{$doneOrder->uzsakovas}} </td>
-            <td>{{$doneOrder->pavadinimas}} </td>
-            <td>{{$doneOrder->ilgis}} </td>
-            <td>{{$doneOrder->plotis}} </td>
-            <td>{{$doneOrder->medziaga}} </td>
-            <td>{{$doneOrder->velenas}} </td>
-            <td>{{$doneOrder->klijai}} </td>
-            <td>{{$doneOrder->eiles}} </td>
-            <td>{{$doneOrder->spalva}} </td>
-            <td>{{$doneOrder->pabaigimas}}</td>
-            <td>{{$doneOrder->kiekis}} </td>
-                
-            <td>    
-                
-              <select style="width: 60px" name="machine_id" >
-                  @foreach ($machines as $machine)
-                  @if ($machine->tipas == 'vyniokle')
-                  <option  value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
-                  @endif
-                @endforeach
-              </select>
-
-            </td>
-            <td>
-              <button type="submit">Save</button> 
-            </td>
-              @csrf
-          </form>
-          </tr>
-        @endforeach
-      </table>
-    </div>
-
-    @auth
-        @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=750)
+    @if(auth()->user()->permission_lvl>=100 )
+    <h1 class="vyniokles">Vyniokles</h1>
+    @include('machine.rewinders')
+    @endif
 
 
-        <h1 class="vyniokles">Vyniokles</h1>
+    @if(auth()->user()->permission_lvl>=500 )
+    <h2>Spausdinimo masinos</h2>
+    @include('machine.printMachines')          
+    @endif
 
-    <div class="lentele2" style="background-color: rgb(148, 235, 19)">
-      @foreach ($machines as $machine)
-      @if ($machine->tipas == 'vyniokle')
-      <h2 style="background-color: white">{{$machine->pavadinimas}}</h2>
-        <table>
-          <tr>
-            <th>Eil. nr.</th>
-            <th>Uzs. nr.</th>
-            <th>Uzsakovas</th>
-            <th>Pavadinimas</th>
-            <th>Ilgis</th>
-            <th>Plotis</th>
-            <th>Medziaga</th>
-            <th>Velenas</th>
-            <th>Klijai</th>
-            <th>Eiles</th>
-            <th>Spalva</th>
-            <th>Pabaigimo data</th>
-            
-            <th>Pastabos</th>
-            <th>Maketas</th>
-            <th>Kiekis</th>                
-            @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
-            <th>Keisti</th>
-            @endif
-            
-          </tr>
-          @foreach ($orders as $order)
-          @if ($machine->id == $order->machine_id)
-          <tr>
-            <form action="{{route('machine.moveElement')}}" method="get">
-              <td>{{$order->eil_nr}}
-                @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
-                <input type="hidden" name="yyy" value="{{$machine->id-1}}">
-                <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                <button type="submit">Up</button>
-                @endif
-              </td>
-              <td>{{$order->id}} </td>
-              <td>{{$order->uzsakovas}} </td>
-              <td>{{$order->pavadinimas}} </td>
-              <td>{{$order->ilgis}} </td>
-              <td>{{$order->plotis}} </td>
-              <td>{{$order->medziaga}} </td>
-              <td>{{$order->velenas}} </td>
-              <td>{{$order->klijai}} </td>
-              <td>{{$order->eiles}} </td>
-              <td>{{$order->spalva}} </td>
-              <td>{{$order->pabaigimas}} </td>
-              
-              <td>{{$order->pastabos}} </td>
-              <td>
-                <?php if ($order->maketas !== '0') {
-                  echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
-                  //echo '<input type="button" onclick="location.href='.route('order.printLayout', $order ).';" value="Maketas" />';
-                  } 
-                  ?>
-                {{-- <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" /> --}}
-              </td>
-            </form>
-            <form action="{{route('order.doneRewind')}}" method="post">
-              <td>
-                <input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}">
-              </td>
-              @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
-              <td>
-                  <input type="hidden" name="id" value="{{$order->id}}">
-                  <button type="submit">Pagaminta</button>
-                </td>
-                @endif
-                  @csrf
-                </form>
-          </tr>
-          @endif
-          @endforeach
-        </table>
-        @endif
-      @endforeach
-    </div>
-
-@endif
-@if(auth()->user()->permission_lvl>=500 )
-        <h2>Spausdinimo masinos</h2>
-        <div class="lentele" style="background-color: rgb(221, 255, 127)">
-          
-          @foreach ($machines as $machine)
-          @if ($machine->tipas == 'spausdinimo')
-          <h2 style="background-color: white">{{$machine->pavadinimas}}</h2>
-            <table>
-              <tr>
-                <th>Eil. nr.</th>
-                <th>Uzs. nr.</th>
-                <th>Uzsakovas</th>
-                <th>Pavadinimas</th>
-                <th>Ilgis</th>
-                <th>Plotis</th>
-                <th>Medziaga</th>
-                <th>Velenas</th>
-                <th>Klijai</th>
-                <th>Eiles</th>
-                <th>Spalva</th>
-                <th>Pabaigimo data</th>
-                
-                <th>Pastabos</th>
-                <th>Maketas</th>
-                <th>Kiekis</th>
-                @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
-                <th>Keisti</th>
-                @endif
-              </tr>
-              @foreach ($orders as $order)
-              @if ($machine->id == $order->machine_id)
-              
-              <tr>
-                <form action="{{route('machine.moveElement')}}" method="get">
-                  <td>{{$order->eil_nr}}
-                    @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=1000)
-                    <input type="hidden" name="yyy" value="{{$machine->id-1}}">
-                    <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
-                    <button type="submit">Up</button>
-                    @endif
-                  </td>
-                  <td>{{$order->id}} </td>
-                  <td>{{$order->uzsakovas}} </td>
-                  <td>{{$order->pavadinimas}} </td>
-                  <td>{{$order->ilgis}} </td>
-                  <td>{{$order->plotis}} </td>
-                  <td>{{$order->medziaga}} </td>
-                  <td>{{$order->velenas}} </td>
-                  <td>{{$order->klijai}} </td>
-                  <td>{{$order->eiles}} </td>
-                  <td>{{$order->spalva}} </td>
-                  <td>{{$order->pabaigimas}} </td>
-                  <td>{{$order->pastabos}} </td>
-                  <td>
-                    <?php if ($order->maketas !== '0') {
-                      echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
-                      //echo '<input type="button" onclick="location.href='.route('order.printLayout', $order ).';" value="Maketas" />';
-                      } 
-                      ?>
-                    {{-- <input type="button" onclick="location.href='{{route('order.printLayout', $order )}}';" value="Maketas" /> --}}
-                  </td>
-                </form>
-                <form action="{{ route('order.donePrint') }}" method="post">
-                  <td>
-                    <input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}">
-                  </td>
-                  @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
-                  <td>
-                      <input type="hidden" name="id" value="{{$order->id}}">
-                      <button type="submit">Pagaminta</button>
-                    </td>
-                    @endif
-                    @csrf
-                </form>
-              </tr>
-              @endif
-              @endforeach
-            </table>
-            @endif
-          @endforeach
-        </div>
-        @endif
-    @endauth
-
-    
-
-    
-    
   </div>
   @endif
   @endauth

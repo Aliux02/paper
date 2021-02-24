@@ -80,7 +80,7 @@ class PaperController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    //////validacija uzmirsta///////
         $paper = new Paper();
         $paper->ilgis = $request->ilgis;
         $paper->plotis = $request->plotis;

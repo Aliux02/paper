@@ -77,10 +77,7 @@
   @auth
   @if (auth()->user()->status!=0 )
   @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
-
-  <header>
-    <a href="{{route('welcome')}}"><button>Atgal</button></a>
-  </header>
+@include('header')
 
 
 

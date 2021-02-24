@@ -103,11 +103,8 @@
   @auth
   @if (auth()->user()->status!=0 )
   @if (auth()->user()->permission_lvl>=1000)
+  @include('header')
 
-  <header>
-      <a href="{{route('welcome')}}"><button>I pradzia</button></a>
-      <a href="{{route('order.archive')}}"><button>Archyvas</button></a>
-  </header>
   <h2 class="lia">Uzsakymo istorija</h2>
   <div class="container">
     <div class="lentele1" >
