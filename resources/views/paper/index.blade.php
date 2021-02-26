@@ -11,11 +11,13 @@
         display: grid;
         grid-template-columns: 20px 1fr 5fr 1fr 20px;
         grid-template-rows: auto;
-        grid-template-areas:     
+        grid-template-areas: 
+        ". alert alert alert  ."
+        ". . details .  ."
         ". . store .  ."
         ". h2 h2 h2 ."
         ". filtras filtras filtras ."
-        ". . lentele . .";
+        ". lentele lentele lentele .";
       }
         table {
           font-family: arial, sans-serif;
@@ -25,12 +27,15 @@
         
         td, th {
           border: 1px solid #dddddd;
-          text-align: left;
+          text-align: center;
           padding: 8px;
         }
         
         tr:nth-child(even) {
           background-color: #dddddd;
+        }
+        .details{
+          grid-area: details;
         }
         .store{
           padding: 20px;
@@ -69,6 +74,28 @@
           height: 40px;
           background-color: aliceblue;
         }
+        .alert{
+            grid-area: alert;
+            font-size: 15px;
+            color: red;
+            width: 100%;
+            /* height: 30px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .alert-info{
+            grid-area: alert;
+            font-size: 15px;
+            color: yellow;
+            
+          }
+          .alert-success{
+            grid-area: alert;
+            font-size: 15px;
+            color: green;
+            
+          }
     </style>
 </head>
 <body>
@@ -78,13 +105,13 @@
   @if (auth()->user()->status!=0 )
   @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
 @include('header')
+@include('errors')
 
 
-
+<button onclick="myFunction()">Prideti popieriu</button>
   <div class="container">
 
-
-    <div class="store">
+    <div id="store" class="store" style="display: none">
       <form action="{{route('paper.store')}}" method="post">
         <div class="ivestis">
           <label for="plotis">Plotis:</label><br>
@@ -112,6 +139,13 @@
         </div>
       </form>
     </div>
+    
+
+    
+    
+    
+    
+    
 
 
     @endif
@@ -197,5 +231,17 @@
     @endif
     @endauth
   </div>
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("store");
+      if (x.style.display === "flex") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "flex";
+      }
+    }
+    </script>
+
 </body>
 </html>

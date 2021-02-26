@@ -42,6 +42,17 @@ class OrderController extends Controller
     }
     public function rewind(Request $request, $doneOrder)
     {
+        $request->validate(
+            [
+                'machine_id' => ['required','integer','min:1','max:10000'],
+            ],
+            [
+                'machine_id.required' => 'Pasirinkite irengini',
+                'machine_id.integer' => 'Irenginys turi buti sveikas skaicius',
+                'machine_id.min' => 'Pasirinkite irengini',
+                'machine_id.max' => 'Neturim tiek irenginiu',
+            ]
+        );
         $order = Order::find($doneOrder);
         $order->status=2;
         $order->machine_id=$request->machine_id;
@@ -301,7 +312,7 @@ class OrderController extends Controller
 
         
 
-        return redirect()->route('order.index')->with('success_message','Uzsakymas'.$order->pavadinimas.' sekmingai pridetas');
+        return redirect()->route('order.index')->with('success_message','Uzsakymas '.$order->pavadinimas.' sekmingai pridetas');
     }
 
     public function printLayout(Order $order)
@@ -446,7 +457,7 @@ class OrderController extends Controller
         $orderInfo->uzpildyta = $order->updated_at;
         $orderInfo->update();
 
-        return redirect()->back()->withInput()->with('success_message','Uzsakymas'.$order->pavadinimas.' sekmingai pakeistas');
+        return redirect()->back()->withInput()->with('success_message','Uzsakymas '.$order->pavadinimas.' sekmingai pakeistas');
     }
 
     /**

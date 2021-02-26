@@ -41,6 +41,7 @@
             
             <td>    
               <select style="width: 60px" name="machine_id" >
+                <option  value=""></option>
                   @foreach ($machines as $machine)
                   @if ($machine->tipas == 'vyniokle')
                   <option  value="{{$machine->id}}">{{$machine->pavadinimas}}</option>

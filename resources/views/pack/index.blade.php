@@ -14,7 +14,7 @@
           ". . store .  ."
           ". h2 h2 h2 ."
           ". filtras filtras filtras ."
-          ". . lentele . .";
+          ". lentele lentele lentele .";
         }
           table {
             font-family: arial, sans-serif;
@@ -115,6 +115,7 @@
                 <th>Klijai</th>
                 <th>Eiles</th>
                 <th>Spalvos</th>
+                <th>Pagaminimo data</th>
                 <th>Pastabos</th>
                 <th>Dezes</th>
                 <th>Kiekis</th>
@@ -135,6 +136,7 @@
                 <td>{{$order->klijai}}</td>
                 <td>{{$order->eiles}}</td>
                 <td>{{$order->spalva}}</td>
+                <td>{{$order->pabaigimas}}</td>
                 <td>{{$order->pastabos}}</td>
                 <td><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
                 <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>

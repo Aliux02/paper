@@ -8,6 +8,8 @@ use App\Models\Info;
 use App\Models\Paper;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
+
 class PaperController extends Controller
 {
     /**
@@ -81,6 +83,47 @@ class PaperController extends Controller
      */
     public function store(Request $request)
     {    //////validacija uzmirsta///////
+        $validator = Validator::make($request->all(),
+        [
+            'ilgis' => ['required','integer','min:1','max:5000'],
+            'plotis' => ['required','integer','min:1','max:500'],
+            'medziaga' => ['required','min:1','max:64'],
+            'klijai' => ['required','min:1','max:64'],
+            'kiekis' => ['required','integer','min:0','max:1000'],
+        ],
+        [
+
+            'ilgis.required' => 'Uzsakymo ilgis privalomas',
+            'ilgis.integer' => 'Ilgis turi buti skaicius',
+            'ilgis.min' => 'Ilgis negali buti mazesnis nei 1 metras',
+            'ilgis.max' => 'Ilgis per didelis',
+
+            'plotis.required' => 'Uzsakymo plotis privalomas',
+            'plotis.integer' => 'Plotis turi buti skaicius',
+            'plotis.min' => 'Plotis negali buti mazesnis nei 1 mm.',
+            'plotis.max' => 'Plotis per didelis',
+
+            'medziaga.required' => 'Uzsakymo medziaga privaloma',
+            'medziaga.min' => 'Uzsakymo medziaga per trumpa',
+            'medziaga.max' => 'Uzsakymo medziaga per ilga',
+
+            'klijai.required' => 'Uzsakymo klijai privaloma',
+            'klijai.min' => 'Uzsakymo klijai per trumpa',
+            'klijai.max' => 'Uzsakymo klijai per ilga',
+
+
+            'kiekis.required' => 'Uzsakymo kiekis privalomas',
+            'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+            'kiekis.min' => 'kiekis negali buti mazesnis nei 0',
+            'kiekis.max' => 'kiekis per didelis',
+
+
+        ]);
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+        
         $paper = new Paper();
         $paper->ilgis = $request->ilgis;
         $paper->plotis = $request->plotis;
@@ -123,6 +166,48 @@ class PaperController extends Controller
      */
     public function update(Request $request, Paper $paper)
     {
+
+        $validator = Validator::make($request->all(),
+        [
+            'ilgis' => ['required','integer','min:1','max:5000'],
+            'plotis' => ['required','integer','min:1','max:500'],
+            'medziaga' => ['required','min:1','max:64'],
+            'klijai' => ['required','min:1','max:64'],
+            'kiekis' => ['required','integer','min:0','max:1000'],
+        ],
+        [
+
+            'ilgis.required' => 'Uzsakymo ilgis privalomas',
+            'ilgis.integer' => 'Ilgis turi buti skaicius',
+            'ilgis.min' => 'Ilgis negali buti mazesnis nei 1 metras',
+            'ilgis.max' => 'Ilgis per didelis',
+
+            'plotis.required' => 'Uzsakymo plotis privalomas',
+            'plotis.integer' => 'Plotis turi buti skaicius',
+            'plotis.min' => 'Plotis negali buti mazesnis nei 1 mm.',
+            'plotis.max' => 'Plotis per didelis',
+
+            'medziaga.required' => 'Uzsakymo medziaga privaloma',
+            'medziaga.min' => 'Uzsakymo medziaga per trumpa',
+            'medziaga.max' => 'Uzsakymo medziaga per ilga',
+
+            'klijai.required' => 'Uzsakymo klijai privaloma',
+            'klijai.min' => 'Uzsakymo klijai per trumpa',
+            'klijai.max' => 'Uzsakymo klijai per ilga',
+
+
+            'kiekis.required' => 'Uzsakymo kiekis privalomas',
+            'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+            'kiekis.min' => 'kiekis negali buti mazesnis nei 0',
+            'kiekis.max' => 'kiekis per didelis',
+
+
+        ]);
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $paper->id = $paper->id;
         $paper->ilgis = $request->ilgis;
         $paper->plotis = $request->plotis;
