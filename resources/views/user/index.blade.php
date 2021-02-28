@@ -22,7 +22,7 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
-        </style>
+      </style>
 </head>
 <body>
 @auth

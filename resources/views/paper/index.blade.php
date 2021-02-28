@@ -13,7 +13,7 @@
         grid-template-rows: auto;
         grid-template-areas: 
         ". alert alert alert  ."
-        ". . details .  ."
+        /* ". . details .  ." */
         ". . store .  ."
         ". h2 h2 h2 ."
         ". filtras filtras filtras ."
@@ -34,9 +34,9 @@
         tr:nth-child(even) {
           background-color: #dddddd;
         }
-        .details{
+        /* .details{
           grid-area: details;
-        }
+        } */
         .store{
           padding: 20px;
           grid-area: store;
