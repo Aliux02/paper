@@ -15,7 +15,7 @@
     @endif
 
     @if (session()->has('info_message'))
-    <ul class="alert alert-success">
+    <ul class="alert alert-info">
       <li>{{session()->get('info_message')}}</li>
     </ul>
 @endif

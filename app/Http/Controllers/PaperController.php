@@ -28,10 +28,6 @@ class PaperController extends Controller
             array_push($klijai_arrs, $paper->klijai);
             $klijai_arrs = array_unique($klijai_arrs);
         }
-
-            
-
-
         return view('paper.index',['papers'=> $papers,'medz_arrs'=> $medz_arrs, 'klijai_arrs'=>$klijai_arrs]);
     }
 
@@ -127,12 +123,27 @@ class PaperController extends Controller
         $paper = new Paper();
         $paper->ilgis = $request->ilgis;
         $paper->plotis = $request->plotis;
-        $paper->medziaga = strtoupper($request->medziaga);;
+        $paper->medziaga = strtoupper($request->medziaga);
         $paper->klijai = $request->klijai;
         $paper->kiekis = $request->kiekis;
+
+
+        $papers = Paper::all();
+        foreach ($papers as $paper) {
+            if ($paper->ilgis==$request->ilgis &&
+            $paper->plotis == $request->plotis &&
+            $paper->medziaga == strtoupper($request->medziaga) &&
+            $paper->klijai == $request->klijai
+            ) {
+                return redirect()->route('paper.index')->with('info_message','Toks popierius '.$paper->medziaga.' jau yra sandely');
+            }
+        }
+
+
+
         $paper->save();
         
-        return redirect()->route('paper.index');
+        return redirect()->route('paper.index')->with('success_message','Popierius'.$paper->medziaga.' idetas i sandeli');
     }
 
     /**
