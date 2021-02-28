@@ -6,10 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
   <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-
-
-
-
   <title>Masinos</title>
 </head>
 <body>
