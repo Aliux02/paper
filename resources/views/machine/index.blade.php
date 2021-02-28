@@ -27,24 +27,24 @@
     @endif  
     
     @if(auth()->user()->permission_lvl>=100 )
-    <h2 class="ats_uzs">Atspausdinti uzsakymai</h2>
+    <h2 class="titleOne">Atspausdinti uzsakymai</h2>
     @include('machine.printedOrders')
     @endif
     
     
+    @if(auth()->user()->permission_lvl>=500 )
+    <h2 class="titleTwo">Spausdinimo masinos</h2>
+    @include('machine.printMachines')          
+    @endif
         
     @if(auth()->user()->permission_lvl>=100 && 
         auth()->user()->permission_lvl<500 || 
         auth()->user()->permission_lvl>=750)
-    <h2 class="vyniokles">Vyniokles</h2>
+    <h2 class="titleThree">Vyniokles</h2>
     @include('machine.rewinders')
     @endif
 
 
-    @if(auth()->user()->permission_lvl>=500 )
-    <h2>Spausdinimo masinos</h2>
-    @include('machine.printMachines')          
-    @endif
 
   </div>
   @endif

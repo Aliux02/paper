@@ -21,7 +21,7 @@
     <div class="container">
         
     
-      <h2 class="ats_uzs">Suvynioti uzsakymai</h2>
+      <h2 class="titleOne">Suvynioti uzsakymai</h2>
     
       <div class="firstTable" >
         <table>

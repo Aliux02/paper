@@ -7,148 +7,152 @@ body * {
     font-family:'Times New Roman', Times, serif;
     
 }
-  .container{
-    display: grid;
-    grid-template-columns: 20px 1fr 5fr 1fr 20px;
-    grid-template-rows: auto;
-    grid-template-areas:     
-    ". . store .  ."
-    ". . alert. ."
-    ". ats_uzs ats_uzs ats_uzs ."
-    ". filtras filtras filtras ."
-    ". firstTable firstTable firstTable ."
-    ". h2 h2 h2 ."
-    ". secondTable secondTable secondTable ."
-    ". vyniokles vyniokles vyniokles ."
-    ". thirdTable thirdTable thirdTable .";
+header {
+  overflow: hidden;
+  background-color: aliceblue;
+}
+
+header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+header a:hover {
+  background-color: rgb(136, 201, 218);
+  color: black;
+}
+
+header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+@media screen and (max-width: 600px) {
+  header a {
+    float: none;
+    display: block;
+    text-align: left;
   }
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
+}
+.container{
+  display: grid;
+  grid-template-columns: 20px 1fr 5fr 1fr 20px;
+  grid-template-rows: auto;
+  grid-template-areas:     
+  ". . store .  ."
+  ". . alert. ."
+  ". titleOne titleOne titleOne ."
+  ". filter filter filter ."
+  ". firstTable firstTable firstTable ."
+  ". titleTwo titleTwo titleTwo ."
+  ". secondTable secondTable secondTable ."
+  ". titleThree titleThree titleThree ."
+  ". thirdTable thirdTable thirdTable .";
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.store{
+  padding: 20px;
+  grid-area: store;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.firstTable{
+  grid-area: firstTable;
+  overflow-x:auto;
+}
+.secondTable{
+  grid-area: secondTable;
+  overflow-x:auto;
+}
+.thirdTable{
+  grid-area: thirdTable;
+  overflow-x:auto;
+}
+.storeInput{
+  /* width: 200px; */
+  padding: 0px 20px;
+  float: left;
+}
+.btn_store{
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0px 20px;
+}
+.titleOne{
+  padding: 40px 0px;
+  grid-area: titleOne;
+  text-align: center;
+}
+.titleTwo{
+  padding: 40px 0px;
+  grid-area: titleTwo;
+  text-align: center;
+}
+.titleThree{
+  padding: 40px 0px;
+  grid-area: titleThree;
+  text-align: center;
+}
+h2{
+  padding: 20px 0;
+}
+.filter{
+  padding: 20px 0;
+  grid-area: filter;
+  text-align: center;
+}
+
+.alert{
+  grid-area: alert;
+  font-size: 15px;
+  color: red;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alert-info{
+  grid-area: alert;
+  font-size: 15px;
+  color: yellow;
   
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-  }
+}
+.alert-success{
+  grid-area: alert;
+  font-size: 15px;
+  color: green;
   
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  .store{
-    padding: 20px;
-    grid-area: store;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  .firstTable{
-    grid-area: firstTable;
-    overflow-x:auto;
-  }
-  .secondTable{
-    grid-area: secondTable;
-    overflow-x:auto;
-  }
-  .thirdTable{
-    grid-area: thirdTable;
-    overflow-x:auto;
-  }
-  .ivestis{
-    /* width: 200px; */
-    padding: 0px 20px;
-    float: left;
-  }
-  .btn_ivastis{
-    float: left;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    padding: 0px 20px;
-  }
-  h2{
-    padding: 20px 0px;
-    grid-area: h2;
-    text-align: center;
-  }
-  .vyniokles{
-    padding: 20px 0px;
-    grid-area: vyniokles;
-    text-align: center;
-  }
-  .ats_uzs{
-    grid-area: ats_uzs;
-    text-align: center;
-  }
-
-  .filtras{
-    padding: 20px 0;
-    grid-area: filtras;
-    text-align: center;
-  }
-  header{
-    height: 40px;
-    background-color: aliceblue;
-  }
-  header > a{
-    padding: 10px;
-    line-height: 40px;
-    text-decoration: none;
-  }
-  .alert{
-    grid-area: alert;
-    font-size: 15px;
-    color: red;
-    width: 100%;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .alert-info{
-    grid-area: alert;
-    font-size: 15px;
-    color: yellow;
-    
-  }
-  .alert-success{
-    grid-area: alert;
-    font-size: 15px;
-    color: green;
-    
-  }
-  .paperBtn{
-    margin-top: 20px;
-    margin-left: 20px;
-  }
+}
+.paperBtn{
+  margin-top: 20px;
+  margin-left: 20px;
+}
 
 
-  /* a.button{
-    display:inline-block;
-    padding:0.35em 1.2em;
-    border:0.1em solid #FFFFFF;
-    margin:0 0.3em 0.3em 0;
-    border-radius:0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#FFFFFF;
-    text-align:center;
-    transition: all 0.2s;
-  }
-    a.button:hover{
-      color:#000000;
-      background-color:#FFFFFF;
-    }
-    @media all and (max-width:30em){
-       a.button1{
-      display:block;
-      margin:0.4em auto;
-      }
-    } */
 
+
+  

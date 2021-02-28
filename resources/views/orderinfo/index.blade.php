@@ -16,7 +16,7 @@
   @if (auth()->user()->permission_lvl>=1000)
   @include('header')
 
-  <h2 class="lia">Uzsakymo istorija</h2>
+  <h2 class="titleOne">Uzsakymo istorija</h2>
   <div class="container">
     <div class="secondTable" >
       <table>

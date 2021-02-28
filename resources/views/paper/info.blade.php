@@ -15,24 +15,24 @@
   @if (auth()->user()->permission_lvl>=1000)
 
   <div class="container">
-  <div class="firstTable">
-    <table>
+    <div class="firstTable">
+      <table>
         <tr>
-            <th>Kiekis</th>
-            <th>Nurasyta</th>
-            <th>Nurase</th>
+          <th>Kiekis</th>
+          <th>Nurasyta</th>
+          <th>Nurase</th>
         </tr>
-      
+        
         @foreach ($infos as $info)
         <tr>
-            <td>{{$info->kiekis}}</td>
-            <td>{{$info->modifikuota}}</td>
-            <td>{{$info->user_name}}</td>
+          <td>{{$info->kiekis}}</td>
+          <td>{{$info->modifikuota}}</td>
+          <td>{{$info->user_name}}</td>
         </tr>
         @endforeach
-    </table>
+      </table>
+    </div>
   </div>
-</div>
 
 @endif
 @endif

@@ -1,5 +1,5 @@
 <div class="store"><form action="{{route('machine.store')}}" method="post">
-    <div class="ivestis">
+    <div class="storeInput">
       <label for="pavadinimas">Pavadinimas:</label><br>
       <input type="text" id="pavadinimas" size="8" name="pavadinimas" value="">
     </div>
@@ -12,7 +12,7 @@
       </select>
     </div>
 
-    <div class="btn_ivastis">
+    <div class="btn_store">
       <input  type="submit" value="Submit">
       @csrf
     </div>

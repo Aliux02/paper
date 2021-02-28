@@ -23,27 +23,27 @@
 
     <div id="store" class="store" style="display: none">
       <form action="{{route('paper.store')}}" method="post">
-        <div class="ivestis">
+        <div class="storeInput">
           <label for="plotis">Plotis:</label><br>
           <input type="text" size="8" name="plotis" value="">
         </div>
-        <div class="ivestis">
+        <div class="storeInput">
           <label for="ilgis">Ilgis:</label><br>
           <input type="text" size="8" name="ilgis" value=""><br><br>
         </div>
-        <div class="ivestis">
+        <div class="storeInput">
           <label for="medziaga">Medziaga:</label><br>
           <input type="text" size="8" name="medziaga" value=""><br><br>
         </div>
-        <div class="ivestis">
+        <div class="storeInput">
           <label for="klijai">Klijai:</label><br>
           <input type="text" size="8" name="klijai" value=""><br><br>
         </div>
-        <div class="ivestis">
+        <div class="storeInput">
           <label for="kiekis">Kiekis:</label><br>
           <input type="text" size="8" name="kiekis" value=""><br><br>
         </div>
-        <div class="btn_ivastis">
+        <div class="btn_store">
           <input  type="submit" value="Submit">
           @csrf
         </div>
@@ -52,9 +52,9 @@
 
     @endif
 
-    <h2 class="ats_uzs">Popieriaus sarasas</h2>
+    <h2 class="titleOne" style="padding: 0px">Popieriaus sarasas</h2>
 
-    <form class="filtras" action="{{route('paper.sort')}}" method="post">
+    <form class="filter" action="{{route('paper.sort')}}" method="post">
 
       <label for="medziaga" >Filtruoti medziaga:</label>
       <select name="medziaga" >

@@ -1,7 +1,8 @@
 <header>
+    
     @auth
     @if (auth()->user()->status!=0 )
-    <a href="{{route('welcome')}}" class="button">I pradzia</a>
+    <a href="{{route('welcome')}}" class="active">I pradzia</a>
 
     @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
     <a href="{{route('paper.index')}}">Popierius</a>

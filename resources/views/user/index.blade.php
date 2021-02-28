@@ -18,8 +18,8 @@
 
     
 
-  <h2 class="ats_uzs" >Vartotoju leidimo reziai</h2>
-  <div class="filtras" >
+  <h2 class="titleOne" >Vartotoju leidimo reziai</h2>
+  <div class="filter" >
     <dl>
       <li>Pagalbiniai nuo 10 iki 100</li>
       <li>Vyniotojai nuo 100 iki 500</li>
