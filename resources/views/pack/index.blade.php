@@ -5,88 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <style>
-        .container{
-          display: grid;
-          grid-template-columns: 20px 1fr 5fr 1fr 20px;
-          grid-template-rows: auto;
-          grid-template-areas:     
-          ". . store .  ."
-          ". h2 h2 h2 ."
-          ". filtras filtras filtras ."
-          ". lentele lentele lentele .";
-        }
-          table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-          }
-          
-          td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-          }
-          
-          tr:nth-child(even) {
-            background-color: #dddddd;
-          }
-          .store{
-            padding: 20px;
-            grid-area: store;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-          }
-          .lentele{
-            grid-area: lentele;
-            overflow-x:auto;
-          }
-          h2{
-            grid-area: h2;
-            text-align: center;
-          }
-          .ivestis{
-            /* width: 200px; */
-            padding: 0px 20px;
-            float: left;
-          }
-          .btn_ivastis{
-            float: left;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-            padding: 0px 20px;
-          }
-          .filtras{
-            grid-area: filtras;
-            text-align: center;
-          }
-          header{
-            height: 40px;
-            background-color: aliceblue;
-          }
-          .alert{
-            grid-area: alert;
-            font-size: 15px;
-            color: red;
-            width: 100%;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .alert-info{
-            font-size: 20px;
-            color: yellow;
-          }
-          .alert-success{
-            font-size: 20px;
-            color: green;
-          }
-      </style>
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <title>Pakavimo sale</title>
 </head>
 <body>
@@ -102,9 +21,9 @@
     <div class="container">
         
     
-      <h2>Suvynioti uzsakymai</h2>
+      <h2 class="ats_uzs">Suvynioti uzsakymai</h2>
     
-      <div class="lentele" >
+      <div class="firstTable" >
         <table>
             <tr>
                 <th>Uzsakovas</th>

@@ -7,7 +7,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    
+
     <title>Uzsakymai</title>
 </head>
 <body>
@@ -24,15 +24,13 @@
 
   <div class="container">
 
-
-    
     @if (auth()->user()->permission_lvl>=750)
      <h2>Einamuju uzsakymu sarasas</h2>
     @include('order.allOrders')
     @endif
 
     @if (auth()->user()->permission_lvl>=1000)
-      <h2 class="lia">Supakuotu uzsakymu sarasas</h2>
+      <h2 class="vyniokles">Supakuotu uzsakymu sarasas</h2>
       @include('order.packedOrders')
     @endif
   </div>

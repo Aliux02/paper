@@ -1,51 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <title>Popieriaus info</title>
-    <style>
-        .container{
-          display: grid;
-          grid-template-columns: 20px 1fr 5fr 1fr 20px;
-          grid-template-rows: auto;
-          grid-template-areas:     
-          ". . store .  ."
-          ". h2 h2 h2 ."
-          ". filtras filtras filtras ."
-          ". . lentele . .";
-        }
-        .lentele{
-          grid-area: lentele;
-          overflow-x:auto;
-        }
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+  <title>Popieriaus info</title>
 </head>
 <body>
-
+  @include('header')
   @auth
   @if (auth()->user()->status!=0 )
   @if (auth()->user()->permission_lvl>=1000)
 
   <div class="container">
-  <div class="lentele">
+  <div class="firstTable">
     <table>
         <tr>
             <th>Kiekis</th>

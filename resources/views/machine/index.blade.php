@@ -6,6 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
   <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+
+
+
   <title>Masinos</title>
 </head>
 <body>
@@ -29,8 +33,10 @@
     
     
         
-    @if(auth()->user()->permission_lvl>=100 )
-    <h1 class="vyniokles">Vyniokles</h1>
+    @if(auth()->user()->permission_lvl>=100 && 
+        auth()->user()->permission_lvl<500 || 
+        auth()->user()->permission_lvl>=750)
+    <h2 class="vyniokles">Vyniokles</h2>
     @include('machine.rewinders')
     @endif
 

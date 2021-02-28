@@ -1,114 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-    <title>Popieriaus sandelis</title>
-    <style>
-      .container{
-        display: grid;
-        grid-template-columns: 20px 1fr 5fr 1fr 20px;
-        grid-template-rows: auto;
-        grid-template-areas: 
-        ". alert alert alert  ."
-        /* ". . details .  ." */
-        ". . store .  ."
-        ". h2 h2 h2 ."
-        ". filtras filtras filtras ."
-        ". lentele lentele lentele .";
-      }
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: center;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-        /* .details{
-          grid-area: details;
-        } */
-        .store{
-          padding: 20px;
-          grid-area: store;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100%;
-        }
-        .lentele{
-          grid-area: lentele;
-          overflow-x:auto;
-        }
-        h2{
-          grid-area: h2;
-          text-align: center;
-        }
-        .ivestis{
-          /* width: 200px; */
-          padding: 0px 20px;
-          float: left;
-        }
-        .btn_ivastis{
-          float: left;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-top: 20px;
-          padding: 0px 20px;
-        }
-        .filtras{
-          grid-area: filtras;
-          text-align: center;
-        }
-        header{
-          height: 40px;
-          background-color: aliceblue;
-        }
-        .alert{
-            grid-area: alert;
-            font-size: 15px;
-            color: red;
-            width: 100%;
-            /* height: 30px; */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .alert-info{
-            grid-area: alert;
-            font-size: 15px;
-            color: yellow;
-            
-          }
-          .alert-success{
-            grid-area: alert;
-            font-size: 15px;
-            color: green;
-            
-          }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+  <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+  <title>Popieriaus sandelis</title>
 </head>
 <body>
 
-  
+@include('header')
   @auth
   @if (auth()->user()->status!=0 )
   @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
-@include('header')
+
 @include('errors')
 
 
-<button onclick="myFunction()">Prideti popieriu</button>
+<button class="paperBtn" onclick="myFunction()">Prideti popieriu</button>
   <div class="container">
 
     <div id="store" class="store" style="display: none">
@@ -139,18 +49,10 @@
         </div>
       </form>
     </div>
-    
-
-    
-    
-    
-    
-    
-
 
     @endif
 
-    <h2>Popieriaus sarasas</h2>
+    <h2 class="ats_uzs">Popieriaus sarasas</h2>
 
     <form class="filtras" action="{{route('paper.sort')}}" method="post">
 
@@ -174,7 +76,7 @@
       @csrf
     </form>
     <br><br>
-    <div class="lentele" >
+    <div class="firstTable" >
       <table>
           <tr>
               <th>Plotis</th>

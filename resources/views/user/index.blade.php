@@ -5,43 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <title>Vartotojai</title>
-    <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #dddddd;
-        }
-      </style>
+
 </head>
 <body>
+  @include('header')
+  <div class="container">
 @auth
 @if (auth()->user()->status!=0 )
 @if (auth()->user()->permission_lvl>=2000 )
 
     
 
-    <h2>Vartotoju leidimo reziai</h2>
-
-<ul>
-  <li>Pagalbiniai nuo 10 iki 100</li>
-  <li>Vyniotojai nuo 100 iki 500</li>
-  <li>Spaudejai nuo 500 iki 750</li>
-  <li>Pakuotojai nuo 750 iki 1000</li>
-  <li>Vadovai, vadyba nuo 1000 iki 2000</li>
-</ul>  
-
-<table>
+  <h2 class="ats_uzs" >Vartotoju leidimo reziai</h2>
+  <div class="filtras" >
+    <dl>
+      <li>Pagalbiniai nuo 10 iki 100</li>
+      <li>Vyniotojai nuo 100 iki 500</li>
+      <li>Spaudejai nuo 500 iki 750</li>
+      <li>Pakuotojai nuo 750 iki 1000</li>
+      <li>Vadovai, vadyba nuo 1000 iki 2000</li>
+    </dl>  
+  </div>
+<div class="firstTable">
+  <table>
     <tr>
         <th>Vardas</th>
         <th>El. pastas</th>
@@ -60,13 +48,15 @@
     @csrf
     </form>
     </tr>
-      @endforeach
+    @endforeach
 
 
 
-</table>
+  </table>
+</div>
 @endif
 @endif
 @endauth
+</div>
 </body>
 </html>

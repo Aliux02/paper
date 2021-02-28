@@ -1,5 +1,5 @@
 
-<div class="lentele1" style="background-color: aquamarine">
+<div class="firstTable" style="background-color: aquamarine">
     <table>
       <tr>
         <th>Uzs. nr.</th>

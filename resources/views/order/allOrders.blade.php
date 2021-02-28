@@ -1,4 +1,4 @@
-<div class="lentele" >
+<div class="secondTable" >
     <table>
       <tr>
         <th>Uzsakovas</th>

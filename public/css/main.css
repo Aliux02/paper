@@ -1,4 +1,13 @@
-.container{
+body,
+body * {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+    
+}
+  .container{
     display: grid;
     grid-template-columns: 20px 1fr 5fr 1fr 20px;
     grid-template-rows: auto;
@@ -6,13 +15,12 @@
     ". . store .  ."
     ". . alert. ."
     ". ats_uzs ats_uzs ats_uzs ."
-    ". lentele1 lentele1 lentele1 ."
-    ". h2 h2 h2 ."
     ". filtras filtras filtras ."
-    ". lentele lentele lentele ."
+    ". firstTable firstTable firstTable ."
+    ". h2 h2 h2 ."
+    ". secondTable secondTable secondTable ."
     ". vyniokles vyniokles vyniokles ."
-    ". lentele2 lentele2 lentele2 ."
-    ". lentele3 lentele3 lentele3 .";
+    ". thirdTable thirdTable thirdTable .";
   }
   table {
     font-family: arial, sans-serif;
@@ -37,34 +45,17 @@
     align-items: center;
     width: 100%;
   }
-  .lentele{
-    grid-area: lentele;
+  .firstTable{
+    grid-area: firstTable;
     overflow-x:auto;
   }
-  .lentele1{
-    grid-area: lentele1;
+  .secondTable{
+    grid-area: secondTable;
     overflow-x:auto;
   }
-  .lentele2{
-    grid-area: lentele2;
+  .thirdTable{
+    grid-area: thirdTable;
     overflow-x:auto;
-  }
-  .lentele3{
-    grid-area: lentele3;
-    overflow-x:auto;
-  }
-  h2{
-    padding: 20px 0px;
-    grid-area: h2;
-    text-align: center;
-  }
-  .vyniokles{
-    grid-area: vyniokles;
-    text-align: center;
-  }
-  .ats_uzs{
-    grid-area: ats_uzs;
-    text-align: center;
   }
   .ivestis{
     /* width: 200px; */
@@ -79,7 +70,23 @@
     margin-top: 20px;
     padding: 0px 20px;
   }
+  h2{
+    padding: 20px 0px;
+    grid-area: h2;
+    text-align: center;
+  }
+  .vyniokles{
+    padding: 20px 0px;
+    grid-area: vyniokles;
+    text-align: center;
+  }
+  .ats_uzs{
+    grid-area: ats_uzs;
+    text-align: center;
+  }
+
   .filtras{
+    padding: 20px 0;
     grid-area: filtras;
     text-align: center;
   }
@@ -87,7 +94,11 @@
     height: 40px;
     background-color: aliceblue;
   }
-
+  header > a{
+    padding: 10px;
+    line-height: 40px;
+    text-decoration: none;
+  }
   .alert{
     grid-area: alert;
     font-size: 15px;
@@ -110,7 +121,34 @@
     color: green;
     
   }
-
-  .list-group{
-
+  .paperBtn{
+    margin-top: 20px;
+    margin-left: 20px;
   }
+
+
+  /* a.button{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+  }
+    a.button:hover{
+      color:#000000;
+      background-color:#FFFFFF;
+    }
+    @media all and (max-width:30em){
+       a.button1{
+      display:block;
+      margin:0.4em auto;
+      }
+    } */
+

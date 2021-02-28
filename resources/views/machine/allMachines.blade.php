@@ -52,7 +52,13 @@
                 }?>
             </td>
           </form>
-          <form action="{{route('order.doneRewind')}}" method="post">
+            <?php 
+            if (auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<500) {
+                echo '<form action="'.route('order.doneRewind').'" method="post">';
+            } else {
+                echo '<form action="'.route('order.donePrint').'" method="post">';
+            }
+            ?>
             <td>
 
               @if (auth()->user()->permission_lvl>=750)
