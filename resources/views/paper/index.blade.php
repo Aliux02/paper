@@ -22,7 +22,7 @@
   <div class="container">
 
     <div id="store" class="store" style="display: none">
-      <form action="{{route('paper.store')}}" method="post">
+      <form action="{{route('paper.store')}}" method="get">
         <div class="storeInput">
           <label for="plotis">Plotis:</label><br>
           <input type="text" size="8" name="plotis" value="">
@@ -45,8 +45,8 @@
         </div>
         <div class="btn_store">
           <input  type="submit" value="Submit">
-          @csrf
         </div>
+        @csrf
       </form>
     </div>
 

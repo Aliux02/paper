@@ -79,6 +79,18 @@ class PaperController extends Controller
      */
     public function store(Request $request)
     {    //////validacija uzmirsta///////
+
+        $papers = Paper::all();
+        foreach ($papers as $paper) {
+            if ($paper->ilgis==$request->ilgis &&
+            $paper->plotis == $request->plotis &&
+            $paper->medziaga == strtoupper($request->medziaga) &&
+            $paper->klijai == $request->klijai
+            ) {
+                return redirect()->route('paper.index')->with('info_message','Toks popierius '.$paper->medziaga.' jau yra sandely');
+            }
+        }
+
         $validator = Validator::make($request->all(),
         [
             'ilgis' => ['required','integer','min:1','max:5000'],
@@ -128,16 +140,7 @@ class PaperController extends Controller
         $paper->kiekis = $request->kiekis;
 
 
-        $papers = Paper::all();
-        foreach ($papers as $paper) {
-            if ($paper->ilgis==$request->ilgis &&
-            $paper->plotis == $request->plotis &&
-            $paper->medziaga == strtoupper($request->medziaga) &&
-            $paper->klijai == $request->klijai
-            ) {
-                return redirect()->route('paper.index')->with('info_message','Toks popierius '.$paper->medziaga.' jau yra sandely');
-            }
-        }
+
 
 
 

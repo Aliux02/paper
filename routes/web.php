@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::post('/sort', [PaperController::class, 'sort'])->name('paper.sort');
 
-        Route::post('/store', [PaperController::class, 'store'])->name('paper.store');
+        Route::get('/store', [PaperController::class, 'store'])->name('paper.store');
 
         Route::get('/destroy/{paper}', [PaperController::class, 'destroy'])->name('paper.destroy');
 

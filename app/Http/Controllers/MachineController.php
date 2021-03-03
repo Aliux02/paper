@@ -40,12 +40,13 @@ class MachineController extends Controller
 
 
         if (isset($_GET['xxx']) && isset($_GET['yyy'])) {
-
+            //dd($arr);
             //appending $new in our array 
             array_unshift($arr[$_GET['yyy']], $arr[$_GET['yyy']][$_GET['xxx']-1]);
             //now make it unique.
-            //dd($arr);
+            //dd($arr); iki cia dar vis dvi sestos eil nr
             $temp = array_unique($arr[$_GET['yyy']]);
+            dd($temp);
             $arr[$_GET['yyy']]=$temp;
             //dd($arr);
             $arr[$_GET['yyy']]=array_values($arr[$_GET['yyy']]);
@@ -107,7 +108,8 @@ class MachineController extends Controller
         for ($k = 0; $k< count($arr); $k++){
                 
             for ($l = 0; $l < count($arr[$k]); $l++){
-
+                ///jei k arejus tuscias, tada eiles nr turi but vienas 
+                //kitais atvejais eiles nr 
                 if ($arr[$k][$l]->eil_nr>0) { 
                     $arr[$k][$l]->eil_nr=$arr[$k][$l]->eil_nr;
                 }else{ 
