@@ -46,7 +46,7 @@ class MachineController extends Controller
             //now make it unique.
             //dd($arr); iki cia dar vis dvi sestos eil nr
             $temp = array_unique($arr[$_GET['yyy']]);
-            dd($temp);
+            //dd($temp);
             $arr[$_GET['yyy']]=$temp;
             //dd($arr);
             $arr[$_GET['yyy']]=array_values($arr[$_GET['yyy']]);
@@ -87,8 +87,7 @@ class MachineController extends Controller
         $orders= Order::all()->sortBy('eil_nr');
 
     $arr=[];
-
-
+    $temp = [];
 
     for ($a = 0; $a < count($machines); $a++){
     
@@ -103,30 +102,28 @@ class MachineController extends Controller
             }
          
         }
+
+        usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
         //dd($arr);
 
         for ($k = 0; $k< count($arr); $k++){
-                
             for ($l = 0; $l < count($arr[$k]); $l++){
-                ///jei k arejus tuscias, tada eiles nr turi but vienas 
-                //kitais atvejais eiles nr 
-                if ($arr[$k][$l]->eil_nr>0) { 
-                    $arr[$k][$l]->eil_nr=$arr[$k][$l]->eil_nr;
-                }else{ 
-                    $arr[$k][$l]->eil_nr=$l+1;
+                
+                if ($arr[$k][$l]->eil_nr===null) {
+                    $arr[$k][$l]->eil_nr=count($arr[$k]);
                     $arr[$k][$l]->save();
+                    usort($arr[$k], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
+                    //dd($arr[$k]);
+                }else{
+                $arr[$k][$l]->eil_nr=$l+1;
+                $arr[$k][$l]->save();
+                //dd($arr[$k]);
                 }
 
             }
             
         }
-
-        usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
-        //dd($arr);  
     }
-
-    //dd($arr);
-        //$arr[$_GET['yyy']][$_GET['xxx']]->save();
         return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'arr'=>$arr]);
     }
 
