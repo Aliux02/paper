@@ -429,8 +429,7 @@ class OrderController extends Controller
         }
 
 
-
-        $order->eil_nr = null;
+        $order->eil_nr = $order->eil_nr;
         $order->id = $order->id;
         $order->uzsakovas = $request->uzsakovas;
         $order->pavadinimas = $request->pavadinimas;
@@ -456,7 +455,7 @@ class OrderController extends Controller
         $orderInfo->uzpilde = Auth::user()->name;
         $orderInfo->uzpildyta = $order->updated_at;
         $orderInfo->update();
-
+// dd($order);
         return redirect()->back()->withInput()->with('success_message','Uzsakymas '.$order->pavadinimas.' sekmingai pakeistas');
     }
 
