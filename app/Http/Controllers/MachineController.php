@@ -14,58 +14,44 @@ class MachineController extends Controller
     public function moveElement(Request $request) {
 
 
-        $machines = Machine::all();
-        // $orders = Order::all();
+    $machines = Machine::all();
 
-
-        $orders= Order::all()->sortBy('eil_nr');
-        //dd($orders);
-        for ($a = 0; $a < count($machines); $a++){
+    $orders= Order::all()->sortBy('eil_nr');
     
-            $arr[$a]=array();
-            
-            for ($i = 0; $i < count($orders); $i++){
+    for ($a = 0; $a < count($machines); $a++){
 
-              if ($machines[$a]->id == $orders[$i]->machine_id){
-                //dd($orders[$i]);
-                array_push($arr[$a],$orders[$i]);
+        $arr[$a]=array();
+        
+        for ($i = 0; $i < count($orders); $i++){
 
-                }
+            if ($machines[$a]->id == $orders[$i]->machine_id){
+            array_push($arr[$a],$orders[$i]);
             }
-            //dd($arr);
-            usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
-            //dd($arr);
         }
-        //dd($arr);
+        usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
+    }
 
+    if (isset($_GET['xxx']) && isset($_GET['yyy'])) {
+        $shemp=$arr[$_GET['yyy']][$_GET['xxx']-1]; 
+        if ($_GET['xxx'] > $_GET['eil_nr']) {
+            array_splice($arr[$_GET['yyy']], $_GET['eil_nr']-1, 0, [$shemp] );
+            unset($arr[$_GET['yyy']][$_GET['xxx']]);
+        }elseif($_GET['xxx'] < $_GET['eil_nr']){
+            array_splice($arr[$_GET['yyy']], $_GET['eil_nr'], 0, [$shemp] );
+            unset($arr[$_GET['yyy']][$_GET['xxx']-1]);
+        }
+        $arr[$_GET['yyy']]=array_values($arr[$_GET['yyy']]);
+    } 
 
-        if (isset($_GET['xxx']) && isset($_GET['yyy'])) {
-            //dd($arr);
-            //appending $new in our array 
-            array_unshift($arr[$_GET['yyy']], $arr[$_GET['yyy']][$_GET['xxx']-1]);
-            //now make it unique.
-            //dd($arr); iki cia dar vis dvi sestos eil nr
-            $temp = array_unique($arr[$_GET['yyy']]);
-            //dd($temp);
-            $arr[$_GET['yyy']]=$temp;
-            //dd($arr);
-            $arr[$_GET['yyy']]=array_values($arr[$_GET['yyy']]);
-//dd($arr);
-        } 
+    for ($k = 0; $k< count($arr); $k++){
+        
+        for ($l = 0; $l < count($arr[$k]); $l++){
             
-            for ($k = 0; $k< count($arr); $k++){
-                
-                for ($l = 0; $l < count($arr[$k]); $l++){
-                    
-                    $arr[$k][$l]->eil_nr=$l+1;
-                    $arr[$k][$l]->save();
-                }
-                
-            }
-                  
-    //dd($arr);
-    return redirect()->route('machine.index')->with('success_message','Uzsakymas padarytas/priskirtas');
-    //return view('machine.index',['machines'=>$machines,'orders'=>$orders,'doneOrders'=>$doneOrders,'arr'=>$arr]);
+            $arr[$k][$l]->eil_nr=$l+1;
+            $arr[$k][$l]->save();
+        }
+    }
+    return redirect()->route('machine.index')->with('success_message','Uzsakymas padarytas/priskirtas');;
 }
 
 
@@ -98,24 +84,17 @@ class MachineController extends Controller
             }
          
         }
-        //dd($arr);
         usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
-        //dd($arr);
 
         for ($k = 0; $k< count($arr); $k++){
             for ($l = 0; $l < count($arr[$k]); $l++){
-                //dd($arr);
                 if ($arr[$k][$l]->eil_nr===null) {
                     $arr[$k][$l]->eil_nr=count($arr[$k]);
-                    //dd($arr[$k][$l]);
                     $arr[$k][$l]->save();
                     usort($arr[$k], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
-                    //dd($arr[$k]);
                 }else{
-                    
-                $arr[$k][$l]->eil_nr=$l+1;
-                $arr[$k][$l]->save();
-                //dd($arr[$k]);
+                    $arr[$k][$l]->eil_nr=$l+1;
+                    $arr[$k][$l]->save();
                 }
 
             }

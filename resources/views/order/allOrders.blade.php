@@ -54,7 +54,7 @@
             
             <select name="machine_id" >
               @if ($order->machine_id===null)
-                <option value="0">
+                <option  value="0">
                   All 
                 </option>
                 @foreach ($machines as $machine)
@@ -72,8 +72,8 @@
 
                 @endif
                 @endforeach
-                <option value="0">
-                  All 
+                <option style="background-color: rgb(4, 61, 110);color:white" value="0">
+                  Nuimti
                 </option>
                 @foreach ($machines as $machine)
                   <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>

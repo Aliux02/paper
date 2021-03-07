@@ -26,7 +26,8 @@
         @if ($machine->id == $order->machine_id)
         <tr>
           <form action="{{route('machine.moveElement')}}" method="get">
-            <td>{{$order->eil_nr}}
+            <td> 
+              <input type="text" name="eil_nr" value="{{$order->eil_nr}}" size="1"> 
               @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=1000)
               <input type="hidden" name="yyy" value="{{$machine->id-1}}">
               <input type="hidden" name="xxx" value="{{$order->eil_nr}}">
