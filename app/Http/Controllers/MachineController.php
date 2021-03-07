@@ -87,34 +87,32 @@ class MachineController extends Controller
         $orders= Order::all()->sortBy('eil_nr');
 
     $arr=[];
-    $temp = [];
 
     for ($a = 0; $a < count($machines); $a++){
     
         $arr[$a]=array();
         for ($i = 0; $i < count($orders); $i++){
-            // if ($orders[$i]->eil_nr>=0) {
-            //     # code...
-            // }
           if ($machines[$a]->id == $orders[$i]->machine_id){
           
             array_push($arr[$a],$orders[$i]);
             }
          
         }
-
+        //dd($arr);
         usort($arr[$a], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
         //dd($arr);
 
         for ($k = 0; $k< count($arr); $k++){
             for ($l = 0; $l < count($arr[$k]); $l++){
-                
+                //dd($arr);
                 if ($arr[$k][$l]->eil_nr===null) {
                     $arr[$k][$l]->eil_nr=count($arr[$k]);
+                    //dd($arr[$k][$l]);
                     $arr[$k][$l]->save();
                     usort($arr[$k], function($a, $b) {return  ($a->eil_nr < $b->eil_nr) ? -1 : 1;});
                     //dd($arr[$k]);
                 }else{
+                    
                 $arr[$k][$l]->eil_nr=$l+1;
                 $arr[$k][$l]->save();
                 //dd($arr[$k]);

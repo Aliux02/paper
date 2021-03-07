@@ -16,7 +16,6 @@
 
         @if (auth()->user()->permission_lvl>=1000)
 
-        <th>Masina</th>
         <th>Priskirti masina</th>
         <th>Keisti</th>
         <th>Maketas</th>
@@ -50,20 +49,38 @@
           @if (auth()->user()->permission_lvl>=1000)
 
 
-          <td>
-            @foreach ($machines as $machine)
-            @if ($order->machine_id == $machine->id)
-              {{$machine->pavadinimas}}
-            @endif
-            @endforeach
-          </td>
+
           <td>    
             
             <select name="machine_id" >
-              <option value="0">All</option>
+              @if ($order->machine_id===null)
+                <option value="0">
+                  All 
+                </option>
                 @foreach ($machines as $machine)
-                <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
-              @endforeach
+                  <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
+                  @endforeach
+              @else
+            
+                @foreach ($machines as $machine)
+                @if ($order->machine_id == $machine->id)
+
+                <option value="{{$machine->id}}">
+                  {{$machine->pavadinimas}}
+                </option>
+                @else 
+
+                @endif
+                @endforeach
+                <option value="0">
+                  All 
+                </option>
+                @foreach ($machines as $machine)
+                  <option value="{{$machine->id}}">{{$machine->pavadinimas}}</option>
+                @endforeach
+              @endif
+
+
             </select>
 
           </td>

@@ -447,7 +447,7 @@ class OrderController extends Controller
         $order->status=0;
         $order->pabaigimas = $request->pabaigimas;
         if($request->dezes==null){$order->dezes=0;}
-        if($request->machine_id==0){$order->machine_id=null;$order->status=10;}
+        if($request->machine_id==0){$order->machine_id=null;$order->eil_nr =null;$order->status=10;}
         $order->update();
 
         
