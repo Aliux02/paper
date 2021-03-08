@@ -1,0 +1,26 @@
+.alert{
+    grid-area: alert;
+    height: auto;
+    font-size: 15px;
+    color: red;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .alert-info{
+    grid-area: alert;
+    font-size: 15px;
+    color: rgb(117, 20, 182);
+    
+  }
+  .alert-success{
+    grid-area: alert;
+    font-size: 15px;
+    color: green;
+    
+  }
+  .paperBtn{
+    margin-top: 20px;
+    margin-left: 20px;
+  }

@@ -1,0 +1,80 @@
+.container{
+    display: grid;
+    grid-template-columns: 20px 1fr 5fr 1fr 20px;
+    grid-template-rows: auto;
+    grid-template-areas:     
+    ". . store .  ."
+    ". . alert. ."
+    ". titleOne titleOne titleOne ."
+    ". filter filter filter ."
+    ". firstTable firstTable firstTable ."
+    ". titleTwo titleTwo titleTwo ."
+    ". secondTable secondTable secondTable ."
+    ". titleThree titleThree titleThree ."
+    ". thirdTable thirdTable thirdTable .";
+  }
+  
+    .store{
+        padding: 20px;
+        grid-area: store;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        }
+    .titleOne{
+        padding: 40px 0px;
+        grid-area: titleOne;
+        text-align: center;
+        }
+    .filter{
+        padding: 20px 0;
+        grid-area: filter;
+        text-align: center;
+    }
+    .firstTable{
+        grid-area: firstTable;
+        overflow-x:auto;
+    }
+    .titleTwo{
+        padding: 40px 0px;
+        grid-area: titleTwo;
+        text-align: center;
+    }
+    .secondTable{
+        grid-area: secondTable;
+        overflow-x:auto;
+    }
+    .titleThree{
+        padding: 40px 0px;
+        grid-area: titleThree;
+        text-align: center;
+    }
+    .thirdTable{
+        grid-area: thirdTable;
+        overflow-x:auto;
+    }
+
+
+
+
+    
+
+
+    
+    h2{
+        padding: 20px 0;
+    }
+    .storeInput{
+      /* width: 200px; */
+      padding: 0px 20px;
+      float: left;
+    }
+    .btn_store{
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      padding: 0px 20px;
+    }
