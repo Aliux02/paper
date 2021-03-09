@@ -89,9 +89,8 @@
 
     @media screen and (max-width: 690px) {
       header li.dropdown {
-          float: left;
-          display: inline-block;
-          }
+        display: inline-block;
+        }
       header .show {
         float: none;
         display: none;
