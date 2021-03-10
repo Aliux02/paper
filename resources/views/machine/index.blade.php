@@ -27,7 +27,7 @@
     @endif  
     
     @if(auth()->user()->permission_lvl>=100 )
-    <h2 class="titleOne">Atspausdinti uzsakymai</h2>
+    {{-- <h2 class="titleOne">Atspausdinti uzsakymai</h2> --}}
     @include('machine.printedOrders')
     @endif
     

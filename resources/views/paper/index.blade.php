@@ -77,14 +77,16 @@
     </form>
     <br><br>
     <div class="firstTable" >
+      <div class="header">Popieriaus sandelis</div>
       <table>
+        
           <tr>
               <th>Plotis</th>
               <th>Ilgis</th>
               <th>Medziaga</th>
               <th>Klijai</th>
               <th>Kiekis</th>
-              <th>Paskutinis redagavimas</th>
+              {{-- <th>Paskutinis redagavimas</th> --}}
 
               @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
 
@@ -104,7 +106,7 @@
             <td><input type="text" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
             <td><input type="text" size="2" name="klijai" value="{{$paper->klijai}}"></td>
             <td><input type="text" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
-            <td><input type="text" size="16" name="updated_at" value="{{$paper->updated_at}}" readonly></td>
+            {{-- <td>{{$paper->updated_at}}</td> --}}
             @csrf
 
             @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)

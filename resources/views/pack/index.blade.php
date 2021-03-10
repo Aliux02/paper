@@ -19,11 +19,12 @@
 
 
     <div class="container">
-        
+{{--         
     
-      <h2 class="titleOne">Suvynioti uzsakymai</h2>
+      <h2 class="titleOne">Suvynioti uzsakymai</h2> --}}
     
       <div class="firstTable" >
+        <div class="header">Suvynioti užsakymai</div>
         <table>
             <tr>
                 <th>Uzsakovas</th>

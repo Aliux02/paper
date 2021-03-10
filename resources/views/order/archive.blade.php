@@ -15,11 +15,11 @@
   @if (auth()->user()->permission_lvl>=750)
   @include('header')
     <div class="container">
-    <h2 class="titleOne">Archyvas</h2>
     <br>
     <input type="text" id="myInput" onkeyup="myFunction()" style="margin-top:20px" placeholder="Iveskite uzsakova.." title="Paieska">
     <br><br>
     <div class="secondTable" >
+      <div class="header">Archyvas</div>
       <table id="myTable">
         <tr>
           <th>Uzsakovas</th>

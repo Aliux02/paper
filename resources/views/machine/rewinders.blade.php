@@ -1,6 +1,7 @@
-<div class="thirdTable" style="background-color: rgb(148, 235, 19)">
+<div class="thirdTable" >
     @foreach ($machines as $machine)
     @if ($machine->tipas == 'vyniokle')
+    <div class="header">{{$machine->pavadinimas}}</div>
     @include('machine.allMachines')
       @endif
     @endforeach

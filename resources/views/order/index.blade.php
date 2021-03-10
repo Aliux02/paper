@@ -25,12 +25,10 @@
     @endif
     
     @if (auth()->user()->permission_lvl>=750)
-    <h2 class="titleTwo">Einamuju uzsakymu sarasas</h2>
     @include('order.allOrders')
     @endif
 
     @if (auth()->user()->permission_lvl>=1000)
-      <h2 class="titleThree">Supakuotu uzsakymu sarasas</h2>
       @include('order.packedOrders')
     @endif
   </div>

@@ -1,4 +1,4 @@
-<h2 style="background-color: white">{{$machine->pavadinimas}}</h2>
+
       <table>
         <tr>
           <th>Eil. nr.</th>

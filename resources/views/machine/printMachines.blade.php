@@ -1,6 +1,9 @@
-<div class="secondTable" style="background-color: rgb(221, 255, 127)">
+<div class="secondTable" >
+    
+    
     @foreach ($machines as $machine)
     @if ($machine->tipas == 'spausdinimo')
+    <div class="header">{{$machine->pavadinimas}}</div>
     @include('machine.allMachines')
     @endif
     @endforeach

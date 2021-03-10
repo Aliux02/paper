@@ -1,3 +1,12 @@
+.header {
+  background-color:#398B93;
+  color: white;
+  font-size: 1.5em;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;

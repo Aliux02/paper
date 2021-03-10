@@ -16,6 +16,7 @@
 
   <div class="container">
     <div class="firstTable">
+      <div class="header">Nurasinėjimo informacija</div>
       <table>
         <tr>
           <th>Kiekis</th>

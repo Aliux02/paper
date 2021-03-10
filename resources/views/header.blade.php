@@ -1,5 +1,5 @@
-<header>
-    
+<nav class="navBar">
+
     @auth
     @if (auth()->user()->status!=0 )
 
@@ -87,7 +87,7 @@
 
     @endif
     @endauth
-</header>
+    </nav>
 
 
     

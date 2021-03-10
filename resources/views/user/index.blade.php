@@ -19,7 +19,7 @@
     
 
   <h2 class="titleOne" >Vartotoju leidimo reziai</h2>
-  <div class="filter" >
+  <div class="filter" style="width: 250px" >
     <dl>
       <li>Pagalbiniai nuo 10 iki 100</li>
       <li>Vyniotojai nuo 100 iki 500</li>
@@ -29,6 +29,7 @@
     </dl>  
   </div>
 <div class="firstTable">
+  <div class="header">Vartotojai</div>
   <table>
     <tr>
         <th>Vardas</th>
