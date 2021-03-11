@@ -75,6 +75,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/orderinfo/{order}', [OrderinfoController::class, 'index'])->name('orderinfo.index');
 
         Route::get('/maketas/{order}', [OrderController::class, 'printLayout'])->name('order.printLayout');
+
+        Route::get('/card/{order}', [OrderController::class, 'card'])->name('order.orderCard');
     });
 });
 

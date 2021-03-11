@@ -52,7 +52,6 @@
 
     @endif
 
-    <h2 class="titleOne" style="padding: 0px">Popieriaus sarasas</h2>
 
     <form class="filter" action="{{route('paper.sort')}}" method="post">
 
@@ -77,7 +76,7 @@
     </form>
     <br><br>
     <div class="firstTable" >
-      <div class="header">Popieriaus sandelis</div>
+      <div class="header">Popieriaus sarasas</div>
       <table>
         
           <tr>

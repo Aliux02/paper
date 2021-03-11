@@ -12,6 +12,14 @@ use Auth;
 
 class OrderController extends Controller
 {
+    public function card(Order $order)
+    {
+        $order = Order::find($order->id);
+        $machines = Machine::all();
+        return view('order.orderCard',['order'=>$order,'machines'=>$machines]);
+    }
+
+
     public function donePrint(Request $request)
     {
         $request->validate(
@@ -456,7 +464,9 @@ class OrderController extends Controller
         $orderInfo->uzpildyta = $order->updated_at;
         $orderInfo->update();
 // dd($order);
-        return redirect()->back()->withInput()->with('success_message','Uzsakymas '.$order->pavadinimas.' sekmingai pakeistas');
+        return redirect()->route('order.index')->
+        withInput()->
+        with('success_message','Uzsakymas '.$order->pavadinimas.' sekmingai pakeistas');
     }
 
     /**

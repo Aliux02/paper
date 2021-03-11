@@ -44,6 +44,7 @@
     .secondTable{
         grid-area: secondTable;
         overflow-x:auto;
+        margin-top: 47px;
     }
     .titleThree{
         padding: 40px 0px;

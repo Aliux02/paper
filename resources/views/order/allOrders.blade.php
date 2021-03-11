@@ -13,16 +13,17 @@
         <th>Kiekis</th>
         <th>Velenas</th>
         <th>Pagaminimo data</th>
-        <th>Pastabos</th>
+        <th>Daugiau</th>
+        {{-- <th>Pastabos</th>
 
         @if (auth()->user()->permission_lvl>=1000)
 
         <th>Priskirti masina</th>
         <th>Keisti</th>
         <th>Maketas</th>
-        <th>Istrinti</th>
+        <th>Istrinti</th> --}}
 
-        @endif
+        {{-- @endif --}}
 
       </tr>
       
@@ -33,25 +34,25 @@
           
       <tr {{$order->color()}}>
         <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data">
-          <td><input type="text"  size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-          <td><input type="text"  size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
-          <td><input type="text"  size="2" name="ilgis" value="{{$order->ilgis}}"></td>
-          <td><input type="text"  size="2" name="plotis" value="{{$order->plotis}}"></td>
-          <td><input type="text"  size="4" name="medziaga" value="{{$order->medziaga}}"></td>
-          <td><input type="text"  size="2" name="klijai" value="{{$order->klijai}}"></td>
-          <td><input type="text"  size="1" name="eiles" value="{{$order->eiles}}"></td>
-          <td><input type="text"  size="1" name="spalva" value="{{$order->spalva}}"></td>
-          <td><input type="text"  size="4" name="kiekis" value="{{$order->kiekis}}"></td>
-          <td><input type="text"  size="1" name="velenas" value="{{$order->velenas}}"></td>
-          <td><input type="text"  size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
+          <td>{{$order->uzsakovas}}</td>
+          <td>{{$order->pavadinimas}}</td>
+          <td>{{$order->ilgis}}</td>
+          <td>{{$order->plotis}}</td>
+          <td>{{$order->medziaga}}</td>
+          <td>{{$order->klijai}}</td>
+          <td>{{$order->eiles}}</td>
+          <td>{{$order->spalva}}</td>
+          <td>{{$order->kiekis}}</td>
+          <td>{{$order->velenas}}</td>
+          <td>{{$order->pabaigimas}}</td>
           <input type="hidden"  size="6" name="maketas" value="{{$order->maketas}}">
-          <td><textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}</textarea></td>
+          {{-- <td><textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}</textarea></td> --}}
           
           @if (auth()->user()->permission_lvl>=1000)
 
+          <td><a href="{{route('order.orderCard',$order)}}">Daugiau</a></td>
 
-
-          <td>    
+          {{-- <td>    
             
             <select name="machine_id" >
               @if ($order->machine_id===null)
@@ -97,7 +98,7 @@
         </td>
         <td>
           <a href="{{route('order.destroy', $order)}} "><button>Delete</button></a>
-        </td>
+        </td> --}}
 
         @endif
 

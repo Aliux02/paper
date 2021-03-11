@@ -21,7 +21,7 @@
   
   <div class="container">
     @if (auth()->user()->permission_lvl>=1000)
-    <a href="{{route('order.create')}}" style="margin:20px 20px; text-decoration:none">Ivesti uzsakyma</a>
+    <a href="{{route('order.create')}}" style="margin:16px 20px; position: fixed; text-decoration:none">Ivesti uzsakyma</a>
     @endif
     
     @if (auth()->user()->permission_lvl>=750)
