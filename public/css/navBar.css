@@ -59,8 +59,17 @@
     li a:hover, .dropdown:hover .dropbtn {
       background-color: red;
     }
+
+    .create{
+      background-color: #398B93; 
+      color:white"
+    }
+
+
     li.homebtn{
       float:right;
+      color: white;
+      background-color: #398B93;
     }
     li.dropdown {
       /* display: inline-block; */
@@ -90,7 +99,7 @@
       display: block;
     }
 
-    @media screen and (max-width: 690px) {
+    @media screen and (max-width: 730px) {
       nav li.dropdown {
         display: inline-block;
         }

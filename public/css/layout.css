@@ -18,7 +18,8 @@
         margin:16px 20px; 
         position: fixed; 
         text-decoration:none;
-        top:50px;
+        top:75px;
+        left: 20px;
     }
 
     .search{

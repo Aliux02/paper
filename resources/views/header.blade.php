@@ -30,6 +30,11 @@
         <li class="dropdown" >
             <a href="javascript:void(0)" class="dropbtn">Daugiau</a>
             <div class="dropdown-content">
+
+                @if (auth()->user()->permission_lvl>=1000)
+                <a href="{{route('order.create')}}" style="background-color: #398B93; color:white">Ivesti uzsakyma</a>
+                @endif
+
                 @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
                 <a href="{{route('paper.index')}}">Popierius</a>
                 @endif
@@ -47,6 +52,8 @@
                 @if(auth()->user()->permission_lvl>=2000 )
                 <a href="{{route('user.index')}}">Vartotojai</a>
                 @endif
+
+
            </div>
           </li>
 
@@ -57,6 +64,11 @@
 
         <div class="show">
             <li>
+                @if (auth()->user()->permission_lvl>=1000)
+                <a href="{{route('order.create')}}" class="create " >Ivesti uzsakyma</a>
+              @endif
+            </li>
+            <li>
                 @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
                 <a href="{{route('paper.index')}}">Popierius</a>
                 @endif
@@ -78,6 +90,7 @@
                 <a href="{{route('user.index')}}">Vartotojai</a>
                 @endif
             </li>
+
         </div>
 
 

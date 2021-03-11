@@ -20,9 +20,6 @@
 
   
   <div class="container">
-    @if (auth()->user()->permission_lvl>=1000)
-    <a href="{{route('order.create')}}" class="createOrdbtn" >Ivesti uzsakyma</a>
-    @endif
     
     @if (auth()->user()->permission_lvl>=750)
     @include('order.allOrders')
