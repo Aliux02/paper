@@ -16,9 +16,9 @@
   @include('header')
     <div class="container">
     <br>
-    <input type="text" id="myInput" onkeyup="myFunction()" style="margin-top:20px" placeholder="Iveskite uzsakova.." title="Paieska">
+    <input type="text" id="myInput" onkeyup="myFunction()" style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
     <br><br>
-    <div class="secondTable" >
+    <div class="firstTable" >
       <div class="header">Archyvas</div>
       <table id="myTable">
         <tr>

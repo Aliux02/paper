@@ -182,12 +182,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge(['ilgis'=> str_replace(',','.',$request->ilgis)]) ;
+        $request->merge(['plotis'=> str_replace(',','.',$request->plotis)]) ;
+
         $validator = Validator::make($request->all(),
         [
             'uzsakovas' => ['required','min:2','max:64'],
             'pavadinimas' => ['required','min:1','max:64'],
-            'ilgis' => ['required','integer','min:1','max:500'],
-            'plotis' => ['required','integer','min:1','max:500'],
+            'ilgis' => ['required','numeric','min:1','max:500'],
+            'plotis' => ['required','numeric','min:1','max:500'],
             'medziaga' => ['required','min:1','max:64'],
             'klijai' => ['required','min:1','max:64'],
             'eiles' => ['required','integer','min:1','max:20'],
@@ -206,13 +209,17 @@ class OrderController extends Controller
             'pavadinimas.min' => 'Uzsakymo pavadinimas per trumpas',
             'pavadinimas.max' => 'Uzsakymo pavadinimas per ilgas',
 
-            'ilgis.required' => 'Uzsakymo ilgis privalomas',
-            'ilgis.integer' => 'Ilgis turi buti skaicius',
-            'ilgis.min' => 'Ilgis negali buti mazesnis nei 1 pinigas',
+            
+            
+            'ilgis.required' => 'Ilgis privalomas',
+            'ilgis.numeric' => 'Ilgis turi buti skaicius',
+            'ilgis.min' => 'Ilgis negali buti mazesnis nei 0.1mm.',
             'ilgis.max' => 'Ilgis per didelis',
 
+
+
             'plotis.required' => 'Uzsakymo plotis privalomas',
-            'plotis.integer' => 'Plotis turi buti skaicius',
+            'plotis.numeric' => 'Plotis turi buti skaicius',
             'plotis.min' => 'Plotis negali buti mazesnis nei 1 pinigas',
             'plotis.max' => 'Plotis per didelis',
 
@@ -259,12 +266,12 @@ class OrderController extends Controller
 
         $order = new Order();
         $order->eil_nr = null;
-        $order->uzsakovas = $request->uzsakovas;
-        $order->pavadinimas = $request->pavadinimas;
-        $order->ilgis = $request->ilgis;
-        $order->plotis = $request->plotis;
-        $order->medziaga = strtoupper($request->medziaga);;
-        $order->klijai = $request->klijai;
+        $order->uzsakovas = ucfirst($request->uzsakovas);
+        $order->pavadinimas = ucfirst($request->pavadinimas);
+        $order->ilgis = str_replace(',','.',$request->ilgis);
+        $order->plotis = str_replace(',','.',$request->plotis);
+        $order->medziaga = strtoupper($request->medziaga);
+        $order->klijai = strtoupper($request->klijai);
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
         $order->machine_id = null;
@@ -362,12 +369,14 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        $request->merge(['ilgis'=> str_replace(',','.',$request->ilgis)]) ;
+        $request->merge(['plotis'=> str_replace(',','.',$request->plotis)]) ;
         $validator = Validator::make($request->all(),
         [
             'uzsakovas' => ['required','min:2','max:64'],
             'pavadinimas' => ['required','min:1','max:64'],
-            'ilgis' => ['required','integer','min:1','max:500'],
-            'plotis' => ['required','integer','min:1','max:500'],
+            'ilgis' => ['required','numeric','min:1','max:500'],
+            'plotis' => ['required','numeric','min:1','max:500'],
             'medziaga' => ['required','min:1','max:64'],
             'klijai' => ['required','min:1','max:64'],
             'eiles' => ['required','integer','min:1','max:20'],
@@ -386,13 +395,15 @@ class OrderController extends Controller
             'pavadinimas.min' => 'Uzsakymo pavadinimas per trumpas',
             'pavadinimas.max' => 'Uzsakymo pavadinimas per ilgas',
 
-            'ilgis.required' => 'Uzsakymo ilgis privalomas',
-            'ilgis.integer' => 'Ilgis turi buti skaicius',
-            'ilgis.min' => 'Ilgis negali buti mazesnis nei 1 pinigas',
+            'ilgis.required' => 'Ilgis privalomas',
+            'ilgis.numeric' => 'Ilgis turi buti skaicius',
+            'ilgis.min' => 'Ilgis negali buti mazesnis nei 0.1mm.',
             'ilgis.max' => 'Ilgis per didelis',
 
+
+
             'plotis.required' => 'Uzsakymo plotis privalomas',
-            'plotis.integer' => 'Plotis turi buti skaicius',
+            'plotis.numeric' => 'Plotis turi buti skaicius',
             'plotis.min' => 'Plotis negali buti mazesnis nei 1 pinigas',
             'plotis.max' => 'Plotis per didelis',
 
@@ -439,12 +450,12 @@ class OrderController extends Controller
 
         $order->eil_nr = $order->eil_nr;
         $order->id = $order->id;
-        $order->uzsakovas = $request->uzsakovas;
-        $order->pavadinimas = $request->pavadinimas;
-        $order->ilgis = $request->ilgis;
-        $order->plotis = $request->plotis;
+        $order->uzsakovas = ucfirst($request->uzsakovas);
+        $order->pavadinimas = ucfirst($request->pavadinimas);
+        $order->ilgis = str_replace(',','.',$request->ilgis);
+        $order->plotis = str_replace(',','.',$request->plotis);
         $order->medziaga = strtoupper($request->medziaga);
-        $order->klijai = $request->klijai;
+        $order->klijai = strtoupper($request->klijai);
         $order->eiles = $request->eiles;
         $order->spalva = $request->spalva;
         $order->machine_id = $request->machine_id;

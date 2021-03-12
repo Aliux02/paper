@@ -1,4 +1,4 @@
-<div class="secondTable" >
+<div class="firstTable" >
   <div class="header">Einamuju uzsakymu sarasas </div>
     <table>
       <tr>

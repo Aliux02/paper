@@ -1,5 +1,5 @@
+@include('header')
 <x-guest-layout>
-    @include('header')
     @auth
     @if (auth()->user()->status!=0 )
     @if (auth()->user()->permission_lvl>=1000)

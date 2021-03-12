@@ -18,8 +18,9 @@ class CreateOrdersTable extends Migration
             $table->integer('eil_nr')->nullable();
             $table->string('uzsakovas');
             $table->string('pavadinimas');
-            $table->integer('ilgis');
-            $table->integer('plotis');
+            $table->string('kryptis')->nullable();
+            $table->double('ilgis');
+            $table->double('plotis');
             $table->string('medziaga');
             $table->string('klijai')->nullable();
             $table->integer('eiles');
