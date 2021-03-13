@@ -129,20 +129,21 @@
                       </div>
 
                     <div class="flex items-center justify-end mt-6" style=" float: right">
-        
-
                         <x-jet-button class="ml-4">
                             {{ __('Ivesti') }}
                         </x-jet-button>
+                    </div>
 
-                    </form>
-                    <form action="{{route('order.destroy',$order)}}" method="get">
-                        <x-jet-button class="ml-4">
-                            {{ __('Istrinti') }}
-                        </x-jet-button>
-                    @csrf
-                    </form>  
-                </div>
+                </form>
+                    <div class="flex items-center justify-end mt-6" style=" float: right">
+                        <form action="{{route('order.destroy',$order)}}" method="get" >
+                            <x-jet-button class="ml-4" style="background-color: red">
+                                {{ __('Istrinti') }}
+                            </x-jet-button>
+                        @csrf
+                        </form> 
+                    </div> 
+                
 
             </x-jet-authentication-card>
             @endif
