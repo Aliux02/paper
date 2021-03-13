@@ -73,8 +73,7 @@
             
             <div class="mt-4"style="width: 100%; float: left">
                 <x-jet-label for="pastabos" value="{{ __('Pastabos') }}" />
-                <x-jet-input id="pastabos" class="block mt-1 w-full" type="text" name="pastabos" :value="old('pastabos')" />
-                {{-- <textarea class="block mt-1 w-full" name="pastabos" id="pastabos" cols="40" rows="2" style="border-width:thin;" :value=""></textarea> --}}
+                <textarea class="block mt-1 w-full" name="pastabos" id="pastabos" cols="40" rows="2" style="border-width:thin;" >{{old('pabaigimas')}}</textarea>
             </div>
             
             <div class="mt-4"style="width: 50%; float: left">
