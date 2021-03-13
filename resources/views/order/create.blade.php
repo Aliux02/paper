@@ -1,15 +1,16 @@
-@include('header')
+
 <x-guest-layout>
     @auth
     @if (auth()->user()->status!=0 )
     @if (auth()->user()->permission_lvl>=1000)
+    @include('header')
 
     <x-jet-authentication-card>
         <x-slot name="logo">
             {{-- <img src="//localhost/Mokslai/paper/public/img/logo.png">  --}}
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mt-4" />
 
         <form method="POST" action="{{route('order.store')}}" enctype="multipart/form-data">
             @csrf

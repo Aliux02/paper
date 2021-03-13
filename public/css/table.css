@@ -18,7 +18,22 @@ table {
     text-align: center;
     padding: 8px;
   }
-  
+
+  tr:hover{
+    background-color:#398B93 ;
+    color: white;
+  }
+
+  tr:first-child {
+    background-color: white;
+  }
+  tr:first-child:hover {
+    color: black;
+  }
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+  tr:nth-child(even):hover {
+    background-color: #398B93;
+    color: white;
   }
