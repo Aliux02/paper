@@ -117,7 +117,7 @@
                     </div>
 
 
-                    <div class="mt-4"style="width: 50%; float: right; line-height: 20px">
+                    <div class="mt-4"style="width: 50%; float: right; line-height: 23px">
                         <x-jet-label for="pabaigimas" value="{{ __('Technologine kortele') }}" />
                         <?php if ($order->maketas !== '0') {
                         echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
@@ -134,9 +134,9 @@
                     </div>
 
                 </form>
-                    <div class="flex items-center justify-end mt-6" style=" float: right">
+                    <div class="flex items-center justify-end mt-6" style=" float: left">
                         <form action="{{route('order.destroy',$order)}}" method="get" >
-                            <x-jet-button class="ml-4" style="background-color: red">
+                            <x-jet-button class="ml-4" style="background-color: red; margin-left:0px">
                                 {{ __('Istrinti') }}
                             </x-jet-button>
                         @csrf

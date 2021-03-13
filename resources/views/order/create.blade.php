@@ -82,7 +82,7 @@
                 <input type="file" name="maketas">
             </div>
             
-            <div class="flex items-center justify-end mt-6" style=" float: right">
+            <div class="flex items-center justify-end mt-8" style=" float: right">
 
 
                 <x-jet-button class="ml-4">
