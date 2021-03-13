@@ -22,6 +22,7 @@ table {
   tr:hover{
     background-color:#398B93 ;
     color: white;
+    cursor: pointer;
   }
 
   tr:first-child {

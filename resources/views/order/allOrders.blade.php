@@ -13,7 +13,7 @@
         <th>Kiekis</th>
         <th>Velenas</th>
         <th>Pagaminimo data</th>
-        <th>Daugiau</th>
+        {{-- <th>Daugiau</th> --}}
         {{-- <th>Pastabos</th>
 
         @if (auth()->user()->permission_lvl>=1000)
@@ -32,7 +32,7 @@
           
       
           
-      <tr {{$order->color()}}>
+      <tr @if (auth()->user()->permission_lvl>=1000) onclick="window.location='{{route('order.orderCard',$order)}}'" @endif>
         <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data">
           <td>{{$order->uzsakovas}}</td>
           <td>{{$order->pavadinimas}}</td>
@@ -50,7 +50,7 @@
           
           @if (auth()->user()->permission_lvl>=1000)
 
-          <td><a href="{{route('order.orderCard',$order)}}">Daugiau</a></td>
+          {{-- <td><a href="{{route('order.orderCard',$order)}}">Daugiau</a></td> --}}
 
           {{-- <td>    
             
@@ -103,6 +103,8 @@
         @endif
 
       </tr>
+
+      
       @endif
       @endforeach
       
