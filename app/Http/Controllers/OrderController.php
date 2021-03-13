@@ -198,7 +198,7 @@ class OrderController extends Controller
             'velenas' => ['required','integer','min:1','max:200'],
             'pabaigimas' => ['required','date'],
             'kiekis' => ['required','integer','min:1','max:1000000000'],
-            'pastabos' => ['min:0','max:64'],
+            'pastabos' => ['min:0','max:4000'],
         ],
         [
             'uzsakovas.required' => 'Uzsakymo uzsakovas privalomas',
@@ -384,7 +384,7 @@ class OrderController extends Controller
             'velenas' => ['required','integer','min:1','max:200'],
             'pabaigimas' => ['required','date'],
             'kiekis' => ['required','integer','min:1','max:1000000000'],
-            'pastabos' => ['min:0','max:64'],
+            'pastabos' => ['min:0','max:4000'],
         ],
         [
             'uzsakovas.required' => 'Uzsakymo uzsakovas privalomas',
