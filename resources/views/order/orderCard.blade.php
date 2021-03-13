@@ -80,7 +80,7 @@
                 
                     <div class="mt-4"style="width: 100%; float: left">
                         <x-jet-label for="pastabos" value="{{ __('Pastabos') }}" />
-                        <textarea class="block mt-1 w-full" name="pastabos" id="pastabos" cols="40" rows="2" style="border-width:thin;" :value="{{$order->pastabos}}">{{$order->pastabos}}</textarea>
+                        <textarea class="block mt-1 w-full" name="pastabos" id="pastabos" cols="40" rows="2" style="border-width:thin;" :value="$order->pastabos">{{$order->pastabos}}</textarea>
                     </div>
                     
                     <div class="mt-4"style="width: 50%; float: left">
@@ -134,8 +134,15 @@
                         <x-jet-button class="ml-4">
                             {{ __('Ivesti') }}
                         </x-jet-button>
-                    </div>
-                </form>
+
+                    </form>
+                    <form action="{{route('order.destroy',$order)}}" method="get">
+                        <x-jet-button class="ml-4">
+                            {{ __('Istrinti') }}
+                        </x-jet-button>
+                    @csrf
+                    </form>  
+                </div>
 
             </x-jet-authentication-card>
             @endif
