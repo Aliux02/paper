@@ -37,14 +37,14 @@
 
         <tr>
           <form action="" method="post">
-            <td><input type="text" size="8" name="uzpilde" value="{{$orderinfo->uzpilde}}"></td>
-            <td><input type="text" size="14" name="uzpildyta" value="{{$orderinfo->uzpildyta}}"></td>
-            <td><input type="text" size="8" name="atspausdino" value="{{$orderinfo->atspausdino}}"></td>
-            <td><input type="text" size="14" name="atspausdinta" value="{{$orderinfo->atspausdinta}}"></td>
-            <td><input type="text" size="8" name="suvyniojo" value="{{$orderinfo->suvyniojo}}"></td>
-            <td><input type="text" size="14" name="suvyniota" value="{{$orderinfo->suvyniota}}"></td>
-            <td><input type="text" size="8" name="supakavo" value="{{$orderinfo->supakavo}}"></td>
-            <td><input type="text" size="14" name="supakuota" value="{{$orderinfo->supakuota}}"></td>
+            <td>{{$orderinfo->uzpilde}}</td>
+            <td>{{$orderinfo->uzpildyta}}</td>
+            <td>{{$orderinfo->atspausdino}}</td>
+            <td>{{$orderinfo->atspausdinta}}</td>
+            <td>{{$orderinfo->suvyniojo}}</td>
+            <td>{{$orderinfo->suvyniota}}</td>
+            <td>{{$orderinfo->supakavo}}</td>
+            <td>{{$orderinfo->supakuota}}</td>
             
 
 

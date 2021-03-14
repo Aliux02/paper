@@ -12,12 +12,7 @@ use Auth;
 
 class OrderController extends Controller
 {
-    public function card(Order $order)
-    {
-        $order = Order::find($order->id);
-        $machines = Machine::all();
-        return view('order.orderCard',['order'=>$order,'machines'=>$machines]);
-    }
+
 
 
     public function donePrint(Request $request)
@@ -305,8 +300,9 @@ class OrderController extends Controller
                 $request->file('maketas');
                 $file = $request->file('maketas');
                 $fileName = $file->getClientOriginalName();
-                $path = $file->storeAs('public', $fileName);
 
+                $path = $file->storeAs('public', $fileName);
+//dd($path);
                 $order->maketas = $fileName;
             }
         }
@@ -337,7 +333,13 @@ class OrderController extends Controller
         return view('order.printLayout',['path'=>$path]);
     }
 
-
+    public function card(Order $order)
+    {
+        $order = Order::find($order->id);
+        $machines = Machine::all();
+        $path = $order->maketas;
+        return view('order.orderCard',['order'=>$order,'machines'=>$machines, 'path'=>$path]);
+    }
     /**
      * Display the specified resource.
      *

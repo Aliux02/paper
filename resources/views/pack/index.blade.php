@@ -46,7 +46,7 @@
             </tr>
           
             @foreach ($orders as $order)
-            <tr>
+            <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
               <form action="{{route('order.donePacking',$order)}}" method="post">
                 <td>{{$order->uzsakovas}}</td>
                 <td>{{$order->pavadinimas}}</td>

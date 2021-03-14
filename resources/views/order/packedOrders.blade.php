@@ -19,7 +19,7 @@
       
       @foreach ($ordersDonePacking as $ordersDonePacking)
 
-      <tr>
+      <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
         <form action="{{route('order.toArchive',$ordersDonePacking)}}" method="post">
           <td>{{$ordersDonePacking->uzsakovas}}</td>
           <td>{{$ordersDonePacking->pavadinimas}}</td>

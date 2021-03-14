@@ -24,7 +24,7 @@
         </tr>
         @foreach ($orders as $order)
         @if ($machine->id == $order->machine_id)
-        <tr>
+        <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
           <form action="{{route('machine.moveElement')}}" method="get">
             <td> 
               <input type="text" name="eil_nr" value="{{$order->eil_nr}}" size="1"> 

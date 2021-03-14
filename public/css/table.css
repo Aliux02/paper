@@ -19,10 +19,9 @@ table {
     padding: 8px;
   }
   
-  tr:first-child {
-    background-color: white;
-  }
+
   tr:first-child:hover {
+    background-color: white;
     color: black;
   }
 

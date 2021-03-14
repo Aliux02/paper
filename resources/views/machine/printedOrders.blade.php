@@ -22,7 +22,7 @@
 
       
       @foreach ($doneOrders as $doneOrder)
-        <tr>
+        <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
         <form action="{{route('order.rewind',$doneOrder)}}" method="post"> 
           <td>{{$doneOrder->id}} </td>
           <td>{{$doneOrder->uzsakovas}} </td>

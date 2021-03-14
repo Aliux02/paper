@@ -35,48 +35,41 @@
           <th>Pabaigimas</th>
           <th>Pastabos</th>
           @if (auth()->user()->permission_lvl>=1000)
-          <th>Keisti</th>
-          <th>Maketas</th>
+          {{-- <th>Keisti</th>
+          <th>Maketas</th> --}}
           <th>Info</th>
           @endif
         </tr>
         
         @foreach ($orders as $order)
 
-        <tr>
+        <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
           <form action="{{route('order.store')}}" method="post" enctype="multipart/form-data">
-            <td><input type="text" size="10" name="uzsakovas" value="{{$order->uzsakovas}}"></td>
-            <td><input type="text" size="10" name="pavadinimas" value="{{$order->pavadinimas}}"></td>
-            <td><input type="text" size="2" name="ilgis" value="{{$order->ilgis}}"></td>
-            <td><input type="text" size="2" name="plotis" value="{{$order->plotis}}"></td>
-            <td><input type="text" size="4" name="medziaga" value="{{$order->medziaga}}"></td>
-            <td><input type="text" size="2" name="klijai" value="{{$order->klijai}}"></td>
-            <td><input type="text" size="1" name="eiles" value="{{$order->eiles}}"></td>
-            <td><input type="text" size="1" name="spalva" value="{{$order->spalva}}"></td>
-            <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
-            <td><input type="text" size="4" name="velenas" value="{{$order->velenas}}"></td>
-            <td><input type="text" size="6" name="pabaigimas" value="{{$order->pabaigimas}}"></td>
+            <td>{{$order->uzsakovas}}</td>
+            <td>{{$order->pavadinimas}}</td>
+            <td>{{$order->ilgis}}</td>
+            <td>{{$order->plotis}}</td>
+            <td>{{$order->medziaga}}</td>
+            <td>{{$order->klijai}}</td>
+            <td>{{$order->eiles}}</td>
+            <td>{{$order->spalva}}</td>
+            <td>{{$order->kiekis}}</td>
+            <td>{{$order->velenas}}</td>
+            <td>{{$order->pabaigimas}}</td>
             <input type="hidden" size="4" name="naujoUzsMaketas" value="{{$order->maketas}}">
-            <td>
-              <textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}
-              </textarea>
-            </td>
+            <td>{{$order->pastabos}}</td>
             @if (auth()->user()->permission_lvl>=1000)
-            <td>
+            {{-- <td>
               <button type="submit">Save</button> 
-            </td>
+            </td> --}}
             @csrf
           </form>
+          {{-- <td>
+            @if ($order->maketas !== '0')
+              <a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>
+            @endif
+          </td> --}}
           <td>
-            <?php if ($order->maketas !== '0') {
-              echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
-              //echo '<input type="button" onclick="location.href='.route('order.printLayout', $order ).';" value="Maketas" />';
-              } 
-              ?>
-            {{-- <a href="{{route('order.printLayout', $order )}}"><button>Maketas</button></a> --}}
-          </td>
-          <td>
-            
             <a href="{{route('orderinfo.index', $order )}}"><button>Info</button></a>
           </td>
           @endif
