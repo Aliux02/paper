@@ -32,7 +32,7 @@
           
       
           
-      <tr @if (auth()->user()->permission_lvl>=1000) onclick="window.location='{{route('order.orderCard',$order)}}'" @endif>
+      <tr @if (auth()->user()->permission_lvl>=1000) onclick="window.location='{{route('order.orderCard',$order)}}'" @endif; {{$order->color()}}>
         <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data">
           <td>{{$order->uzsakovas}}</td>
           <td>{{$order->pavadinimas}}</td>
