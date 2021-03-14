@@ -41,7 +41,7 @@
                             @endif
                     </div>
         
-                    <div class="mt-4"style="width: 48%; float: left">
+                    <div class="mt-4"style="width: 22%; float: left">
                         <x-jet-label class="font-semibold" for="ilgis" value="{{ __('Ilgis') }}" />
                         @if (auth()->user()->permission_lvl>=1000)
                             <x-jet-input id="ilgis" class="block mt-1 w-full" type="text" name="ilgis" :value="$order->ilgis" />
@@ -50,7 +50,7 @@
                             @endif
                     </div>
         
-                    <div class="mt-4"style="width: 48%; float: right">
+                    <div class="mt-4 ml-4"style="width: 22%; float: left">
                         <x-jet-label class="font-semibold" for="plotis" value="{{ __('Plotis') }}" />
                         @if (auth()->user()->permission_lvl>=1000)
                         <x-jet-input id="plotis" class="block mt-1 w-full" type="text" name="plotis" :value="$order->plotis"/>
@@ -60,15 +60,34 @@
                     </div>
         
                     
-                    <div class="mt-4"style="width: 48%; float: left">
+                    
+                    <div class="mt-4"style="width: 48%; float: right">
                         <x-jet-label class="font-semibold" for="medziaga" value="{{ __('medziaga') }}" />
                         @if (auth()->user()->permission_lvl>=1000)
                         <x-jet-input id="medziaga" class="block mt-1 w-full" type="text" name="medziaga"  :value="$order->medziaga"/>
                             @else
-                        <p>{{$order->medziaga}}</p> 
-                        @endif   
-                    </div>
-                    
+                            <p>{{$order->medziaga}}</p> 
+                            @endif   
+                        </div>
+                        <div class="mt-4" style="width: 22%; float: left">
+                            <x-jet-label class="font-semibold" for="spalva" value="{{ __('spalva') }}" />
+                            
+                                @if (auth()->user()->permission_lvl>=1000)
+                                <x-jet-input id="spalva" class="block mt-1 w-full" type="text" name="spalva" :value="$order->spalva"/>
+                                    @else
+                                <p>{{$order->spalva}}</p> 
+                                @endif 
+                        </div>
+                        <div class="mt-4 ml-4"style="width: 22%; float: left">
+                            <x-jet-label class="font-semibold" for="eiles" value="{{ __('eiles') }}" />
+                            
+                                @if (auth()->user()->permission_lvl>=1000)
+                                <x-jet-input id="eiles" class="block mt-1 w-full" type="text" name="eiles" :value="$order->eiles"/>
+                                    @else
+                                <p>{{$order->eiles}}</p> 
+                                @endif 
+                        </div>
+                        
                     <div class="mt-4"style="width: 48%; float: right">
                         <x-jet-label class="font-semibold" for="klijai" value="{{ __('klijai') }}" />
                         
@@ -79,25 +98,6 @@
                             @endif   
                     </div>
 
-                    <div class="mt-4"style="width: 48%; float: left">
-                        <x-jet-label class="font-semibold" for="eiles" value="{{ __('eiles') }}" />
-                        
-                            @if (auth()->user()->permission_lvl>=1000)
-                            <x-jet-input id="eiles" class="block mt-1 w-full" type="text" name="eiles" :value="$order->eiles"/>
-                                @else
-                            <p>{{$order->eiles}}</p> 
-                            @endif 
-                    </div>
-                    
-                    <div class="mt-4" style="width: 48%; float: right">
-                        <x-jet-label class="font-semibold" for="spalva" value="{{ __('spalva') }}" />
-                        
-                            @if (auth()->user()->permission_lvl>=1000)
-                            <x-jet-input id="spalva" class="block mt-1 w-full" type="text" name="spalva" :value="$order->spalva"/>
-                                @else
-                            <p>{{$order->spalva}}</p> 
-                            @endif 
-                    </div>
                     
                     <div class="mt-4" style="width: 48%; float: left">
                         <x-jet-label class="font-semibold" for="kiekis" value="{{ __('kiekis') }}" />

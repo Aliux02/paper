@@ -14,8 +14,8 @@
           <th>Spalva</th>
           <th>Pabaigimo data</th>
           
-          <th>Pastabos</th>
-          <th>Maketas</th>
+          {{-- <th>Pastabos</th>
+          <th>Maketas</th> --}}
           <th>Kiekis</th>                
           @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
           <th>Keisti</th>
@@ -26,7 +26,7 @@
         @if ($machine->id == $order->machine_id)
         <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
           <form action="{{route('machine.moveElement')}}" method="get">
-            <td> 
+            <td onclick="tdclick(event);"> 
               <input type="text" name="eil_nr" value="{{$order->eil_nr}}" size="1"> 
               @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=1000)
               <input type="hidden" name="yyy" value="{{$machine->id-1}}">
@@ -46,12 +46,12 @@
             <td>{{$order->spalva}} </td>
             <td>{{$order->pabaigimas}} </td>
             
-            <td>{{$order->pastabos}} </td>
+            {{-- <td>{{$order->pastabos}} </td>
             <td>
               <?php if ($order->maketas !== '0') {
                 echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
                 }?>
-            </td>
+            </td> --}}
           </form>
             <?php 
             if (auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<500) {
@@ -81,3 +81,10 @@
         @endif
         @endforeach
       </table>
+
+      <script>
+        function tdclick(event){
+            console.log(''); 
+            event.stopPropagation()
+        };
+      </script>
