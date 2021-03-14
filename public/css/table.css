@@ -18,23 +18,59 @@ table {
     text-align: center;
     padding: 8px;
   }
-
-  tr:hover{
-    background-color:#398B93 ;
-    color: white;
-    cursor: pointer;
-  }
-
+  
   tr:first-child {
     background-color: white;
   }
   tr:first-child:hover {
     color: black;
   }
+
   tr:nth-child(even) {
     background-color: #dddddd;
   }
-  tr:nth-child(even):hover {
-    background-color: #398B93;
+  tr:hover{
+    background-color:#398B93 ;
+    color: white;
+    cursor: pointer;
+  }
+  tr.onPrint {
+    background-color: yellow;
+    color: black;
+  }
+  tr.onPrint:hover{
+    background-color:#398B93 ;
+    color: white;
+    cursor: pointer;
+  }
+  tr.donePrint {
+    background-color: green;
     color: white;
   }
+  tr.donePrint:hover{
+    background-color:#398B93 ;
+    color: white;
+    cursor: pointer;
+  }
+  tr.onRewind {
+    background-color: blue;
+    color: white;
+  }
+  tr.onRewind:hover{
+    background-color:#398B93 ;
+    color: white;
+    cursor: pointer;
+  }
+  tr.onPack {
+    background-color: red;
+    color: white;
+  }
+  tr.onPack:hover{
+    background-color:#398B93 ;
+    color: white;
+    cursor: pointer;
+  }
+  /* tr:nth-child(even):hover {
+    background-color: #398B93;
+    color: white;
+  } */

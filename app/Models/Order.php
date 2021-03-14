@@ -25,16 +25,16 @@ class Order extends Model
             echo 'style=""';
         }
         if ($this->status == 0) {
-            echo 'style="background-color:yellow"';
+            echo 'class="onPrint"';
         }
         if ($this->status == 1) {
-            echo 'style="background-color:green"';
+            echo 'class="donePrint"';
         }
         if ($this->status == 2) {
-            echo 'style="background-color:blue; color:white;"';
+            echo 'class="onRewind"';
         }
         if ($this->status == 3) {
-            echo 'style="background-color:red"';
+            echo 'class="onPack"';
         }
     }
 }
