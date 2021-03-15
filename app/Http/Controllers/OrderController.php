@@ -464,7 +464,7 @@ class OrderController extends Controller
         $order->kiekis = $request->kiekis;
         $order->velenas = $request->velenas;
         $order->pastabos = $request->pastabos;
-        $order->maketas=$request->maketas;
+        $order->maketas=$order->maketas;
         $order->status=0;
         $order->pabaigimas = $request->pabaigimas;
         if($request->dezes==null){$order->dezes=0;}

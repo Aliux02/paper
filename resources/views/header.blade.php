@@ -35,7 +35,7 @@
                 <a href="{{route('order.create')}}" style="background-color: #398B93; color:white">Ivesti uzsakyma</a>
                 @endif
 
-                @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+                @if (auth()->user()->permission_lvl>=10)
                 <a href="{{route('paper.index')}}">Popierius</a>
                 @endif
   

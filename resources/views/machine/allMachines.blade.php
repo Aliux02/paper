@@ -60,7 +60,7 @@
                 echo '<form action="'.route('order.donePrint').'" method="post">';
             }
             ?>
-            <td>
+            <td onclick="tdclick(event);">
 
               @if (auth()->user()->permission_lvl>=750)
               {{$order->kiekis}}
