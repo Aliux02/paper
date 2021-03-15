@@ -33,7 +33,7 @@
       
           
       <tr onclick="window.location='{{route('order.orderCard',$order)}}'" ; {{$order->color()}}>
-        <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data">
+        {{-- <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data"> --}}
           <td>{{$order->uzsakovas}}</td>
           <td>{{$order->pavadinimas}}</td>
           <td>{{$order->ilgis}}</td>

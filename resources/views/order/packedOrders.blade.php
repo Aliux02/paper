@@ -32,9 +32,15 @@
           <td>{{$ordersDonePacking->pabaigimas}}</td>
           <td>{{$ordersDonePacking->kiekis}}</td>
           <td>{{$ordersDonePacking->dezes}}</td>
-          <td>
+          <td onclick="tdclick(event);">
             <button type="submit">Save</button> 
           </td>
+          <script>
+            function tdclick(event){
+                console.log(''); 
+                event.stopPropagation()
+            };
+          </script>
           @csrf
         </form>
 

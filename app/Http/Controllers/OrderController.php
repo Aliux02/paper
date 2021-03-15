@@ -129,10 +129,9 @@ class OrderController extends Controller
     }
     public function toArchive(Request $request,$order)
     {
+        //dd($order);
         $order = Order::find($order);
         $order->status=5;
-        $order->pabaigimas=$order->pabaigimas;
-        $order->velenas=$order->velenas;
         $order->machine_id=null;
         $order->update();
         return back();
@@ -278,9 +277,7 @@ class OrderController extends Controller
         $order->pastabos = $request->pastabos;
         
 
-
-
-        if($request->maketas==0){
+        if($request->maketas===0){
             $order->maketas = 0;
             
         }else{
@@ -302,10 +299,10 @@ class OrderController extends Controller
                 $fileName = $file->getClientOriginalName();
 
                 $path = $file->storeAs('public', $fileName);
-//dd($path);
                 $order->maketas = $fileName;
             }
         }
+
         $order->save();
 
         $orderInfo = new Orderinfo();
@@ -340,6 +337,14 @@ class OrderController extends Controller
         $path = $order->maketas;
         return view('order.orderCard',['order'=>$order,'machines'=>$machines, 'path'=>$path]);
     }
+    public function storeFromArchive(Request $request, $order)
+    {
+        $order = Order::find($order);
+        $machines = Machine::all();
+        return view('order.storeFromArchive',['order'=>$order,'machines'=>$machines]);
+    }
+
+
     /**
      * Display the specified resource.
      *

@@ -77,6 +77,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/maketas/{order}', [OrderController::class, 'printLayout'])->name('order.printLayout');
 
         Route::get('/card/{order}', [OrderController::class, 'card'])->name('order.orderCard');
+
+        Route::get('/storeFromArchive/{order}', [OrderController::class, 'storeFromArchive'])->name('order.storeFromArchive');
     });
 });
 

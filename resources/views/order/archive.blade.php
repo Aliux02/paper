@@ -35,16 +35,16 @@
           <th>Pabaigimas</th>
           <th>Pastabos</th>
           @if (auth()->user()->permission_lvl>=1000)
-          {{-- <th>Keisti</th>
-          <th>Maketas</th> --}}
+          {{-- <th>Keisti</th> --}}
+          {{-- <th>Maketas</th> --}}
           <th>Info</th>
           @endif
         </tr>
         
         @foreach ($orders as $order)
 
-        <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
-          <form action="{{route('order.store')}}" method="post" enctype="multipart/form-data">
+        <tr onclick="window.location='{{route('order.storeFromArchive',$order)}}'">
+          <form action="{{route('order.storeFromArchive',$order)}}" method="get" enctype="multipart/form-data">
             <td>{{$order->uzsakovas}}</td>
             <td>{{$order->pavadinimas}}</td>
             <td>{{$order->ilgis}}</td>
