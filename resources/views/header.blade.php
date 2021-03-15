@@ -69,7 +69,7 @@
               @endif
             </li>
             <li>
-                @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+                @if (auth()->user()->permission_lvl>=10)
                 <a href="{{route('paper.index')}}">Popierius</a>
                 @endif
             </li>

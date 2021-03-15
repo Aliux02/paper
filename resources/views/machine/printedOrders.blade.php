@@ -39,7 +39,7 @@
           
           @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
             
-            <td>    
+            <td onclick="tdclick(event);">    
               <select style="width: 60px" name="machine_id" >
                 <option  value=""></option>
                   @foreach ($machines as $machine)
@@ -61,4 +61,9 @@
       @endforeach
     </table>
   </div>
- 
+  <script>
+    function tdclick(event){
+        console.log(''); 
+        event.stopPropagation()
+    };
+  </script>
