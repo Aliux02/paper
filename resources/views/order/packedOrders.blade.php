@@ -19,7 +19,7 @@
       
       @foreach ($ordersDonePacking as $ordersDonePacking)
 
-      <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
+      <tr onclick="window.location='{{route('order.orderCard',$ordersDonePacking)}}'">
         <form action="{{route('order.toArchive',$ordersDonePacking)}}" method="post">
           <td>{{$ordersDonePacking->uzsakovas}}</td>
           <td>{{$ordersDonePacking->pavadinimas}}</td>
@@ -32,10 +32,10 @@
           <td>{{$ordersDonePacking->pabaigimas}}</td>
           <td>{{$ordersDonePacking->kiekis}}</td>
           <td>{{$ordersDonePacking->dezes}}</td>
-          @csrf
           <td>
             <button type="submit">Save</button> 
           </td>
+          @csrf
         </form>
 
 

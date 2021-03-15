@@ -15,15 +15,17 @@
   @if (auth()->user()->permission_lvl>=750)
 
 @include('header')
-@include('errors')
+
 
 
     <div class="container">
+      
 {{--         
     
       <h2 class="titleOne">Suvynioti uzsakymai</h2> --}}
     
       <div class="firstTable" >
+        @include('errors')
         <div class="header">Suvynioti užsakymai</div>
         <table>
             <tr>
@@ -58,8 +60,8 @@
                 <td>{{$order->spalva}}</td>
                 <td>{{$order->pabaigimas}}</td>
                 <td>{{$order->pastabos}}</td>
-                <td><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
-                <td><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
+                <td onclick="tdclick(event);"><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
+                <td onclick="tdclick(event);"><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
                 @if (auth()->user()->permission_lvl>=750 && auth()->user()->permission_lvl<1000 || auth()->user()->permission_lvl>=2000)
                 <td>
                   <button type="submit">Save</button> 
@@ -78,3 +80,9 @@
       @endauth
 </body>
 </html>
+<script>
+  function tdclick(event){
+      console.log(''); 
+      event.stopPropagation()
+  };
+</script>
