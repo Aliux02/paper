@@ -109,16 +109,25 @@
                             @endif 
                     </div>
         
-                    <div class="mt-4"style="width: 48%; float: right">
-                        <x-jet-label class="font-semibold" for="velenas" value="{{ __('velenas') }}" />
+                    <div class="mt-4 ml-4"style="width: 22%; float: left">
+                        <x-jet-label class="font-semibold" for="kryptis" value="{{ __('Kryptis') }}" />
                         
-                            @if (auth()->user()->permission_lvl>=1000)
-                            <x-jet-input id="velenas" class="block mt-1 w-full" type="text" name="velenas"  :value="$order->velenas"/>
-                                @else
-                            <p>{{$order->velenas}}</p> 
+                        @if (auth()->user()->permission_lvl>=1000)
+                        <x-jet-input id="kryptis" class="block mt-1 w-full" type="text" name="kryptis"  :value="$order->kryptis"/>
+                            @else
+                            <p>{{$order->kryptis}}</p> 
                             @endif 
-                    </div>
+                        </div>
                     
+                        <div class="mt-4"style="width: 22%; float: right">
+                            <x-jet-label class="font-semibold" for="velenas" value="{{ __('velenas') }}" />
+                            
+                                @if (auth()->user()->permission_lvl>=1000)
+                                <x-jet-input id="velenas" class="block mt-1 w-full" type="text" name="velenas"  :value="$order->velenas"/>
+                                    @else
+                                <p>{{$order->velenas}}</p> 
+                                @endif 
+                        </div>
                     
                     <div class="mt-4"style="width: 100%; float: right">
                         <x-jet-label class="font-semibold" for="pabaigimas" value="{{ __('pabaigimas') }}" />

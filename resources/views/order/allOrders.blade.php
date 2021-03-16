@@ -4,6 +4,7 @@
       <tr>
         <th>Uzsakovas</th>
         <th>Pavadinimas</th>
+        <th>Kryptis</th>
         <th>Ilgis</th>
         <th>Plotis</th>
         <th>Medziaga</th>
@@ -36,6 +37,7 @@
         {{-- <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data"> --}}
           <td>{{$order->uzsakovas}}</td>
           <td>{{$order->pavadinimas}}</td>
+          <td>{{$order->kryptis}}</td>
           <td>{{$order->ilgis}}</td>
           <td>{{$order->plotis}}</td>
           <td>{{$order->medziaga}}</td>

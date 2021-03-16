@@ -45,6 +45,10 @@
                 <x-jet-input id="spalva" class="block mt-1 w-full" type="text" name="spalva" :value="old('spalva')"/>
             </div>
             
+
+
+
+
             <div class="mt-4"style="width: 48%; float: left">
                 <x-jet-label for="medziaga" value="{{ __('medziaga') }}" />
                 <x-jet-input id="medziaga" class="block mt-1 w-full" type="text" name="medziaga"  :value="old('medziaga')"/>
@@ -61,7 +65,12 @@
                 <x-jet-input id="kiekis" class="block mt-1 w-full" type="text" name="kiekis" :value="old('kiekis')"/>
             </div>
 
-            <div class="mt-4"style="width: 48%; float: right">
+            <div class="mt-4 ml-4" style="width: 22%; float: left">
+                <x-jet-label for="kryptis" value="{{ __('Kryptis') }}" />
+                <x-jet-input id="kryptis" class="block mt-1 w-full" type="text" name="kryptis" :value="old('kryptis')"/>
+            </div>
+
+            <div class="mt-4"style="width: 22%; float: right">
                 <x-jet-label for="velenas" value="{{ __('velenas') }}" />
                 <x-jet-input id="velenas" class="block mt-1 w-full" type="text" name="velenas"  :value="old('velenas')"/>
             </div>
