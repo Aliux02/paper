@@ -183,7 +183,7 @@ class OrderController extends Controller
         [
             'uzsakovas' => ['required','min:2','max:64'],
             'pavadinimas' => ['required','min:1','max:64'],
-            'kryptis' => ['required','min:1','max:64'],
+            'kryptis' => ['required','min:1','alpha','max:1'],
             'ilgis' => ['required','numeric','min:1','max:500'],
             'plotis' => ['required','numeric','min:1','max:500'],
             'medziaga' => ['required','min:1','max:64'],
@@ -207,6 +207,7 @@ class OrderController extends Controller
             'kryptis.required' => 'Uzsakymo kryptis privaloma',
             'kryptis.min' => 'Uzsakymo kryptis per trumpa',
             'kryptis.max' => 'Uzsakymo kryptis per ilga',
+            'kryptis.alpha' => 'Uzsakymo kryptis turi buti zodis',
             
             'ilgis.required' => 'Ilgis privalomas',
             'ilgis.numeric' => 'Ilgis turi buti skaicius',
@@ -265,7 +266,7 @@ class OrderController extends Controller
         $order->eil_nr = null;
         $order->uzsakovas = ucfirst($request->uzsakovas);
         $order->pavadinimas = ucfirst($request->pavadinimas);
-        $order->kryptis = $request->kryptis;
+        $order->kryptis = strtoupper($request->kryptis);
         $order->ilgis = str_replace(',','.',$request->ilgis);
         $order->plotis = str_replace(',','.',$request->plotis);
         $order->medziaga = strtoupper($request->medziaga);
@@ -386,7 +387,7 @@ class OrderController extends Controller
         [
             'uzsakovas' => ['required','min:2','max:64'],
             'pavadinimas' => ['required','min:1','max:64'],
-            'kryptis' => ['required','min:1','max:64'],
+            'kryptis' => ['required','alpha','min:1','max:1'],
             'ilgis' => ['required','numeric','min:1','max:500'],
             'plotis' => ['required','numeric','min:1','max:500'],
             'medziaga' => ['required','min:1','max:64'],
@@ -410,6 +411,7 @@ class OrderController extends Controller
             'kryptis.required' => 'Uzsakymo kryptis privaloma',
             'kryptis.min' => 'Uzsakymo kryptis per trumpa',
             'kryptis.max' => 'Uzsakymo kryptis per ilga',
+            'kryptis.alpha' => 'Uzsakymo kryptis turi buti zodis',
 
             'ilgis.required' => 'Ilgis privalomas',
             'ilgis.numeric' => 'Ilgis turi buti skaicius',
@@ -468,7 +470,7 @@ class OrderController extends Controller
         $order->id = $order->id;
         $order->uzsakovas = ucfirst($request->uzsakovas);
         $order->pavadinimas = ucfirst($request->pavadinimas);
-        $order->kryptis = $request->kryptis;
+        $order->kryptis = strtoupper($request->kryptis);
         $order->ilgis = str_replace(',','.',$request->ilgis);
         $order->plotis = str_replace(',','.',$request->plotis);
         $order->medziaga = strtoupper($request->medziaga);
