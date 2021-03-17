@@ -22,10 +22,7 @@
     @include('errors')
 
     
-    @if (auth()->user()->permission_lvl>=2000 )
-    @include('machine.storeMachine')
-    @endif  
-    
+   
     @if(auth()->user()->permission_lvl>=100 )
     {{-- <h2 class="titleOne">Atspausdinti uzsakymai</h2> --}}
     @include('machine.printedOrders')
@@ -51,3 +48,10 @@
   @endauth
 </body>
 </html>
+
+<script>
+  function tdclick(event){
+      console.log(''); 
+      event.stopPropagation()
+  };
+</script>

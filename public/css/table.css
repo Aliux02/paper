@@ -1,11 +1,13 @@
 .header {
   background-color:#398B93;
   color: white;
-  font-size: 1.5em;
-  padding: 1rem;
+  font-size: 1.2em;
+  padding: 0.8rem;
   text-align: center;
   text-transform: uppercase;
   margin-top: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 table {
     font-family: arial, sans-serif;

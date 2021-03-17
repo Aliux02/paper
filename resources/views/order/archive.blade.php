@@ -15,10 +15,12 @@
   @if (auth()->user()->permission_lvl>=750)
   @include('header')
     <div class="container">
-    <br>
-    <input type="text" id="myInput" onkeyup="myFunction()" style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
-    <br><br>
-    <div class="firstTable" >
+    
+
+    
+    <div class="secondTable" >
+      <input type="text" id="myInput" onkeyup="myFunction()" 
+      style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
       <div class="header">Archyvas</div>
       <table id="myTable">
         <tr>

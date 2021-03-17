@@ -18,15 +18,40 @@
 
     
 
-  <h2 class="titleOne" >Vartotoju leidimo reziai</h2>
-  <div class="filter" style="width: 250px" >
-    <dl>
-      <li>Pagalbiniai nuo 10 iki 100</li>
-      <li>Vyniotojai nuo 100 iki 500</li>
-      <li>Spaudejai nuo 500 iki 750</li>
-      <li>Pakuotojai nuo 750 iki 1000</li>
-      <li>Vadovai, vadyba nuo 1000 iki 2000</li>
-    </dl>  
+  
+  <div class="filter">
+    <div class="permissionLvl">
+      <h2 class="titleOne" >Vartotoju leidimo reziai</h2>
+      <dl>
+        <li>Pagalbiniai nuo 10 iki 100</li>
+        <li>Vyniotojai nuo 100 iki 500</li>
+        <li>Spaudejai nuo 500 iki 750</li>
+        <li>Pakuotojai nuo 750 iki 1000</li>
+        <li>Vadovai, vadyba nuo 1000 iki 2000</li>
+      </dl> 
+    </div>
+    <div class="storeMachine">
+      <h2 class="titleOne" >Ivesti nauja irengini</h2>
+      
+        <form action="{{route('machine.store')}}" method="post">
+          <label for="pavadinimas">Pavadinimas:</label>
+          <input type="text" id="pavadinimas" size="8" name="pavadinimas" value="">
+      <br><br>
+          <label for="tipas">Tipas:</label>
+          <select id="tipas" name="tipas" >
+            <option value="vyniokle">Vyniokle</option>
+            <option value="spausdinimo">Spausdinimo</option>
+          </select>
+        
+      <br><br>
+
+          <div class="btn_store">
+            <input  type="submit" value="Submit">
+            @csrf
+          </div>
+        </form>
+      
+    </div> 
   </div>
 <div class="firstTable">
   <div class="header">Vartotojai</div>

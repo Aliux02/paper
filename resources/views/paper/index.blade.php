@@ -75,7 +75,7 @@
       @csrf
     </form>
     <br><br>
-    <div class="firstTable" >
+    <div class="secondTable" >
       <div class="header">Popieriaus sarasas</div>
       <table>
         

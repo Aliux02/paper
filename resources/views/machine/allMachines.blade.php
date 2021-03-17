@@ -82,9 +82,3 @@
         @endforeach
       </table>
 
-      <script>
-        function tdclick(event){
-            console.log(''); 
-            event.stopPropagation()
-        };
-      </script>

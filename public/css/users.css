@@ -1,0 +1,18 @@
+.permissionLvl{
+    display: inline-block;
+    width: 48%;
+    text-align: left;
+}
+.storeMachine{
+    float: right;
+    width: 48%;
+    text-align: left;
+}
+h2{
+    text-align: center;
+}
+.storeInput{
+    /* display: flex;
+    justify-content: center;
+    align-content: center; */
+}

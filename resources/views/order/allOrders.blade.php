@@ -93,14 +93,14 @@
           </td>
         </form>
         <td>
-          <?php if ($order->maketas !== '0') {
+          {{-- <?php if ($order->maketas !== '0') {
           echo '<a style="text-decoration: none" href="'.route('order.printLayout', $order ).'">Maketas</a>';
           } 
-          ?>
-        </td>
+          ?> --}}
+        {{-- </td>
         <td>
           <a href="{{route('order.destroy', $order)}} "><button>Delete</button></a>
-        </td> --}}
+        </td>  --}}
 
         @endif
 

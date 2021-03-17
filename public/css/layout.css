@@ -54,7 +54,7 @@
         margin-top: 50px;
     }
     .titleTwo{
-        padding: 40px 0px;
+        padding: 40px 0px 0px;
         grid-area: titleTwo;
         text-align: center;
     }
@@ -63,7 +63,7 @@
         overflow-x:auto;
     }
     .titleThree{
-        padding: 40px 0px;
+        padding: 40px 0px 0px;
         grid-area: titleThree;
         text-align: center;
     }
@@ -77,8 +77,8 @@
     h2{
         padding: 20px 0;
     }
-    .storeInput{
-      /* width: 200px; */
+    /* .storeInput{
+      width: 200px;
       padding: 0px 20px;
       float: left;
     }
@@ -89,7 +89,7 @@
       align-items: center;
       margin-top: 20px;
       padding: 0px 20px;
-    }
+    } */
     .paperBtn{
         margin-top: 60px;
         margin-left: 20px;
