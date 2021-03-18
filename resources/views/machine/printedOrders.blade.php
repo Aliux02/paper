@@ -1,6 +1,7 @@
 <div class="firstTable" >
   <div class="header">Atspausdinti užsakymai</div>
     <table>
+      <thead>
       <tr>
         <th>Uzs. nr.</th>
         <th>Uzsakovas</th>
@@ -19,8 +20,8 @@
         <th>Parinkti</th>
         @endif
       </tr>
-
-      
+      </thead>
+      <tbody>
       @foreach ($doneOrders as $doneOrder)
         <tr onclick="window.location='{{route('order.orderCard',$doneOrder)}}'">
         <form action="{{route('order.rewind',$doneOrder)}}" method="post"> 
@@ -59,5 +60,6 @@
         </form>
         </tr>
       @endforeach
+     </tbody>
     </table>
   </div>

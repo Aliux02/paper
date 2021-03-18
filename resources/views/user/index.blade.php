@@ -56,6 +56,7 @@
 <div class="firstTable">
   <div class="header">Vartotojai</div>
   <table>
+    <thead>
     <tr>
         <th>Vardas</th>
         <th>El. pastas</th>
@@ -63,6 +64,8 @@
         <th>Leidimo lygis</th>
         <th>Patvirtinti</th>
     </tr>
+  </thead>
+  <tbody>
     @foreach ($users as $user)
     <tr>
     <form action="{{route('user.update', $user)}}" method="post">
@@ -75,7 +78,7 @@
     </form>
     </tr>
     @endforeach
-
+  </tbody>
 
 
   </table>

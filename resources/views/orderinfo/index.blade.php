@@ -20,6 +20,7 @@
     <div class="secondTable" >
       <div class="header">Uzsakymo istorija</div>
       <table>
+        <thead>
         <tr>
           <th>Uzpilde</th>
           <th>Uzpildyta</th>
@@ -32,7 +33,8 @@
           
           
         </tr>
-          
+      </thead>
+      <tbody>
         @foreach ($orderinfos as $orderinfo)
 
         <tr>
@@ -51,7 +53,7 @@
 
         </tr>
         @endforeach
-          
+      </tbody>
       </table>
     </div>
   </div>

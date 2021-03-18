@@ -77,8 +77,8 @@
     <br><br>
     <div class="secondTable" >
       <div class="header">Popieriaus sarasas</div>
-      <table>
-        
+      <table class="paper">
+        <thead>
           <tr>
               <th>Plotis</th>
               <th>Ilgis</th>
@@ -96,7 +96,8 @@
               @endif
 
           </tr>
-        
+        </thead>
+        <tbody>
           @foreach ($papers as $paper)
           <tr>
             <form action="{{route('paper.update',$paper)}}" method="post">
@@ -126,7 +127,7 @@
 
           </tr>
           @endforeach
-        
+        </tbody>
       </table>
     </div>
 

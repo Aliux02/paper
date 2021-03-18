@@ -28,6 +28,7 @@
         @include('errors')
         <div class="header">Suvynioti užsakymai</div>
         <table>
+          <thead>
             <tr>
                 <th>Uzsakovas</th>
                 <th>Pavadinimas</th>
@@ -46,7 +47,8 @@
                 @endif
                 
             </tr>
-          
+          </thead>
+          <tbody>
             @foreach ($orders as $order)
             <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
               <form action="{{route('order.donePacking',$order)}}" method="post">
@@ -71,7 +73,7 @@
               </form>
             </tr>
             @endforeach
-          
+          </tbody>
         </table>
       </div>
 

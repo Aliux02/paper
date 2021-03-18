@@ -1,5 +1,6 @@
 
       <table>
+        <thead>
         <tr>
           <th>Eil. nr.</th>
           <th>Uzs. nr.</th>
@@ -22,6 +23,8 @@
           @endif
           
         </tr>
+      </thead>
+      <tbody>
         @foreach ($orders as $order)
         @if ($machine->id == $order->machine_id)
         <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
@@ -80,5 +83,6 @@
         </tr>
         @endif
         @endforeach
+      </tbody>
       </table>
 

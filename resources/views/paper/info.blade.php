@@ -18,12 +18,14 @@
     <div class="firstTable">
       <div class="header">Nurasinėjimo informacija</div>
       <table>
+        <thead>
         <tr>
           <th>Kiekis</th>
           <th>Nurasyta</th>
           <th>Nurase</th>
         </tr>
-        
+      </thead>
+      <tbody>
         @foreach ($infos as $info)
         <tr>
           <td>{{$info->kiekis}}</td>
@@ -31,6 +33,7 @@
           <td>{{$info->user_name}}</td>
         </tr>
         @endforeach
+      </tbody>
       </table>
     </div>
   </div>

@@ -1,6 +1,7 @@
 <div class="thirdTable" >
   <div class="header">Supakuotu užsakymu sarasas</div>
     <table>
+      <thead>
       <tr>
         <th>Uzsakovas</th>
         <th>Pavadinimas</th>
@@ -16,7 +17,8 @@
         <th>Keisti</th>
         
       </tr>
-      
+    </thead>
+    <tbody>
       @foreach ($ordersDonePacking as $ordersDonePacking)
 
       <tr onclick="window.location='{{route('order.orderCard',$ordersDonePacking)}}'">
@@ -42,6 +44,6 @@
 
       </tr>
       @endforeach
-      
+    </tbody>
     </table>
   </div>

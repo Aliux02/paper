@@ -1,6 +1,7 @@
 <div class="firstTable" >
   <div class="header">Einamuju uzsakymu sarasas </div>
-    <table>
+    <table class="order">
+      <thead>
       <tr>
         <th>Uzsakovas</th>
         <th>Pavadinimas</th>
@@ -27,7 +28,8 @@
         {{-- @endif --}}
 
       </tr>
-      
+    </thead>
+    <tbody>
       @foreach ($orders as $order)
       @if ($order->status !== 4)
           
@@ -109,6 +111,6 @@
       
       @endif
       @endforeach
-      
+    </tbody> 
     </table>
   </div>

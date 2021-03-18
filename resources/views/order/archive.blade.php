@@ -23,6 +23,7 @@
       style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
       <div class="header">Archyvas</div>
       <table id="myTable">
+        <thead>
         <tr>
           <th>Uzsakovas</th>
           <th>Pavadinimas</th>
@@ -42,7 +43,8 @@
           <th>Info</th>
           @endif
         </tr>
-        
+      </thead>
+      <tbody>
         @foreach ($orders as $order)
 
         <tr onclick="window.location='{{route('order.storeFromArchive',$order)}}'">
@@ -77,7 +79,7 @@
           @endif
         </tr>
         @endforeach
-        
+      </tbody>
       </table>
     </div>
   </div>
