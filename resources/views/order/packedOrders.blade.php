@@ -1,12 +1,13 @@
 <div class="thirdTable" >
   <div class="header">Supakuotu užsakymu sarasas</div>
-    <table>
+    <table class="packed">
       <thead>
       <tr>
         <th>Uzsakovas</th>
         <th>Pavadinimas</th>
         <th>Ilgis</th>
         <th>Plotis</th>
+        <th>Kryptis</th>
         <th>Medziaga</th>
         <th>Klijai</th>
         <th>Eiles</th>
@@ -25,6 +26,7 @@
         <form action="{{route('order.toArchive',$ordersDonePacking)}}" method="post">
           <td>{{$ordersDonePacking->uzsakovas}}</td>
           <td>{{$ordersDonePacking->pavadinimas}}</td>
+          <td>{{$ordersDonePacking->kryptis}}</td>
           <td>{{$ordersDonePacking->ilgis}}</td>
           <td>{{$ordersDonePacking->plotis}}</td>
           <td>{{$ordersDonePacking->medziaga}}</td>

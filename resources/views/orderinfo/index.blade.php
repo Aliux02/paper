@@ -19,7 +19,7 @@
   <div class="container">
     <div class="secondTable" >
       <div class="header">Uzsakymo istorija</div>
-      <table>
+      <table class="orderinfo">
         <thead>
         <tr>
           <th>Uzpilde</th>

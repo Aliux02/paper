@@ -22,7 +22,7 @@
       <input type="text" id="myInput" onkeyup="myFunction()" 
       style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
       <div class="header">Archyvas</div>
-      <table id="myTable">
+      <table id="myTable" class="archive">
         <thead>
         <tr>
           <th>Uzsakovas</th>

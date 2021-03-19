@@ -86,9 +86,9 @@ only screen and (max-width: 760px),
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
-		/* position: absolute;
+		position: absolute;
 		top: -9999px;
-		left: -9999px; */
+		left: -9999px;
     display: none;
 	}
 	
@@ -116,6 +116,18 @@ only screen and (max-width: 760px),
 	/*
 	Label the data
 	*/
+  .paperInfo td:nth-of-type(1):before { content: "Kiekis"; }
+  .paperInfo td:nth-of-type(2):before { content: "Nurašyta"; }
+  .paperInfo td:nth-of-type(3):before { content: "Nurašė"; }
+
+  .paper td:nth-of-type(1):before { content: "Plotis"; }
+	.paper td:nth-of-type(2):before { content: "Ilgis"; }
+	.paper td:nth-of-type(3):before { content: "Medžiaga"; }
+	.paper td:nth-of-type(4):before { content: "Klijai"; }
+	.paper td:nth-of-type(5):before { content: "Kiekis"; }
+	.paper td:nth-of-type(6):before { content: "Keisti"; }
+	.paper td:nth-of-type(7):before { content: "Info"; }
+	.paper td:nth-of-type(8):before { content: "Ištrinti"; }
 
   .order td:nth-of-type(1):before { content: "Užsakovas"; }
 	.order td:nth-of-type(2):before { content: "Pavadinimas"; }
@@ -129,4 +141,71 @@ only screen and (max-width: 760px),
   .order td:nth-of-type(10):before { content: "Kiekis"; }
 	.order td:nth-of-type(11):before { content: "Velenas"; }
   .order td:nth-of-type(12):before { content: "Pagaminimo data"; }
+
+  .machine td:nth-of-type(1):before { content: "Eil. nr."; }
+	.machine td:nth-of-type(2):before { content: "Uzs. nr."; }
+	.machine td:nth-of-type(3):before { content: "Uzsakovas"; }
+	.machine td:nth-of-type(4):before { content: "Pavadinimas"; }
+	.machine td:nth-of-type(5):before { content: "Ilgis"; }
+  .machine td:nth-of-type(6):before { content: "Plotis"; }
+	.machine td:nth-of-type(7):before { content: "Medžiaga"; }
+	.machine td:nth-of-type(8):before { content: "Velenas"; }
+	.machine td:nth-of-type(9):before { content: "Klijai"; }
+	.machine td:nth-of-type(10):before { content: "Eilės"; }
+  .machine td:nth-of-type(11):before { content: "Spalvos"; }
+  .machine td:nth-of-type(12):before { content: "Pagaminimo data"; }
+  .machine td:nth-of-type(13):before { content: "Kiekis"; }
+  .machine td:nth-of-type(14):before { content: "Keisti"; }
+
+  .orderinfo td:nth-of-type(1):before { content: "Uzpilde"; }
+	.orderinfo td:nth-of-type(2):before { content: "Uzpildyta"; }
+	.orderinfo td:nth-of-type(3):before { content: "Atspausdino"; }
+	.orderinfo td:nth-of-type(4):before { content: "Atspausdinta"; }
+	.orderinfo td:nth-of-type(5):before { content: "Suvyniojo"; }
+  .orderinfo td:nth-of-type(6):before { content: "Suvyniota"; }
+	.orderinfo td:nth-of-type(7):before { content: "Supakavo"; }
+	.orderinfo td:nth-of-type(8):before { content: "Supakuota"; }
+
+  .pack td:nth-of-type(1):before { content: "Užsakovas"; }
+	.pack td:nth-of-type(2):before { content: "Pavadinimas"; }
+	.pack td:nth-of-type(3):before { content: "Kryptis"; }
+	.pack td:nth-of-type(4):before { content: "Ilgis"; }
+	.pack td:nth-of-type(5):before { content: "Plotis"; }
+	.pack td:nth-of-type(6):before { content: "Medžiaga"; }
+	.pack td:nth-of-type(7):before { content: "Klijai"; }
+	.pack td:nth-of-type(8):before { content: "Eilės"; }
+  .pack td:nth-of-type(9):before { content: "Spalvos"; }
+  .pack td:nth-of-type(10):before { content: "Pagaminimo data"; }
+  .pack td:nth-of-type(11):before { content: "Pastabos"; }
+	.pack td:nth-of-type(12):before { content: "Dezes"; }
+  .pack td:nth-of-type(13):before { content: "Kiekis"; }
+  .pack td:nth-of-type(14):before { content: "Supakuota"; }
+
+  .packed td:nth-of-type(1):before { content: "Užsakovas"; }
+	.packed td:nth-of-type(2):before { content: "Pavadinimas"; }
+	.packed td:nth-of-type(3):before { content: "Kryptis"; }
+	.packed td:nth-of-type(4):before { content: "Ilgis"; }
+	.packed td:nth-of-type(5):before { content: "Plotis"; }
+	.packed td:nth-of-type(6):before { content: "Medžiaga"; }
+	.packed td:nth-of-type(7):before { content: "Klijai"; }
+	.packed td:nth-of-type(8):before { content: "Eilės"; }
+  .packed td:nth-of-type(9):before { content: "Spalvos"; }
+  .packed td:nth-of-type(10):before { content: "Pagaminimo data"; }
+  .packed td:nth-of-type(11):before { content: "Kiekis"; }
+	.packed td:nth-of-type(12):before { content: "Dezes"; }
+  .packed td:nth-of-type(13):before { content: "Išsųsti"; }
+
+  .archive td:nth-of-type(1):before { content: "Užsakovas"; }
+	.archive td:nth-of-type(2):before { content: "Pavadinimas"; }
+	.archive td:nth-of-type(3):before { content: "Ilgis"; }
+	.archive td:nth-of-type(4):before { content: "Plotis"; }
+	.archive td:nth-of-type(5):before { content: "Medžiaga"; }
+	.archive td:nth-of-type(6):before { content: "Klijai"; }
+	.archive td:nth-of-type(7):before { content: "Eilės"; }
+	.archive td:nth-of-type(8):before { content: "Spalvos"; }
+  .archive td:nth-of-type(9):before { content: "Kiekis"; }
+  .archive td:nth-of-type(10):before { content: "Velenas"; }
+  .archive td:nth-of-type(11):before { content: "Pabaigimas"; }
+	.archive td:nth-of-type(12):before { content: "Pastabos"; }
+  .archive td:nth-of-type(13):before { content: "Info"; }
 }

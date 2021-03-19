@@ -27,11 +27,12 @@
       <div class="firstTable" >
         @include('errors')
         <div class="header">Suvynioti užsakymai</div>
-        <table>
+        <table class="pack">
           <thead>
             <tr>
                 <th>Uzsakovas</th>
                 <th>Pavadinimas</th>
+                <th>Kryptis</th>
                 <th>Ilgis</th>
                 <th>Plotis</th>
                 <th>Medziaga</th>
@@ -54,6 +55,7 @@
               <form action="{{route('order.donePacking',$order)}}" method="post">
                 <td>{{$order->uzsakovas}}</td>
                 <td>{{$order->pavadinimas}}</td>
+                <td>{{$order->kryptis}}</td>
                 <td>{{$order->ilgis}}</td>
                 <td>{{$order->plotis}}</td>
                 <td>{{$order->medziaga}}</td>

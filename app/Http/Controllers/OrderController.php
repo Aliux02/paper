@@ -482,6 +482,8 @@ class OrderController extends Controller
         $order->velenas = $request->velenas;
         $order->pastabos = $request->pastabos;
         $order->maketas=$order->maketas;
+        // permastyti update is jau atspausdintu uzsakymu ir supakuotu... 
+        // status ir machine_id 
         $order->status=0;
         $order->pabaigimas = $request->pabaigimas;
         if($request->dezes==null){$order->dezes=0;}

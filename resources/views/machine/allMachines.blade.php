@@ -1,5 +1,5 @@
 
-      <table>
+      <table class="machine">
         <thead>
         <tr>
           <th>Eil. nr.</th>
