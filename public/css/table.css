@@ -76,7 +76,7 @@ table {
     color: white;
   } */
 @media 
-only screen and (max-width: 900px),
+only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
@@ -86,9 +86,10 @@ only screen and (max-width: 900px),
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
-		position: absolute;
+		/* position: absolute;
 		top: -9999px;
-		left: -9999px;
+		left: -9999px; */
+    display: none;
 	}
 	
 	tr { border: 1px solid #ccc; }
@@ -115,16 +116,6 @@ only screen and (max-width: 900px),
 	/*
 	Label the data
 	*/
-	.paper td:nth-of-type(1):before { content: "Plotis"; }
-	.paper td:nth-of-type(2):before { content: "Ilgis"; }
-	.paper td:nth-of-type(3):before { content: "Medziaga"; }
-	.paper td:nth-of-type(4):before { content: "Klijai"; }
-	.paper td:nth-of-type(5):before { content: "Kiekis"; }
-	.paper td:nth-of-type(6):before { content: "Išsaugoti"; }
-	.paper td:nth-of-type(7):before { content: "Informacija"; }
-	.paper td:nth-of-type(8):before { content: "Ištrinti"; }
-	.paper td:nth-of-type(9):before { content: "GPA"; }
-	.paper td:nth-of-type(10):before { content: "Arbitrary Data"; }
 
   .order td:nth-of-type(1):before { content: "Užsakovas"; }
 	.order td:nth-of-type(2):before { content: "Pavadinimas"; }
