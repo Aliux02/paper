@@ -153,7 +153,7 @@ class OrderController extends Controller
     {
         $machines = Machine::all();
         $orders = Order::all()->where('status','!=',5)->sortBy('pabaigimas');
-        $ordersDonePacking = Order::all()->where('status','=',4);
+        $ordersDonePacking = Order::all()->where('status','=',4)->sortBy('pabaigimas');
         return view('order.index',['orders'=>$orders,'machines'=>$machines,'ordersDonePacking'=>$ordersDonePacking]);
     }
 
@@ -342,7 +342,7 @@ class OrderController extends Controller
         $path = $order->maketas;
         return view('order.orderCard',['order'=>$order,'machines'=>$machines, 'path'=>$path]);
     }
-    public function storeFromArchive(Request $request, $order)
+    public function storeFromArchive($order)
     {
         $order = Order::find($order);
         $machines = Machine::all();
@@ -483,7 +483,8 @@ class OrderController extends Controller
         $order->pastabos = $request->pastabos;
         $order->maketas=$order->maketas;
         // permastyti update is jau atspausdintu uzsakymu ir supakuotu... 
-        // status ir machine_id 
+        // status ir machine_id ...
+        // jei busena atspausdintas ir supakuotas grazinam kortele, jei ne, updatinama kortele??
         $order->status=0;
         $order->pabaigimas = $request->pabaigimas;
         if($request->dezes==null){$order->dezes=0;}
@@ -493,8 +494,20 @@ class OrderController extends Controller
         
         $orderInfo = Orderinfo::where('order_id','=', $order->id)->first();
         $orderInfo->uzpilde = Auth::user()->name;
-        $orderInfo->uzpildyta = $order->updated_at;
+        $orderInfo->uzpildyta = $order->created_at;
         $orderInfo->update();
+
+        $orderInfo = new Orderinfo();
+        $orderInfo->uzpilde = Auth::user()->name;
+        $orderInfo->uzpildyta = $order->updated_at;
+        $orderInfo->atspausdino = 0;
+        $orderInfo->atspausdinta = 0;
+        $orderInfo->suvyniojo = 0;
+        $orderInfo->suvyniota = 0;
+        $orderInfo->supakavo = 0;
+        $orderInfo->supakuota = 0;
+        $orderInfo->order_id = $order->id;
+        $orderInfo->save();
 // dd($order);
         return redirect()->route('order.index')->
         withInput()->

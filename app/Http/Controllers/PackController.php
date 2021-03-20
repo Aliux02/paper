@@ -16,7 +16,7 @@ class PackController extends Controller
     public function index()
     {
         $machines = Machine::all();
-        $orders = Order::all()->where('status','=', 3);
+        $orders = Order::all()->where('status','=', 3)->sortBy('pabaigimas');
         return view('pack.index',['orders'=>$orders,'machines'=>$machines]);
     }
 

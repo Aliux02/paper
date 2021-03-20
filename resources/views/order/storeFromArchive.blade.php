@@ -21,7 +21,7 @@
                 {{-- <x-jet-input id="uzsakovas" class="block mt-1 w-full" type="text" name="uzsakovas" :value="$order->uzsakovas" /> --}}
                     {{-- <p>{{$order->uzsakovas}}</p> --}}
                     @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="uzsakovas" class="block mt-1 w-full" type="text" name="uzsakovas" :value="$order->uzsakovas" />
+                    <x-jet-input id="uzsakovas" class="block mt-1 w-full" type="text" name="uzsakovas" :value="$order->uzsakovas" readonly/>
                     @else
                     <p>{{$order->uzsakovas}}</p> 
                     @endif
@@ -31,7 +31,7 @@
                 <x-jet-label class="font-semibold" for="pavadinimas" value="{{ __('Pavadinimas') }}" />
                 {{-- <x-jet-input id="pavadinimas" class="block mt-1 w-full" type="text" name="pavadinimas" :value="$order->pavadinimas" /> --}}
                     @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="pavadinimas" class="block mt-1 w-full" type="text" name="pavadinimas" :value="$order->pavadinimas" />
+                    <x-jet-input id="pavadinimas" class="block mt-1 w-full" type="text" name="pavadinimas" :value="$order->pavadinimas" readonly/>
                     @else
                     <p>{{$order->pavadinimas}}</p> 
                     @endif
@@ -40,7 +40,7 @@
             <div class="mt-4"style="width: 22%; float: left">
                 <x-jet-label class="font-semibold" for="ilgis" value="{{ __('Ilgis') }}" />
                 @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="ilgis" class="block mt-1 w-full" type="text" name="ilgis" :value="$order->ilgis" />
+                    <x-jet-input id="ilgis" class="block mt-1 w-full" type="text" name="ilgis" :value="$order->ilgis" readonly/>
                     @else
                     <p>{{$order->ilgis}}</p> 
                     @endif
@@ -49,7 +49,7 @@
             <div class="mt-4 ml-4"style="width: 22%; float: left">
                 <x-jet-label class="font-semibold" for="plotis" value="{{ __('Plotis') }}" />
                 @if (auth()->user()->permission_lvl>=1000)
-                <x-jet-input id="plotis" class="block mt-1 w-full" type="text" name="plotis" :value="$order->plotis"/>
+                <x-jet-input id="plotis" class="block mt-1 w-full" type="text" name="plotis" :value="$order->plotis" readonly/>
                 @else
                 <p>{{$order->plotis}}</p> 
                  @endif        
@@ -60,7 +60,7 @@
             <div class="mt-4"style="width: 48%; float: right">
                 <x-jet-label class="font-semibold" for="medziaga" value="{{ __('medziaga') }}" />
                 @if (auth()->user()->permission_lvl>=1000)
-                <x-jet-input id="medziaga" class="block mt-1 w-full" type="text" name="medziaga"  :value="$order->medziaga"/>
+                <x-jet-input id="medziaga" class="block mt-1 w-full" type="text" name="medziaga"  :value="$order->medziaga" readonly/>
                     @else
                     <p>{{$order->medziaga}}</p> 
                     @endif   
@@ -69,7 +69,7 @@
                     <x-jet-label class="font-semibold" for="spalva" value="{{ __('spalva') }}" />
                     
                         @if (auth()->user()->permission_lvl>=1000)
-                        <x-jet-input id="spalva" class="block mt-1 w-full" type="text" name="spalva" :value="$order->spalva"/>
+                        <x-jet-input id="spalva" class="block mt-1 w-full" type="text" name="spalva" :value="$order->spalva" readonly/>
                             @else
                         <p>{{$order->spalva}}</p> 
                         @endif 
@@ -78,7 +78,7 @@
                     <x-jet-label class="font-semibold" for="eiles" value="{{ __('eiles') }}" />
                     
                         @if (auth()->user()->permission_lvl>=1000)
-                        <x-jet-input id="eiles" class="block mt-1 w-full" type="text" name="eiles" :value="$order->eiles"/>
+                        <x-jet-input id="eiles" class="block mt-1 w-full" type="text" name="eiles" :value="$order->eiles" readonly/>
                             @else
                         <p>{{$order->eiles}}</p> 
                         @endif 
@@ -88,7 +88,7 @@
                 <x-jet-label class="font-semibold" for="klijai" value="{{ __('klijai') }}" />
                 
                     @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="klijai" class="block mt-1 w-full" type="text" name="klijai" :value="$order->klijai"/>
+                    <x-jet-input id="klijai" class="block mt-1 w-full" type="text" name="klijai" :value="$order->klijai" readonly/>
                         @else
                     <p>{{$order->klijai}}</p> 
                     @endif   
@@ -99,17 +99,27 @@
                 <x-jet-label class="font-semibold" for="kiekis" value="{{ __('kiekis') }}" />
                 
                     @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="kiekis" class="block mt-1 w-full" type="text" name="kiekis" :value="$order->kiekis "/>
+                    <x-jet-input id="kiekis" class="block mt-1 w-full" type="text" name="kiekis" :value="$order->kiekis"/>
                         @else
                     <p>{{$order->kiekis}}</p> 
                     @endif 
             </div>
 
-            <div class="mt-4"style="width: 48%; float: right">
+            <div class="mt-4 ml-4"style="width: 22%; float: left">
+                <x-jet-label class="font-semibold" for="kryptis" value="{{ __('Kryptis') }}" />
+                
+                @if (auth()->user()->permission_lvl>=1000)
+                <x-jet-input id="kryptis" class="block mt-1 w-full" type="text" name="kryptis"  :value="$order->kryptis" readonly/>
+                    @else
+                    <p>{{$order->kryptis}}</p> 
+                @endif 
+            </div>
+
+            <div class="mt-4"style="width: 22%; float: right">
                 <x-jet-label class="font-semibold" for="velenas" value="{{ __('velenas') }}" />
                 
                     @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="velenas" class="block mt-1 w-full" type="text" name="velenas"  :value="$order->velenas"/>
+                    <x-jet-input id="velenas" class="block mt-1 w-full" type="text" name="velenas"  :value="$order->velenas" readonly/>
                         @else
                     <p>{{$order->velenas}}</p> 
                     @endif 
@@ -119,7 +129,7 @@
             <div class="mt-4"style="width: 100%; float: right">
                 <x-jet-label class="font-semibold" for="pabaigimas" value="{{ __('pabaigimas') }}" />
                 @if (auth()->user()->permission_lvl>=1000)
-                    <x-jet-input id="pabaigimas" class="block mt-1 w-full" type="date" name="pabaigimas" :value="$order->pabaigimas" />
+                    <x-jet-input id="pabaigimas" class="block mt-1 w-full" type="date" name="pabaigimas" :value="$order->pabaigimas"/>
                 @else
                     <p>{{$order->pabaigimas}}</p> 
                 @endif 
@@ -128,7 +138,7 @@
             <div class="mt-4"style="width: 100%; float: left">
                 <x-jet-label class="font-semibold" for="pastabos" value="{{ __('Pastabos') }}" />
                 @if (auth()->user()->permission_lvl>=1000)
-                <textarea class="block mt-1 w-full" name="pastabos" id="pastabos" cols="40" rows="2" style="border-width:thin;" :value="$order->pastabos">{{$order->pastabos}}</textarea>
+                <textarea class="block mt-1 w-full" name="pastabos" id="pastabos" cols="40" rows="2" style="border-width:thin;" :value="$order->pastabos" readonly>{{$order->pastabos}}</textarea>
                 
             @else
                 <p>{{$order->pastabos}}</p> 
