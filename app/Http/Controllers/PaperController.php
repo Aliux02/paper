@@ -68,7 +68,7 @@ class PaperController extends Controller
      */
     public function create()
     {
-        //
+        return view('paper.create');
     }
 
     /**
@@ -136,7 +136,7 @@ class PaperController extends Controller
         $paper->ilgis = $request->ilgis;
         $paper->plotis = $request->plotis;
         $paper->medziaga = strtoupper($request->medziaga);
-        $paper->klijai = $request->klijai;
+        $paper->klijai = strtoupper($request->klijai);
         $paper->kiekis = $request->kiekis;
 
 
@@ -168,7 +168,9 @@ class PaperController extends Controller
      */
     public function edit(Paper $paper)
     {
-        //
+        // $paper = Paper::find($paper);
+        //dd($paper);
+        return view('paper.edit',['paper' => $paper]);
     }
 
     /**
@@ -226,7 +228,7 @@ class PaperController extends Controller
         $paper->ilgis = $request->ilgis;
         $paper->plotis = $request->plotis;
         $paper->medziaga = strtoupper($request->medziaga);;
-        $paper->klijai = $request->klijai;
+        $paper->klijai = strtoupper($request->klijai);
         $paper->kiekis = $request->kiekis;
         $paper->update();
 

@@ -13,16 +13,21 @@
 @include('header')
   @auth
   @if (auth()->user()->status!=0 )
-  @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
-
-@include('errors')
+  
 
 
-<button class="paperBtn" onclick="myFunction()">Prideti popieriu</button>
+  
+
   <div class="container">
-
-    <div id="store" class="store" style="display: none">
-      <form action="{{route('paper.store')}}" method="get">
+    @include('errors')
+    
+    
+  {{-- <button class="paperBtn" onclick="myFunction()">Prideti popierių</button> --}}
+    <div id="store" class="titleOne" >
+      @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+      <a href="{{route('paper.create')}}">Prideti popierių</a>
+      @endif
+      {{-- <form action="{{route('paper.store')}}" method="get">
         <div class="storeInput">
           <label for="plotis">Plotis:</label><br>
           <input type="text" size="8" name="plotis" value="">
@@ -32,7 +37,7 @@
           <input type="text" size="8" name="ilgis" value=""><br><br>
         </div>
         <div class="storeInput">
-          <label for="medziaga">Medziaga:</label><br>
+          <label for="medziaga">Medžiaga:</label><br>
           <input type="text" size="8" name="medziaga" value=""><br><br>
         </div>
         <div class="storeInput">
@@ -44,45 +49,55 @@
           <input type="text" size="8" name="kiekis" value=""><br><br>
         </div>
         <div class="btn_store">
-          <input  type="submit" value="Submit">
+          <input  type="submit" value="Įvesti">
         </div>
         @csrf
-      </form>
+      </form> --}}
     </div>
-
-    @endif
-
+    
 
     <form class="filter" action="{{route('paper.sort')}}" method="post">
 
-      <label for="medziaga" >Filtruoti medziaga:</label>
+    <div style="padding:10px">
+      <label for="medziaga" >Medžiaga:</label>
       <select name="medziaga" >
         <option value="0">All</option>
           @foreach ($medz_arrs as $medz_arr)
           <option value="{{$medz_arr}}">{{$medz_arr}}</option>
         @endforeach
       </select>
-      
-      <label for="klijai" style="padding-left:20px">Filtruoti klijai:</label>
+    </div>
+
+    <div style="padding:10px">
+      <label for="klijai" >Klijai:</label>
       <select name="klijai" id="klijai">
         <option value="0">All</option>
           @foreach ($klijai_arrs as $klijai_arr)
           <option value="{{$klijai_arr}}">{{$klijai_arr}}</option>
         @endforeach
       </select>
-      
-          <input type="submit" value="Submit"><br><br>
+    </div>
+    <div style="padding:10px">
+      <input type="submit" value="Submit"><br><br>
+    </div>
+          
       @csrf
+    
     </form>
+
     <br><br>
+
     <div class="secondTable" >
-      <div class="header">Popieriaus sarasas</div>
+
+
+      <div class="header">Popieriaus sąrasas </div>
+      
       <table class="paper">
         <thead>
           <tr>
               <th>Plotis</th>
               <th>Ilgis</th>
-              <th>Medziaga</th>
+              <th>Medžiaga</th>
               <th>Klijai</th>
               <th>Kiekis</th>
               {{-- <th>Paskutinis redagavimas</th> --}}
@@ -90,8 +105,8 @@
               @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
 
               <th>Keisti</th>
-              <th>Info</th>
-              <th>Istrinti</th>
+              {{-- <th>Info</th>
+              <th>Ištrinti</th> --}}
 
               @endif
 
@@ -99,28 +114,32 @@
         </thead>
         <tbody>
           @foreach ($papers as $paper)
-          <tr>
+          <tr onclick="window.location='{{route('paper.edit',$paper)}}'">
             <form action="{{route('paper.update',$paper)}}" method="post">
-            <td><input type="text" size="2" name="plotis" value="{{$paper->plotis}}"></td>
-            <td><input type="text" size="2" name="ilgis" value="{{$paper->ilgis}}"></td>
-            <td><input type="text" size="8" name="medziaga" value="{{$paper->medziaga}}"></td>
-            <td><input type="text" size="2" name="klijai" value="{{$paper->klijai}}"></td>
-            <td><input type="text" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
+            <td>{{$paper->plotis}}</td>
+            <input type="hidden" name="plotis" value="{{$paper->plotis}}"></td>
+            <td>{{$paper->ilgis}}</td>
+            <input type="hidden" name="ilgis" value="{{$paper->ilgis}}">
+            <td>{{$paper->medziaga}}</td>
+            <input type="hidden" name="medziaga" value="{{$paper->medziaga}}">
+            <td>{{$paper->klijai}}</td>
+            <input type="hidden" name="klijai" value="{{$paper->klijai}}">
+            <td onclick="tdclick(event);"><input type="text" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
             {{-- <td>{{$paper->updated_at}}</td> --}}
             @csrf
 
             @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
 
-              <td>
-                <button type="submit">Save</button> 
+              <td onclick="tdclick(event);">
+                <button type="submit">Išsaugoti</button> 
               </td>
             </form>
-            <td>
+            {{-- <td onclick="tdclick(event);">
               <a href="{{route('paper.info', $paper )}}"><button>Info</button></a>
             </td>
-              <td>
-                <a href="{{route('paper.destroy', $paper)}} "><button>Delete</button></a>
-              </td>
+              <td onclick="tdclick(event);">
+                <a href="{{route('paper.destroy', $paper)}} "><button>Ištrinti</button></a>
+              </td> --}}
 
              @endif 
 
@@ -145,7 +164,12 @@
         x.style.display = "flex";
       }
     }
-    </script>
-
+  </script>
+  <script>
+    function tdclick(event){
+        console.log(''); 
+        event.stopPropagation()
+    };
+  </script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+.storeInput input{
+    /* display: flex;
+    justify-content: center;
+    align-content: center; */
+    text-align: right;
+}
+.edit_btns{
+    /* float: right; */
+    /* width: 33%; */
+    /* display: inline-block; */
+    text-align: center;
+    padding: 10px 0px;
+}
+
+form .edit_btns a{
+    background-color: #398B93;
+    border: none;
+    color: white;
+    padding: 4px 14px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    line-height: 5px;
+}
+
+
+input[type=submit]{
+    background-color: #398B93;
+    border: none;
+    color: white;
+    padding: 4px 14px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+  }

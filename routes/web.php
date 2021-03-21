@@ -44,6 +44,9 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/info/{paper}', [InfoController::class, 'index'])->name('paper.info');
 
+        Route::get('/edit/{paper}', [PaperController::class, 'edit'])->name('paper.edit');
+
+        Route::get('/create', [PaperController::class, 'create'])->name('paper.create');
     });
 });
 

@@ -22,7 +22,7 @@ table {
   }
   
 
-  tr:first-child:hover {
+  thead tr:hover {
     background-color: white;
     color: black;
   }
