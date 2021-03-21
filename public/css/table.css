@@ -208,4 +208,19 @@ only screen and (max-width: 760px),
   .archive td:nth-of-type(11):before { content: "Pabaigimas"; }
 	.archive td:nth-of-type(12):before { content: "Pastabos"; }
   .archive td:nth-of-type(13):before { content: "Info"; }
+
+  .printed td:nth-of-type(1):before { content: "Uzs. nr."; }
+  .printed td:nth-of-type(2):before { content: "Uzsakovas"; }
+  .printed td:nth-of-type(3):before { content: "Pavadinimas"; }
+  .printed td:nth-of-type(4):before { content: "Ilgis"; }
+  .printed td:nth-of-type(5):before { content: "Plotis"; }
+  .printed td:nth-of-type(6):before { content: "Medžiaga"; }
+  .printed td:nth-of-type(7):before { content: "Velenas"; }
+  .printed td:nth-of-type(8):before { content: "Klijai"; }
+  .printed td:nth-of-type(9):before { content: "Eilės"; }
+  .printed td:nth-of-type(10):before { content: "Spalvos"; }
+  .printed td:nth-of-type(11):before { content: "Pagaminimo data"; }
+  .printed td:nth-of-type(12):before { content: "Kiekis"; }
+  .printed td:nth-of-type(13):before { content: "Parinkti"; }
+  .printed td:nth-of-type(14):before { content: "Keisti"; }
 }

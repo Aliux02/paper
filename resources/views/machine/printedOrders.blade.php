@@ -1,6 +1,6 @@
 <div class="firstTable" >
   <div class="header">Atspausdinti užsakymai</div>
-    <table>
+    <table class="printed">
       <thead>
       <tr>
         <th>Uzs. nr.</th>
@@ -16,8 +16,8 @@
         <th>Pabaigimo data</th>
         <th>Kiekis</th>
         @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
-        <th>Keisti</th>
         <th>Parinkti</th>
+        <th>Keisti</th>
         @endif
       </tr>
       </thead>
