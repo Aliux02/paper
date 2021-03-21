@@ -19,8 +19,7 @@
 
     
     <div class="secondTable row" >
-      <input type="text" id="myInput" onkeyup="myFunction()" 
-      style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Iveskite uzsakova.." title="Paieska">
       <div class="header col-12">Archyvas</div>
       <table id="myTable" class="archive col-12">
         <thead>

@@ -55,7 +55,7 @@
   </div>
 <div class="firstTable row">
   <div class="header col-12">Vartotojai</div>
-  <table class="col-12">
+  <table class="users col-12">
     <thead>
     <tr>
         <th>Vardas</th>
