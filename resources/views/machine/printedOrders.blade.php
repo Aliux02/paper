@@ -1,18 +1,18 @@
-<div class="firstTable" >
-  <div class="header">Atspausdinti užsakymai</div>
-    <table class="printed">
+<div class="firstTable row" >
+  <div class="header col-12">Atspausdinti užsakymai</div>
+    <table class="printed col-12">
       <thead>
       <tr>
         <th>Uzs. nr.</th>
         <th>Uzsakovas</th>
-        <th>Pavadinimas</th>
+        {{-- <th>Pavadinimas</th> --}}
         <th>Ilgis</th>
         <th>Plotis</th>
         <th>Medziaga</th>
         <th>Velenas</th>
-        <th>Klijai</th>
+        {{-- <th>Klijai</th>
         <th>Eiles</th>
-        <th>Spalva</th>
+        <th>Spalva</th> --}}
         <th>Pabaigimo data</th>
         <th>Kiekis</th>
         @if(auth()->user()->permission_lvl>=100 && auth()->user()->permission_lvl<750 || auth()->user()->permission_lvl>=2000)
@@ -27,14 +27,14 @@
         <form action="{{route('order.rewind',$doneOrder)}}" method="post"> 
           <td>{{$doneOrder->id}} </td>
           <td>{{$doneOrder->uzsakovas}} </td>
-          <td>{{$doneOrder->pavadinimas}} </td>
+          {{-- <td>{{$doneOrder->pavadinimas}} </td> --}}
           <td>{{$doneOrder->ilgis}} </td>
           <td>{{$doneOrder->plotis}} </td>
           <td>{{$doneOrder->medziaga}} </td>
           <td>{{$doneOrder->velenas}} </td>
-          <td>{{$doneOrder->klijai}} </td>
+          {{-- <td>{{$doneOrder->klijai}} </td>
           <td>{{$doneOrder->eiles}} </td>
-          <td>{{$doneOrder->spalva}} </td>
+          <td>{{$doneOrder->spalva}} </td> --}}
           <td>{{$doneOrder->pabaigimas}}</td>
           <td>{{$doneOrder->kiekis}} </td>
           

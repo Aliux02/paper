@@ -10,9 +10,13 @@
 </head>
 <body>
     @include('header')
-    <div class="store">
-        
-        <form action="{{route('paper.store')}}" method="get">
+    
+    <div class="container">
+        <div class="row" style="padding: 10px">
+        @include('errors')
+        </div>
+        <div class="row paperEdit">
+        <form class="col-12" action="{{route('paper.store')}}" method="get">
           <div class="storeInput">
             <label for="plotis">Plotis:</label><br>
             <input type="text" name="plotis" value="{{old('plotis')}}">
@@ -44,6 +48,7 @@
             </div> --}}
           @csrf
         </form>
-      </div>
+        </div>
+    </div>
 </body>
 </html>

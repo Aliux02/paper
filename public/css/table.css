@@ -12,6 +12,7 @@
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
+    
     width: 100%;
   }
   
@@ -76,7 +77,7 @@ table {
     color: white;
   } */
 @media 
-only screen and (max-width: 760px),
+only screen and (max-width: 786px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */

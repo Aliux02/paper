@@ -18,11 +18,11 @@
     
 
     
-    <div class="secondTable" >
+    <div class="secondTable row" >
       <input type="text" id="myInput" onkeyup="myFunction()" 
       style="margin-top:50px" placeholder="Iveskite uzsakova.." title="Paieska">
-      <div class="header">Archyvas</div>
-      <table id="myTable" class="archive">
+      <div class="header col-12">Archyvas</div>
+      <table id="myTable" class="archive col-12">
         <thead>
         <tr>
           <th>Uzsakovas</th>
@@ -36,7 +36,7 @@
           <th>Kiekis</th>
           <th>Velenas</th>
           <th>Pabaigimas</th>
-          <th>Pastabos</th>
+          {{-- <th>Pastabos</th> --}}
           @if (auth()->user()->permission_lvl>=1000)
           {{-- <th>Keisti</th> --}}
           {{-- <th>Maketas</th> --}}
@@ -61,7 +61,7 @@
             <td>{{$order->velenas}}</td>
             <td>{{$order->pabaigimas}}</td>
             <input type="hidden" size="4" name="naujoUzsMaketas" value="{{$order->maketas}}">
-            <td>{{$order->pastabos}}</td>
+            {{-- <td>{{$order->pastabos}}</td> --}}
             @if (auth()->user()->permission_lvl>=1000)
             {{-- <td>
               <button type="submit">Save</button> 

@@ -16,10 +16,13 @@
   @if (auth()->user()->status!=0 )
   
   @include('header')
-  @include('errors')
+  
 
   
   <div class="container">
+    <div class="row">
+      @include('errors')
+    </div>
     
     @if (auth()->user()->permission_lvl>=750)
     @include('order.allOrders')

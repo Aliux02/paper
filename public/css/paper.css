@@ -1,8 +1,9 @@
-.storeInput input{
+
+.paperEdit{
     /* display: flex;
     justify-content: center;
     align-content: center; */
-    text-align: right;
+    text-align: center;
 }
 .edit_btns{
     /* float: right; */
@@ -32,4 +33,13 @@ input[type=submit]{
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
+  }
+  .filter{
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .filter .filterBtn{
+      display: flex;
   }

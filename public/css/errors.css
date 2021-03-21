@@ -2,11 +2,13 @@
     grid-area: alert;
     height: auto;
     font-size: 15px;
+    text-align: center;
     color: red;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 15px;
   }
   .alert-info{
     grid-area: alert;

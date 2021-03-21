@@ -15,9 +15,9 @@
   @if (auth()->user()->permission_lvl>=1000)
 
   <div class="container">
-    <div class="firstTable">
-      <div class="header">Nurasinėjimo informacija</div>
-      <table class="paperInfo">
+    <div class="firstTable row">
+      <div class="header col-12">Nurasinėjimo informacija</div>
+      <table class="paperInfo col-12">
         <thead>
         <tr>
           <th>Kiekis</th>

@@ -1,19 +1,20 @@
-<div class="firstTable" >
-  <div class="header">Einamuju uzsakymu sarasas </div>
-    <table class="order">
+<div class="firstTable row" >
+  <div class="header col-12">Einamuju uzsakymu sarasas </div>
+    <table class="order col-12">
       <thead>
       <tr>
+        <th>Uzs. nr.</th>
         <th>Uzsakovas</th>
-        <th>Pavadinimas</th>
-        <th>Kryptis</th>
+        {{-- <th>Pavadinimas</th> --}}
+        {{-- <th>Kryptis</th> --}}
         <th>Ilgis</th>
         <th>Plotis</th>
         <th>Medziaga</th>
-        <th>Klijai</th>
+        {{-- <th>Klijai</th>
         <th>Eiles</th>
-        <th>Spalvos</th>
+        <th>Spalvos</th> --}}
         <th>Kiekis</th>
-        <th>Velenas</th>
+        {{-- <th>Velenas</th> --}}
         <th>Pagaminimo data</th>
         {{-- <th>Daugiau</th> --}}
         {{-- <th>Pastabos</th>
@@ -37,17 +38,18 @@
           
       <tr onclick="window.location='{{route('order.orderCard',$order)}}'" ; {{$order->color()}}>
         {{-- <form action="{{route('order.update',$order)}}" method="get" enctype="multipart/form-data"> --}}
+          <td>{{$order->id}}</td>
           <td>{{$order->uzsakovas}}</td>
-          <td>{{$order->pavadinimas}}</td>
-          <td>{{$order->kryptis}}</td>
+          {{-- <td>{{$order->pavadinimas}}</td> --}}
+          {{-- <td>{{$order->kryptis}}</td> --}}
           <td>{{$order->ilgis}}</td>
           <td>{{$order->plotis}}</td>
           <td>{{$order->medziaga}}</td>
-          <td>{{$order->klijai}}</td>
+          {{-- <td>{{$order->klijai}}</td>
           <td>{{$order->eiles}}</td>
-          <td>{{$order->spalva}}</td>
+          <td>{{$order->spalva}}</td> --}}
           <td>{{$order->kiekis}}</td>
-          <td>{{$order->velenas}}</td>
+          {{-- <td>{{$order->velenas}}</td> --}}
           <td>{{$order->pabaigimas}}</td>
           <input type="hidden"  size="6" name="maketas" value="{{$order->maketas}}">
           {{-- <td><textarea name="pastabos" cols="10" rows="1" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>{{$order->pastabos}}</textarea></td> --}}

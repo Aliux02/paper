@@ -19,6 +19,14 @@
         
                 <form method="GET" action="{{route('order.update',$order)}}" enctype="multipart/form-data">
                     @csrf
+
+                    <div class="mt-4"style="width: 48%; float: left;" >
+                        <x-jet-label class="font-semibold" for="id" value="{{ __('Uzs. Nr.') }}" />
+
+
+                            <p>{{$order->id}}</p> 
+                            
+                    </div>
         
                     <div class="mt-4"style="width: 48%; float: left;" >
                         <x-jet-label class="font-semibold" for="uzsakovas" value="{{ __('Uzsakovas') }}" />

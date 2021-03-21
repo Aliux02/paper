@@ -19,20 +19,22 @@
 
 
     <div class="container">
-      
+      <div class="row">
+        @include('errors')
+      </div>
 {{--         
     
       <h2 class="titleOne">Suvynioti uzsakymai</h2> --}}
     
-      <div class="firstTable" >
-        @include('errors')
-        <div class="header">Suvynioti užsakymai</div>
-        <table class="pack">
+      <div class="firstTable row" >
+
+        <div class="header col-12">Suvynioti užsakymai</div>
+        <table class="pack col-12">
           <thead>
             <tr>
                 <th>Uzsakovas</th>
-                <th>Pavadinimas</th>
-                <th>Kryptis</th>
+                {{-- <th>Pavadinimas</th> --}}
+                {{-- <th>Kryptis</th> --}}
                 <th>Ilgis</th>
                 <th>Plotis</th>
                 <th>Medziaga</th>
@@ -40,7 +42,7 @@
                 <th>Eiles</th>
                 <th>Spalvos</th>
                 <th>Pagaminimo data</th>
-                <th>Pastabos</th>
+                {{-- <th>Pastabos</th> --}}
                 <th>Dezes</th>
                 <th>Kiekis</th>
                 @if (auth()->user()->permission_lvl>=750 && auth()->user()->permission_lvl<1000 || auth()->user()->permission_lvl>=2000)
@@ -54,8 +56,8 @@
             <tr onclick="window.location='{{route('order.orderCard',$order)}}'">
               <form action="{{route('order.donePacking',$order)}}" method="post">
                 <td>{{$order->uzsakovas}}</td>
-                <td>{{$order->pavadinimas}}</td>
-                <td>{{$order->kryptis}}</td>
+                {{-- <td>{{$order->pavadinimas}}</td> --}}
+                {{-- <td>{{$order->kryptis}}</td> --}}
                 <td>{{$order->ilgis}}</td>
                 <td>{{$order->plotis}}</td>
                 <td>{{$order->medziaga}}</td>
@@ -63,7 +65,7 @@
                 <td>{{$order->eiles}}</td>
                 <td>{{$order->spalva}}</td>
                 <td>{{$order->pabaigimas}}</td>
-                <td>{{$order->pastabos}}</td>
+                {{-- <td>{{$order->pastabos}}</td> --}}
                 <td onclick="tdclick(event);"><input type="text" size="1" name="dezes" value="{{$order->dezes}}"></td>
                 <td onclick="tdclick(event);"><input type="text" size="4" name="kiekis" value="{{$order->kiekis}}"></td>
                 @if (auth()->user()->permission_lvl>=750 && auth()->user()->permission_lvl<1000 || auth()->user()->permission_lvl>=2000)

@@ -1,18 +1,18 @@
 
-      <table class="machine">
+      <table class="machine col-12">
         <thead>
         <tr>
           <th>Eil. nr.</th>
           <th>Uzs. nr.</th>
           <th>Uzsakovas</th>
-          <th>Pavadinimas</th>
+          {{-- <th>Pavadinimas</th> --}}
           <th>Ilgis</th>
           <th>Plotis</th>
           <th>Medziaga</th>
           <th>Velenas</th>
-          <th>Klijai</th>
+          {{-- <th>Klijai</th>
           <th>Eiles</th>
-          <th>Spalva</th>
+          <th>Spalva</th> --}}
           <th>Pabaigimo data</th>
           
           {{-- <th>Pastabos</th>
@@ -39,14 +39,14 @@
             </td>
             <td>{{$order->id}} </td>
             <td>{{$order->uzsakovas}} </td>
-            <td>{{$order->pavadinimas}} </td>
+            {{-- <td>{{$order->pavadinimas}} </td> --}}
             <td>{{$order->ilgis}} </td>
             <td>{{$order->plotis}} </td>
             <td>{{$order->medziaga}} </td>
             <td>{{$order->velenas}} </td>
-            <td>{{$order->klijai}} </td>
+            {{-- <td>{{$order->klijai}} </td>
             <td>{{$order->eiles}} </td>
-            <td>{{$order->spalva}} </td>
+            <td>{{$order->spalva}} </td> --}}
             <td>{{$order->pabaigimas}} </td>
             
             {{-- <td>{{$order->pastabos}} </td>

@@ -14,19 +14,16 @@
   @auth
   @if (auth()->user()->status!=0 )
   
-
-
-  
+    
 
   <div class="container">
-    @include('errors')
+
     
     
+
   {{-- <button class="paperBtn" onclick="myFunction()">Prideti popierių</button> --}}
-    <div id="store" class="titleOne" >
-      @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
-      <a href="{{route('paper.create')}}">Prideti popierių</a>
-      @endif
+    {{-- <div id="store" class="titleOne" > --}}
+
       {{-- <form action="{{route('paper.store')}}" method="get">
         <div class="storeInput">
           <label for="plotis">Plotis:</label><br>
@@ -53,46 +50,51 @@
         </div>
         @csrf
       </form> --}}
-    </div>
+    {{-- </div> --}}
+    
+    <div  class="row">
+      @include('errors')
+      @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
+      <a class="col-2" href="{{route('paper.create')}}">Prideti popierių</a>
+      @endif
+      <form class="filter col-12 "action="{{route('paper.sort')}}" method="post">
+        <div  style="padding:10px">
+          <label for="medziaga" >Medžiaga:</label>
+          <select name="medziaga" >
+            <option value="0">All</option>
+              @foreach ($medz_arrs as $medz_arr)
+              <option value="{{$medz_arr}}">{{$medz_arr}}</option>
+            @endforeach
+          </select>
+        </div>
+
+        <div  style="padding:10px">
+          <label for="klijai" >Klijai:</label>
+          <select name="klijai" id="klijai">
+            <option value="0">All</option>
+              @foreach ($klijai_arrs as $klijai_arr)
+              <option value="{{$klijai_arr}}">{{$klijai_arr}}</option>
+            @endforeach
+          </select>
+        </div>
+        <div class="filterBtn" style="padding:10px">
+          <input type="submit" value="Submit"><br><br>
+        </div>
+              
+          @csrf
+        
+        </form>
+      </div>
+
+
     
 
-    <form class="filter" action="{{route('paper.sort')}}" method="post">
-
-    <div style="padding:10px">
-      <label for="medziaga" >Medžiaga:</label>
-      <select name="medziaga" >
-        <option value="0">All</option>
-          @foreach ($medz_arrs as $medz_arr)
-          <option value="{{$medz_arr}}">{{$medz_arr}}</option>
-        @endforeach
-      </select>
-    </div>
-
-    <div style="padding:10px">
-      <label for="klijai" >Klijai:</label>
-      <select name="klijai" id="klijai">
-        <option value="0">All</option>
-          @foreach ($klijai_arrs as $klijai_arr)
-          <option value="{{$klijai_arr}}">{{$klijai_arr}}</option>
-        @endforeach
-      </select>
-    </div>
-    <div style="padding:10px">
-      <input type="submit" value="Submit"><br><br>
-    </div>
-          
-      @csrf
-    
-    </form>
-
-    <br><br>
-
-    <div class="secondTable" >
+    <div class="secondTable row" >
 
 
-      <div class="header">Popieriaus sąrasas </div>
+      <div class="header col-12">Popieriaus sąrasas </div>
       
-      <table class="paper">
+      <table class="paper col-12">
         <thead>
           <tr>
               <th>Plotis</th>

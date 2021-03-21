@@ -19,8 +19,8 @@
     
 
   
-  <div class="filter">
-    <div class="permissionLvl">
+  <div class="filter row">
+    <div class="permissionLvl col-6">
       <h2 class="titleOne" >Vartotoju leidimo reziai</h2>
       <dl>
         <li>Pagalbiniai nuo 10 iki 100</li>
@@ -30,7 +30,7 @@
         <li>Vadovai, vadyba nuo 1000 iki 2000</li>
       </dl> 
     </div>
-    <div class="storeMachine">
+    <div class="storeMachine col-6">
       <h2 class="titleOne" >Ivesti nauja irengini</h2>
       
         <form action="{{route('machine.store')}}" method="post">
@@ -53,9 +53,9 @@
       
     </div> 
   </div>
-<div class="firstTable">
-  <div class="header">Vartotojai</div>
-  <table>
+<div class="firstTable row">
+  <div class="header col-12">Vartotojai</div>
+  <table class="col-12">
     <thead>
     <tr>
         <th>Vardas</th>

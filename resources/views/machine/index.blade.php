@@ -19,8 +19,9 @@
   @include('header')
 
   <div class="container">
+    <div class="row">
     @include('errors')
-
+    </div>
     
    
     @if(auth()->user()->permission_lvl>=100 )
@@ -30,14 +31,18 @@
     
     
     @if(auth()->user()->permission_lvl>=500 )
-    <h2 class="titleTwo">Spausdinimo masinos</h2>
+    <div class="row">
+      <h2 class="titleTwo col-12">Spausdinimo masinos</h2>
+    </div>
     @include('machine.printMachines')          
     @endif
         
     @if(auth()->user()->permission_lvl>=100 && 
         auth()->user()->permission_lvl<500 || 
         auth()->user()->permission_lvl>=750)
-    <h2 class="titleThree">Vyniokles</h2>
+    <div class="row">
+      <h2 class="titleThree col-12">Vyniokles</h2>
+    </div>
     @include('machine.rewinders')
     @endif
 

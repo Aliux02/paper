@@ -17,9 +17,9 @@
   @include('header')
 
   <div class="container">
-    <div class="secondTable" >
-      <div class="header">Uzsakymo istorija</div>
-      <table class="orderinfo">
+    <div class="secondTable row" >
+      <div class="header col-12">Uzsakymo istorija</div>
+      <table class="orderinfo col-12">
         <thead>
         <tr>
           <th>Uzpilde</th>
