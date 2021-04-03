@@ -14,6 +14,9 @@ table {
     border-collapse: collapse;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
     width: 100%;
+    /* border-style: groove;
+    border-color: #398B93;
+    border-width: 1.2px; */
   }
   
   td, th {
