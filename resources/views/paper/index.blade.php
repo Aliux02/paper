@@ -17,46 +17,9 @@
     
 
   <div class="container">
-
-    
-    
-
-  {{-- <button class="paperBtn" onclick="myFunction()">Prideti popierių</button> --}}
-    {{-- <div id="store" class="titleOne" > --}}
-
-      {{-- <form action="{{route('paper.store')}}" method="get">
-        <div class="storeInput">
-          <label for="plotis">Plotis:</label><br>
-          <input type="text" size="8" name="plotis" value="">
-        </div>
-        <div class="storeInput">
-          <label for="ilgis">Ilgis:</label><br>
-          <input type="text" size="8" name="ilgis" value=""><br><br>
-        </div>
-        <div class="storeInput">
-          <label for="medziaga">Medžiaga:</label><br>
-          <input type="text" size="8" name="medziaga" value=""><br><br>
-        </div>
-        <div class="storeInput">
-          <label for="klijai">Klijai:</label><br>
-          <input type="text" size="8" name="klijai" value=""><br><br>
-        </div>
-        <div class="storeInput">
-          <label for="kiekis">Kiekis:</label><br>
-          <input type="text" size="8" name="kiekis" value=""><br><br>
-        </div>
-        <div class="btn_store">
-          <input  type="submit" value="Įvesti">
-        </div>
-        @csrf
-      </form> --}}
-    {{-- </div> --}}
-    
     <div  class="row">
       @include('errors')
-      @if (auth()->user()->permission_lvl<=10 || auth()->user()->permission_lvl>=1000)
-      <a class="col-2" href="{{route('paper.create')}}">Prideti popierių</a>
-      @endif
+    
       <form class="filter col-12 "action="{{route('paper.sort')}}" method="post">
         <div  style="padding:10px">
           <label for="medziaga" >Medžiaga:</label>
@@ -119,13 +82,13 @@
           <tr onclick="window.location='{{route('paper.edit',$paper)}}'">
             <form action="{{route('paper.update',$paper)}}" method="post">
             <td>{{$paper->plotis}}</td>
-            <input type="hidden" name="plotis" value="{{$paper->plotis}}"></td>
+            <input type="hidden" name="fromIndex" value="fromIndex"></td>
             <td>{{$paper->ilgis}}</td>
-            <input type="hidden" name="ilgis" value="{{$paper->ilgis}}">
+            {{-- <input type="hidden" name="ilgis" value="{{$paper->ilgis}}"> --}}
             <td>{{$paper->medziaga}}</td>
-            <input type="hidden" name="medziaga" value="{{$paper->medziaga}}">
+            {{-- <input type="hidden" name="medziaga" value="{{$paper->medziaga}}"> --}}
             <td>{{$paper->klijai}}</td>
-            <input type="hidden" name="klijai" value="{{$paper->klijai}}">
+            {{-- <input type="hidden" name="klijai" value="{{$paper->klijai}}"> --}}
             <td onclick="tdclick(event);"><input type="text" size="2" name="kiekis" value="{{$paper->kiekis}}"></td>
             {{-- <td>{{$paper->updated_at}}</td> --}}
             @csrf

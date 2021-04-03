@@ -23,19 +23,19 @@
           </div>
           <div class="storeInput">
             <label for="ilgis">Ilgis:</label><br>
-            <input type="text" name="ilgis" value="{{$paper->ilgis}}"><br><br>
+            <input type="text" name="ilgis" value="{{$paper->ilgis}}"><br>
           </div>
           <div class="storeInput">
             <label for="medziaga">Medziaga:</label><br>
-            <input type="text" name="medziaga" value="{{$paper->medziaga}}"><br><br>
+            <input type="text" name="medziaga" value="{{$paper->medziaga}}"><br>
           </div>
           <div class="storeInput">
             <label for="klijai">Klijai:</label><br>
-            <input type="text" name="klijai" value="{{$paper->klijai}}"><br><br>
+            <input type="text" name="klijai" value="{{$paper->klijai}}"><br>
           </div>
           <div class="storeInput">
             <label for="kiekis">Kiekis:</label><br>
-            <input type="text" name="kiekis" value="{{$paper->kiekis}}"><br><br>
+            <input type="text" name="kiekis" value="{{$paper->kiekis}}"><br>
           </div>
           <div class="edit_btns">
               <input  type="submit" value="Įvesti">

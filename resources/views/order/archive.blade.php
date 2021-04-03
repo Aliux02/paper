@@ -97,13 +97,14 @@
     tr = table.getElementsByTagName("tr");
     ;
     for (i = 0; i < tr.length; i++) {
-      console.log(tr[i].getElementsByTagName("td")[0])
+      //console.log(tr[i].getElementsByTagName("td")[0])
       if (tr[i].getElementsByTagName("td")[0] === undefined) {
         continue;
       } 
-      td = tr[i].getElementsByTagName("input")[0].value;
+      td = tr[i].getElementsByTagName("td")[0];
+      //console.log(td);
       if (td) {
-        txtValue = td;
+        txtValue = td.textContent || td.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {

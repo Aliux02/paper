@@ -182,6 +182,39 @@ class PaperController extends Controller
      */
     public function update(Request $request, Paper $paper)
     {
+        if ($request->has('fromIndex')) {
+            $validator = Validator::make($request->all(),
+            [
+                'kiekis' => ['required','integer','min:0','max:1000'],
+            ],
+            [
+                'kiekis.required' => 'Uzsakymo kiekis privalomas',
+                'kiekis.integer' => 'kiekis turi buti sveikas skaicius',
+                'kiekis.min' => 'kiekis negali buti mazesnis nei 0',
+                'kiekis.max' => 'kiekis per didelis',
+            ]);
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+
+            $paper->id = $paper->id;
+            $paper->ilgis = $paper->ilgis;
+            $paper->plotis = $paper->plotis;
+            $paper->medziaga = strtoupper($paper->medziaga);;
+            $paper->klijai = strtoupper($paper->klijai);
+            $paper->kiekis = $request->kiekis;
+            $paper->update();
+
+            $info = new Info();
+            $info->kiekis = $paper->kiekis;
+            $info->modifikuota = $paper->updated_at;
+            $info->paper_id = $paper->id;
+            $info->user_name = auth()->user()->name;
+            $info->save();
+            return redirect()->route('paper.index');
+        }else{
+
 
         $validator = Validator::make($request->all(),
         [
@@ -223,22 +256,23 @@ class PaperController extends Controller
             $request->flash();
             return redirect()->back()->withErrors($validator);
         }
-
         $paper->id = $paper->id;
-        $paper->ilgis = $request->ilgis;
-        $paper->plotis = $request->plotis;
-        $paper->medziaga = strtoupper($request->medziaga);;
-        $paper->klijai = strtoupper($request->klijai);
-        $paper->kiekis = $request->kiekis;
-        $paper->update();
-
-        $info = new Info();
-        $info->kiekis = $paper->kiekis;
-        $info->modifikuota = $paper->updated_at;
-        $info->paper_id = $paper->id;
-        $info->user_name = auth()->user()->name;
-        $info->save();
-        return redirect()->route('paper.index');
+            $paper->ilgis = $request->ilgis;
+            $paper->plotis = $request->plotis;
+            $paper->medziaga = strtoupper($request->medziaga);;
+            $paper->klijai = strtoupper($request->klijai);
+            $paper->kiekis = $request->kiekis;
+            $paper->update();
+    
+            $info = new Info();
+            $info->kiekis = $paper->kiekis;
+            $info->modifikuota = $paper->updated_at;
+            $info->paper_id = $paper->id;
+            $info->user_name = auth()->user()->name;
+            $info->save();
+            return redirect()->route('paper.index');
+        
+        }
     }
 
     /**
