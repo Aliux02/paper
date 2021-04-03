@@ -25,14 +25,13 @@
     
    
     @if(auth()->user()->permission_lvl>=100 )
-    {{-- <h2 class="titleOne">Atspausdinti uzsakymai</h2> --}}
     @include('machine.printedOrders')
     @endif
     
     
     @if(auth()->user()->permission_lvl>=500 )
     <div class="row">
-      <h2 class="titleTwo col-12">Spausdinimo masinos</h2>
+      <h2 class="col-12">Spausdinimo masinos</h2>
     </div>
     @include('machine.printMachines')          
     @endif
@@ -41,7 +40,7 @@
         auth()->user()->permission_lvl<500 || 
         auth()->user()->permission_lvl>=750)
     <div class="row">
-      <h2 class="titleThree col-12">Vyniokles</h2>
+      <h2 class="col-12">Vyniokles</h2>
     </div>
     @include('machine.rewinders')
     @endif

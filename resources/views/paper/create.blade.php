@@ -15,39 +15,41 @@
         <div class="row" style="padding: 10px">
         @include('errors')
         </div>
-        <div class="row paperEdit">
-        <form class="col-12" action="{{route('paper.store')}}" method="get">
-          <div class="storeInput">
-            <label for="plotis">Plotis:</label><br>
-            <input type="text" name="plotis" value="{{old('plotis')}}">
+        <div class="row ">
+          <div class="col-12 paperEdit">
+            <form action="{{route('paper.store')}}" method="get">
+              <div class="storeInput">
+                <label for="plotis">Plotis:</label><br>
+                <input type="text" name="plotis" value="{{old('plotis')}}"><br><br>
+              </div>
+              <div class="storeInput">
+                <label for="ilgis">Ilgis:</label><br>
+                <input type="text" name="ilgis" value="{{old('ilgis')}}"><br><br>
+              </div>
+              <div class="storeInput">
+                <label for="medziaga">Medziaga:</label><br>
+                <input type="text" name="medziaga" value="{{old('medziaga')}}"><br><br>
+              </div>
+              <div class="storeInput">
+                <label for="klijai">Klijai:</label><br>
+                <input type="text" name="klijai" value="{{old('klijai')}}"><br><br>
+              </div>
+              <div class="storeInput">
+                <label for="kiekis">Kiekis:</label><br>
+                <input type="text" name="kiekis" value="{{old('kiekis')}}"><br><br>
+              </div>
+              <div class="edit_btns" style="margin-bottom: 20px">
+                  <input  type="submit" value="Įvesti">
+              </div>
+              {{-- <div class="edit_btns">
+                <a href="{{route('paper.info', $paper )}}">Info</a>
+              </div>
+                <div class="edit_btns">
+                  <a href="{{route('paper.destroy', $paper)}} ">Ištrinti</a>
+                </div> --}}
+              @csrf
+            </form>
           </div>
-          <div class="storeInput">
-            <label for="ilgis">Ilgis:</label><br>
-            <input type="text" name="ilgis" value="{{old('ilgis')}}"><br><br>
-          </div>
-          <div class="storeInput">
-            <label for="medziaga">Medziaga:</label><br>
-            <input type="text" name="medziaga" value="{{old('medziaga')}}"><br><br>
-          </div>
-          <div class="storeInput">
-            <label for="klijai">Klijai:</label><br>
-            <input type="text" name="klijai" value="{{old('klijai')}}"><br><br>
-          </div>
-          <div class="storeInput">
-            <label for="kiekis">Kiekis:</label><br>
-            <input type="text" name="kiekis" value="{{old('kiekis')}}"><br><br>
-          </div>
-          <div class="edit_btns">
-              <input  type="submit" value="Įvesti">
-          </div>
-          {{-- <div class="edit_btns">
-            <a href="{{route('paper.info', $paper )}}">Info</a>
-          </div>
-            <div class="edit_btns">
-              <a href="{{route('paper.destroy', $paper)}} ">Ištrinti</a>
-            </div> --}}
-          @csrf
-        </form>
         </div>
     </div>
 </body>

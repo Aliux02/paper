@@ -1,4 +1,4 @@
-<div class="thirdTable row" >
+<div class="row" >
   <div class="header col-12">Supakuotu užsakymu sarasas</div>
     <table class="packed col-12">
       <thead>

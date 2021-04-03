@@ -1,4 +1,4 @@
-<div class="secondTable row" >
+<div class="row" >
     
     
     @foreach ($machines as $machine)

@@ -26,7 +26,7 @@
     
       <h2 class="titleOne">Suvynioti uzsakymai</h2> --}}
     
-      <div class="firstTable row" >
+      <div class="row" >
 
         <div class="header col-12">Suvynioti užsakymai</div>
         <table class="pack col-12">

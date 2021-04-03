@@ -52,7 +52,7 @@
 
     
 
-    <div class="secondTable row" >
+    <div class="row" >
 
 
       <div class="header col-12">Popieriaus sąrasas </div>

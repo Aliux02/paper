@@ -6,21 +6,37 @@
     font-size: 15px;
     margin-top: 8px;
 }
+.storeInput:first-child{
+    margin-top: 20px;
+}
 .storeInput input{
     /* border: 0;
     padding: 0;
     margin: 0; */
     /* background: transparent;
     font: 13px sans-serif */
-    /* width: 30%; */
-    padding: 5px 10px;
+    width: 70%;
+    /* padding: 5px 10px; */
     margin: 8px 0;
     box-sizing: border-box;
+
+
+    /* appearance: none; */
+    /* background-color: #ffffff; */
+    /* border-color: #d2d6dc; */
+    border-width: 1px;
+    border-radius: 5px;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    /* font-size: 1rem; */
+    /* line-height: 1.5; */
 }
 .paperEdit{
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-content: center; */
+    align-content: center;
     text-align: center;
 }
 .edit_btns{
@@ -33,12 +49,17 @@
     text-align: center;
     padding: 10px 0px;
 }
+
 .paperEdit form{
-    grid-column-start: 5;
-    grid-column-end: 8;
+    background-color: #eee;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 300px
 }
 .paperEdit form :nth-child(6){
-    margin-top: 30px;
+    margin-top: 20px;
+}
+.paperEdit form :nth-child(8){
+    margin-bottom: 20px;
 }
 
 form .edit_btns a{
@@ -53,6 +74,7 @@ form .edit_btns a{
     width: 100px;
 
 }
+
 
 
 input[type=submit]{

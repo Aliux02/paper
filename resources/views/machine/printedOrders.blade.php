@@ -1,4 +1,4 @@
-<div class="firstTable row" >
+<div class="row" >
   <div class="header col-12">Atspausdinti užsakymai</div>
     <table class="printed col-12">
       <thead>

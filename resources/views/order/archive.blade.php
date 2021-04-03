@@ -18,7 +18,7 @@
     
 
     
-    <div class="secondTable row" >
+    <div class="row" >
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Iveskite uzsakova.." title="Paieska">
       <div class="header col-12">Archyvas</div>
       <table id="myTable" class="archive col-12">
@@ -33,7 +33,7 @@
           <th>Eiles</th>
           <th>Spalvos</th>
           <th>Kiekis</th>
-          <th>Velenas</th>
+          {{-- <th>Velenas</th> --}}
           <th>Pabaigimas</th>
           {{-- <th>Pastabos</th> --}}
           @if (auth()->user()->permission_lvl>=1000)
@@ -57,7 +57,7 @@
             <td>{{$order->eiles}}</td>
             <td>{{$order->spalva}}</td>
             <td>{{$order->kiekis}}</td>
-            <td>{{$order->velenas}}</td>
+            {{-- <td>{{$order->velenas}}</td> --}}
             <td>{{$order->pabaigimas}}</td>
             <input type="hidden" size="4" name="naujoUzsMaketas" value="{{$order->maketas}}">
             {{-- <td>{{$order->pastabos}}</td> --}}

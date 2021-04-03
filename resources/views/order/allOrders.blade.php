@@ -1,4 +1,4 @@
-<div class="firstTable row" >
+<div class="row" >
   <div class="header col-12">Einamuju uzsakymu sarasas </div>
     <table class="order col-12">
       <thead>
