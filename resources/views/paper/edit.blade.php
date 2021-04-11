@@ -42,10 +42,10 @@
                   <input type="submit" value="Įvesti">
               </div>
               <div class="edit_btns">
-                <a href="{{route('paper.info', $paper )}}">Info</a>
+                <a class="button1" href="{{route('paper.info', $paper )}}">Info</a>
               </div>
                 <div class="edit_btns">
-                  <a  href="{{route('paper.destroy', $paper)}} ">Ištrinti</a>
+                  <a class="button1" href="{{route('paper.destroy', $paper)}} ">Ištrinti</a>
                 </div>
               @csrf
             </form>

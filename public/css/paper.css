@@ -57,6 +57,7 @@
     border-style: groove;
     /* border-color: #398B93; */
     border-width: 1px;
+    border-radius: 5px;
 }
 .paperEdit form :nth-child(6){
     margin-top: 20px;
@@ -67,7 +68,7 @@
 
 form .edit_btns a{
     background-color: #398B93;
-    border: none;
+    /* border: none; */
     color: white;
     padding: 13px 25px;
     font-size: 20px;
@@ -82,15 +83,30 @@ form .edit_btns a{
 
 input[type=submit]{
     background-color: #398B93;
-    border: none;
+    /* border: none; */
+    /* margin: 4px 2px; */
     color: white;
     padding: 4px 14px;
+    /* padding:0.35em 1.2em; */
     text-decoration: none;
-    /* margin: 4px 2px; */
     width: 100px;
     font-size: 20px;
     cursor: pointer;
+    border-style: groove;
+    border-color: white;
+    border-width: 1px;
+    border-radius:0.20em;
+    transition: all 0.2s;
   }
+  input[type=submit]:hover{
+    color:#398B93;
+    background-color:#FFFFFF;
+    border-style: groove;
+    border-color: #398B93;
+    border-width: 1px;
+  }
+
+
   .filter{
       text-align: center;
       display: flex;
